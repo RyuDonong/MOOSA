@@ -9,84 +9,64 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="assets/css/main.css?after" />
+<!-- <link rel="stylesheet" href="assets/css/main.css"/> -->
+<style type="text/css">
+*{padding:0;margin:0}
+ul,ol{list-style:none}
+a{text-decoration:none;color:#fff;font-size:15px}
+nav{width:80%;overflow:hidden;height:80px;background-color:#1b2035;margin:50px auto}
+#nav3 {
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+#nav3>a {
+  line-height: 80px;
+  display: block;
+  font-size: 30px;
+  font-weight: 900;
+  position: absolute;
+  left: 30px;
+}
+#nav3>select {
+  padding: 0 20px;
+  height: 30px;
+  background-color: #1b2035;
+  color: #fff;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-15px);
+  border: 2px solid #fff;
+  border-radius: 30px;
+}
+#nav3>ul {
+  display: inline-block;
+}
+#nav3>ul li {
+  float: left;
+  line-height: 80px;
+  padding: 0 30px;
+}
+</style>
 </head>
 
-<body class="is-preload">
-	<div id="page-wrapper">
+<body >
+	<nav id="nav3">
+    <a href="#">logo</a>
+    <ul>
+      <li><a href="views/lod/lod_index.jsp">menu1</a></li>
+      <li><a href="#">menu2</a></li>
+      <li><a href="#">menu3</a></li>
+      <li><a href="#">menu4</a></li>
+      <li><a href="#">menu5</a></li>
+    </ul>
 
-		<!-- 헤더 -->
-		<div id="header">
-			<!-- contextPath 선언 -->
-			<c:set var="contextPath" value="${pageContext.request.contextPath }" />
-
-	<!--  
-			<form id="login-form" action="" method="post"
-			style="padding-right: 20px;
-				    margin: auto;
-				    float: right;">
-				<button type="submit">MOOSA 로그인</button>
-			</form>
-	-->
-			
-		    <div style="float: right; padding-right: 50px;">
-                    <table>
-                        <tr>
-                            <th width="5px;" >
-                                <img width="40%" src="https://i.namu.wiki/i/loOwaJxvAvn2RkRchhlBrOrnb_4FLvUtwwIDz8YVWbExKtnwSEros4WlJp1_-zgljHQLmrW8X-Fa2uG0lc23DA.webp">
-                            </th>
-                            <th style="font-size: 16px; line-height: 1; text-align: center;">이름</th>
-                        </tr>
-                        <th>
-                            <button style="width: 1px; line-height: 2;">로그아웃</button>
-                        </th>
-                        <th style="font-size: 16px; text-align: center; padding-left: 10px;">아이디</th>
-                    </table>
-             </div>
-			
-			
-			
-			<c:choose>
-				<c:when test=""> <!-- 로그인 이전 (로그인 버튼)  -->
-					
-				</c:when>
-				
-				<c:otherwise> <!-- 로그인 이후 (마이페이지) -->
-				
-				</c:otherwise>
-			</c:choose>
-			
-			<!-- 로고 -->
-			<h1>
-				<a href="index.jsp" id="logo" style="padding-left:150px;">MOOSA</a>
-			</h1>
-
-			<!-- 네비바 -->
-			<nav id="nav">
-				<ul>
-					<li class="current"><a href="index.jsp">홈</a></li>
-					<li><a href="#">드롭다운은 차후에 구현예정</a>
-						<ul>
-							<li><a href="#">드롭다운은 차후에 구현예정</a></li>
-							<li><a href="#">드롭다운은 차후에 구현예정</a></li>
-							<li><a href="#">드롭다운은 차후에 구현예정</a></li>
-							<li><a href="#">드롭다운의 드롭다운</a>
-								<ul>
-									<li><a href="#">드롭다운의 드롭다운</a></li>
-									<li><a href="#">드롭다운의 드롭다운</a></li>
-									<li><a href="#">드롭다운의 드롭다운</a></li>
-									<li><a href="#">드롭다운의 드롭다운</a></li>
-									<li><a href="#">드롭다운의 드롭다운</a></li>
-								</ul></li>
-							<li><a href="#">드롭다운은 차후에 구현예정</a></li>
-						</ul></li>
-					<li><a href="${contextPath }/views/lod/lod_index.html">숙소</a></li>
-					<li><a href="${contextPath }/views/tour/tour_index.html">관광명소</a></li>
-					<li><a href="${contextPath }/views/course/course_index.html">코스추천</a></li>
-					<li><a href="${contextPath }/views/board/board_index.html">소통게시판</a></li>
-				</ul>
-			</nav>
-		</div>
-	</div>
+    <select>
+      <option>=test=</option>
+      <option>=test=</option>
+      <option>=test=</option>
+    </select>
+  </nav>
 </body>
 </html>
