@@ -42,7 +42,7 @@ request.setCharacterEncoding("UTF-8");
 		String userPwd = request.getParameter("userPwd");
 		
 		Member loginUser = new MemberService().loginMember(userId,userPwd);
-		
+		//
 		HttpSession session = request.getSession();
 		
 		if(loginUser==null) {
