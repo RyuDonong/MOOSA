@@ -1,72 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%> <!-- Member 미리 import 돼 있음 -->
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <!-- Core라이브러리 -->
-<!DOCTYPE HTML>
-
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
-<title>MOOSA</title>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<!-- <link rel="stylesheet" href="assets/css/main.css"/> -->
-<style type="text/css">
-*{padding:0;margin:0}
-ul,ol{list-style:none}
-a{text-decoration:none;color:#fff;font-size:15px}
-nav{width:80%;overflow:hidden;height:80px;background-color:#1b2035;margin:50px auto}
-#nav3 {
-  width: 100%;
-  position: relative;
-  text-align: center;
-}
-#nav3>a {
-  line-height: 80px;
-  display: block;
-  font-size: 30px;
-  font-weight: 900;
-  position: absolute;
-  left: 30px;
-}
-#nav3>select {
-  padding: 0 20px;
-  height: 30px;
-  background-color: #1b2035;
-  color: #fff;
-  position: absolute;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-15px);
-  border: 2px solid #fff;
-  border-radius: 30px;
-}
-#nav3>ul {
-  display: inline-block;
-}
-#nav3>ul li {
-  float: left;
-  line-height: 80px;
-  padding: 0 30px;
-}
-</style>
-</head>
+		<title>MOOSA 무사 이제와시냐</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+<body>
 
-<body >
-	<nav id="nav3">
-    <a href="#">logo</a>
-    <ul>
-      <li><a href="views/lod/lod_index.jsp">menu1</a></li>
-      <li><a href="#">menu2</a></li>
-      <li><a href="#">menu3</a></li>
-      <li><a href="#">menu4</a></li>
-      <li><a href="#">menu5</a></li>
-    </ul>
+<!-- el로 contextPath 사용하기 위한 작업(page에 변수처리해주기) -->
+	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+	
+	<!-- Header -->
+				<section id="header">
+					<div class="container">
 
-    <select>
-      <option>=test=</option>
-      <option>=test=</option>
-      <option>=test=</option>
-    </select>
-  </nav>
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.jsp" style="color: rgb(65, 62, 62);">MOOSA</a></h1>
+							<p>제주에 무사 와시냐</p>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a class="icon solid fa-home" href="${contextPath }/index.jsp"><span>홈으로</span></a></li>
+									<!-- <li>
+										<a href="#" class="icon fa-chart-bar"><span>관광명소</span></a>
+										<ul>
+											<li><a href="#">Lorem ipsum dolor</a></li>
+											<li><a href="#">Magna phasellus</a></li>
+											<li><a href="#">Etiam dolore nisl</a></li>
+											<li>
+												<a href="#">Phasellus consequat</a>
+												<ul>
+													<li><a href="#">Magna phasellus</a></li>
+													<li><a href="#">Etiam dolore nisl</a></li>
+													<li><a href="#">Phasellus consequat</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Veroeros feugiat</a></li>
+										</ul>
+									</li> -->
+									<li><a class="icon solid fa-cog" href="${contextPath }/list.lo"><span>관광명소</span></a></li>
+									<li><a class="icon solid fa-cog" href="${contextPath }/list.lo"><span>숙소</span></a></li>
+									<li><a class="icon solid fa-retweet" href="${contextPath }/list.lo"><span>코스추천</span></a></li>
+									<li><a class="icon solid fa-sitemap" href="${contextPath }/list.lo"><span>소통게시판</span></a></li>
+									
+									<c:choose>
+										<c:when test="">
+										
+										</c:when>
+										<c:otherwise>
+										
+										</c:otherwise>
+									
+									</c:choose>
+									
+									<li><button>MOOSA 로그인</button></li>
+									<li><button>마이페이지</button></li>
+								</ul>
+							</nav>
+
+					</div>
+				</section>
+
 </body>
 </html>
