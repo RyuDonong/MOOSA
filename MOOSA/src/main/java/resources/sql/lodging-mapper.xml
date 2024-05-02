@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!-- 숙소 카테고리별 조회 -->
+	<entry key="selectLodgingList">SELECT LOD_NAME,LOD_ADDRESS,FILE_PATH||CHANGE_NAME THUMBNAIL
+								FROM LODGING L
+								JOIN PHOTO P USING (LOD_NO)
+								JOIN LOD_CATEGORY LC USING(LOD_CATEGORY_NO)
+								WHERE LOD_CATEGORY_NAME = ?
+								AND L.STATUS ='Y'
+	</entry>
+	
+
+</properties>
