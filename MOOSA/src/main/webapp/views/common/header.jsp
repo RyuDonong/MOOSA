@@ -67,7 +67,7 @@
 				</section>
 		<script>
 			function login(){
-				"$"
+				"${contextPath}/login.me";
 			}
 		</script>
 </body>
