@@ -39,7 +39,8 @@ public class LodgingDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Lodging(rset.getString("LOD_NAME")
+				list.add(new Lodging(rset.getInt("LOD_NO")
+									,rset.getString("LOD_NAME")
 									,rset.getString("LOD_ADDRESS")
 									,rset.getString("THUMBNAIL")));
 			}
@@ -51,6 +52,34 @@ public class LodgingDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return list;
+	}
+
+	public Lodging selectDetailLodging(Connection conn, int lno) {
+		Lodging lod = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDetailLodging");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, lno);
+			rset=pstmt.executeQuery();
+			if(rset.next()) {
+				lod = new Lodging(rset.getInt("LOD_NO")
+								 ,rset.getString("LOD_NAME")
+								 ,rset.getString("LOD_ADDRESS")
+								 ,rset.getString("LOD_INFO")
+								 ,rset.getString("LOD_CATEGORY_NAME"));		
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return lod;
 	}
 	
 	
