@@ -306,7 +306,7 @@ footer a {
   </div>
   <div class="form-container sign-in-container">
   	
-        <a class="Moosa" href="${contextPath }/views/common/loginPage.jsp"><h2></h2>Moosa</a>
+        <a class="Moosa" href="${contextPath }/moosa/index.jsp"><h2></h2>Moosa</a>
         
     <form id="login-form" action="<%=contextPath%>/login.me" method="post">
       <div class="social-container">

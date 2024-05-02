@@ -58,13 +58,17 @@
 									
 									</c:choose>
 									
-									<li><button>MOOSA 로그인</button></li>
+									<li><button onclick="login();">MOOSA 로그인</button></li>
 									<li><button>마이페이지</button></li>
 								</ul>
 							</nav>
 
 					</div>
 				</section>
-
+		<script>
+			function login(){
+				"$"
+			}
+		</script>
 </body>
 </html>
