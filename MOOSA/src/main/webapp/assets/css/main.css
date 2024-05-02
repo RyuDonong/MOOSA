@@ -72,6 +72,24 @@ input, select, textarea {
 	appearance: none;
 }
 
+/* customizing */
+
+header .lod_menu {display: flex;gap: 10px;justify-content: center;list-style: none;margin: 0 0;padding: 0 0;}
+header .lod_menu li {
+    flex: 1;
+    text-align: center;
+    padding: 0 0;
+}
+header .lod_menu li button  {
+    width: 100%;
+}
+header .lod_menu li.on{}
+header .lod_menu li.on button{ background: #B4DADB;}
+
+section.tiles {}
+section.tiles article{}
+
+
 /* Basic */
 
 	html {
