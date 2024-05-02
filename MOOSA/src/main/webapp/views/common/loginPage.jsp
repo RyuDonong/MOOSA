@@ -307,12 +307,12 @@ footer a {
   <div class="form-container sign-in-container">
   	
         <a class="Moosa" href="${contextPath }/moosa/index.jsp"><h2></h2>Moosa</a>
-        
+      
     <form id="login-form" action="<%=contextPath%>/login.me" method="post">
       <div class="social-container">
       </div>
-      <input type="text" placeholder="아이디"/>
-      <input type="password" placeholder="비밀번호" />
+      <input type="text" name="userId" placeholder="아이디"/>
+      <input type="password" name="userPwd" placeholder="비밀번호" />
       <input type="checkbox" name="saveId" id="saveId"><label for="saveId">아이디 저장</label>
       <br><br>
       <button  type="submit" id="button">로그인</button>
@@ -328,6 +328,7 @@ footer a {
     </div>
   </div>
 </div>
+
 <script>
 	function main(){
 		"${contextPath }/index.jsp";
