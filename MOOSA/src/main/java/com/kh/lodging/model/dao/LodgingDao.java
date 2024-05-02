@@ -34,6 +34,7 @@ public class LodgingDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		try {
+			System.out.println(category);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,category);
 			rset = pstmt.executeQuery();
