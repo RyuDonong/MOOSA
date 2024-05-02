@@ -47,7 +47,7 @@
 									<li><a class="icon solid fa-cog" href="${contextPath }/list.lo"><span>숙소</span></a></li>
 									<li><a class="icon solid fa-retweet" href="${contextPath }/list.lo"><span>코스추천</span></a></li>
 									<li><a class="icon solid fa-sitemap" href="${contextPath }/list.lo"><span>소통게시판</span></a></li>
-									
+									<li><a class="icon solid fa-sitemap" href="${contextPath }/views/common/loginPage.jsp"><span>로그인</span></a></li>
 									<c:choose>
 										<c:when test="">
 										
