@@ -59,6 +59,7 @@
 									</c:choose>
 									
 									<li><button onclick="login();">MOOSA 로그인</button></li>
+									<li><button onclick="logout();">MOOSA 로그아웃</button></li>
 									<li><button>마이페이지</button></li>
 								</ul>
 							</nav>
@@ -68,6 +69,9 @@
 		<script>
 			function login(){
 				location.href = "${contextPath}/loginPage.go";
+			}
+			function logout(){
+				location.href = "${contextPath}/logout.me";
 			}
 		</script>
 </body>
