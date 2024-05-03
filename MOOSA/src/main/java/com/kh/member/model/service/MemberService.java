@@ -8,7 +8,7 @@ import com.kh.member.model.vo.Member;
 
 
 public class MemberService {
-
+//로그인
 	public Member loginMember(String userId, String userPwd) {
 		Connection conn = JDBCTemplate.getConnection();
 		
