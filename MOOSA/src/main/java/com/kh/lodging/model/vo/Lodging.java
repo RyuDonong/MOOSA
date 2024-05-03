@@ -37,6 +37,17 @@ public class Lodging {
 	}
 
 
+	public Lodging(int lodNo, String lodName, String lodAddress, String lodInfo, String category, String thumbnail) {
+		super();
+		this.lodNo = lodNo;
+		this.lodName = lodName;
+		this.lodAddress = lodAddress;
+		this.lodInfo = lodInfo;
+		this.category = category;
+		Thumbnail = thumbnail;
+	}
+
+
 	public Lodging(int lodNo, String lodName, String lodAddress, String lodInfo, String status, int userNo,
 			String category, String thumbnail) {
 		super();

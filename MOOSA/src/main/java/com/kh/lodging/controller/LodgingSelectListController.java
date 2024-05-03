@@ -31,10 +31,12 @@ public class LodgingSelectListController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    //숙소 카테고리별 조회 ajax
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String category = request.getParameter("category");
 		ArrayList<Lodging> list = new LodgingService().selectLodgingList(category);
 		response.setContentType("json/application;charset=UTF-8");
+		//System.out.println(list);
 //		request.setAttribute("list", list);
 //		request.getRequestDispatcher("/index.jsp").forward(request, response);
 		new Gson().toJson(list,response.getWriter());

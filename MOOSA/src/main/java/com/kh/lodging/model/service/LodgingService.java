@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.kh.common.JDBCTemplate;
 import com.kh.lodging.model.dao.LodgingDao;
 import com.kh.lodging.model.vo.Lodging;
+import com.kh.lodging.model.vo.Review;
 
 public class LodgingService {
 
@@ -23,6 +24,14 @@ public class LodgingService {
 		Lodging lod = new LodgingDao().selectDetailLodging(conn,lno);
 		JDBCTemplate.close(conn);
 		return lod;
+	}
+	//비동기통신 리뷰 조회 메소드
+	public ArrayList<Review> selectReview(int lno) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Review> list = new LodgingDao().selectReview(conn,lno);
+		JDBCTemplate.close(conn);
+		return list;
 	}
 
 	

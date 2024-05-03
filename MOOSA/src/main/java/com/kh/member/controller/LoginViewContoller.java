@@ -53,13 +53,13 @@ request.setCharacterEncoding("UTF-8");
 			cookie.setMaxAge(60*60*24);
 			
 			response.addCookie(cookie);
-			System.out.println("쿠키성공");
+//			System.out.println("쿠키성공");
 		}else {
 			cookie = new Cookie("userId",null);
 			cookie.setMaxAge(0);
 			
 			response.addCookie(cookie);
-			System.out.println("쿠키실패");
+//			System.out.println("쿠키실패");
 		}
 		
 		Member loginUser = new MemberService().loginMember(userId,userPwd);
