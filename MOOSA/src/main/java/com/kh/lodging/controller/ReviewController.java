@@ -1,6 +1,7 @@
 package com.kh.lodging.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.lodging.model.service.LodgingService;
-import com.kh.lodging.model.vo.Lodging;
+import com.kh.lodging.model.vo.Review;
 
 /**
- * Servlet implementation class LodgingDetailController
+ * Servlet implementation class ReviewController
  */
-@WebServlet("/lodDetail.lo")
-public class LodgingDetailController extends HttpServlet {
+@WebServlet("/review.lo")
+public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LodgingDetailController() {
+    public ReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,13 +31,11 @@ public class LodgingDetailController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    //숙소 상제 페이지 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int lno= Integer.parseInt(request.getParameter("lno"));
-		Lodging lod = new LodgingService().selectDetailLodging(lno);
-		request.setAttribute("lod", lod);
-		request.getRequestDispatcher("views/lod/lodDetailView.jsp").forward(request, response);
-		
+		int lno = Integer.parseInt(request.getParameter("lno"));
+		ArrayList<Review> list = new LodgingService().selectReview(lno);
+		response.setContentType("json/application;charset=UTF-8");
+		new Gson().toJson(list,response.getWriter());
 	}
 
 	/**

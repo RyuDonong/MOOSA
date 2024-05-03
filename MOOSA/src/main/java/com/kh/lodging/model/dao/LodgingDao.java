@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import com.kh.common.JDBCTemplate;
 import com.kh.lodging.model.vo.Lodging;
+import com.kh.lodging.model.vo.Review;
 
 
 public class LodgingDao {
@@ -27,6 +28,7 @@ public class LodgingDao {
 		}
 	}
 
+	//숙소 카테고리별 조회 
 	public ArrayList<Lodging> selectLodgingList(Connection conn,String category) {
 
 		ArrayList<Lodging> list =new ArrayList<>();
@@ -34,7 +36,7 @@ public class LodgingDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		try {
-			System.out.println(category);
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,category);
 			rset = pstmt.executeQuery();
@@ -55,6 +57,7 @@ public class LodgingDao {
 		return list;
 	}
 
+	//숙소 상세 정보 
 	public Lodging selectDetailLodging(Connection conn, int lno) {
 		Lodging lod = null;
 		PreparedStatement pstmt = null;
@@ -69,7 +72,8 @@ public class LodgingDao {
 								 ,rset.getString("LOD_NAME")
 								 ,rset.getString("LOD_ADDRESS")
 								 ,rset.getString("LOD_INFO")
-								 ,rset.getString("LOD_CATEGORY_NAME"));		
+								 ,rset.getString("LOD_CATEGORY_NAME")
+								 ,rset.getString("THUMBNAIL"));		
 			}
 			
 			
@@ -81,6 +85,28 @@ public class LodgingDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return lod;
+	}
+
+	public ArrayList<Review> selectReview(Connection conn, int lno) {
+
+		ArrayList<Review> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset =null;
+		String sql = prop.getProperty("selectReview");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, lno);
+			rset=pstmt.executeQuery();
+			while(rset.next()) {
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return list;
 	}
 	
 	

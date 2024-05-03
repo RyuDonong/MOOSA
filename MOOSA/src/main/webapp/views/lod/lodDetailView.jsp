@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP
@@ -6,52 +9,16 @@
 -->
 <html>
 	<head>
-		<title>No Sidebar - Strongly Typed by HTML5 UP</title>
+		<title>${lod.lodName }</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
-
+				
 			<!-- Header -->
-				<section id="header">
-					<div class="container">
-
-						<!-- Logo -->
-							<h1 id="logo"><a href="index.html">Strongly Typed</a></h1>
-							<p>A responsive HTML5 site template. Manufactured by HTML5 UP.</p>
-
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li><a class="icon solid fa-home" href="index.html"><span>Introduction</span></a></li>
-									<li>
-										<a href="#" class="icon fa-chart-bar"><span>Dropdown</span></a>
-										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
-										</ul>
-									</li>
-									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>Left Sidebar</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Right Sidebar</span></a></li>
-									<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>No Sidebar</span></a></li>
-								</ul>
-							</nav>
-
-					</div>
-				</section>
-
+			<%@include file="/views/common/header.jsp" %>	
 			<!-- Main -->
 				<section id="main">
 					<div class="container">
@@ -60,72 +27,18 @@
 							<!-- Post -->
 								<article class="box post">
 									<header>
-										<h2>Behold! This is the <strong>no sidebar</strong> layout<br />
-										with no sidebar at all!</h2>
+										<h2>${lod.category }</h2>
 									</header>
-									<span class="image featured"><img src="images/pic04.jpg" alt="" /></span>
-									<h3>And yeah, that's basically it</h3>
-									<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-									ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-									sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-									in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-									magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-									consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-									justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-									Curabitur leo nibh, rutrum eu malesuada in tristique</p>
-									<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat
-									Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit ligula
-									vel quam viverra sit amet mollis tortor congue. Sed quis mauris sit amet
-									magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada in,
-									tristique Curabitur leo nibh, rutrum eu malesuada in, tristique
-									at erat lorem ipsum dolor sit amet lorem ipsum sed consequat magna
-									tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros consequat
-									magna tempus</p>
-									<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-									ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-									sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-									in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-									consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-									in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-									magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-									consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-									justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-									Curabitur leo nibh, rutrum eu malesuada in tristique</p>
-									<h3>Accumsan lorem ipsum veroeros</h3>
-									<p>Consequat Phasellus laoreet massa id in, tristique at erat lorem
-									ipsum dolor sit amet lorem ipsum sed consequat magna tempus veroeros
-									consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-									justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-									mollis tortor congue. Sed quis mauris sit amet magna.</p>
-									<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-									ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-									sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-									in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-									consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-									in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-									magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-									consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-									justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-									Curabitur leo nibh, rutrum eu malesuada in tristique</p>
-									<h3>Ligula suspcipit fusce veroeros</h3>
-									<p>Nullam dolore etiam sed massa id in, tristique at erat lorem
-									ipsum dolor sit amet lorem ipsum sed consequat magna tempus veroeros
-									consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-									justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-									mollis tortor congue. Sed quis mauris sit amet magna.</p>
-									<p>Sed massa id justo mattis pharetra. Fusce suscipit
-									ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-									sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-									in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-									consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-									in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-									magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-									consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-									justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan.</p>
+									<span class="image featured"><img src="/moosa${lod.thumbnail }" alt="" /></span>
+									<h3>숙소 정보</h3>
+									<p>${lod.category }</p>
+									<div>${lod.lodAddress }</div>
+									
+									<h3>고객 리뷰</h3>
+									<div class="review">
+									</div>
+									<h3>숙소 방 정보</h3>
+									<p></p>
 								</article>
 
 						</div>
@@ -217,6 +130,22 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+				$(function(){
+					$.ajax({
+						url : "review.lo",
+						data : {lno : ${lod.lodNo}},
+						success : function(list){
+							
+						},
+						error : function(){
+							console.log("통신 오류")
+						}
+					});
+				});
+			
+			</script>
 
 	</body>
 </html>

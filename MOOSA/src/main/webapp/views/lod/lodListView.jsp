@@ -9,10 +9,10 @@
 -->
 <html>
 	<head>
-		<title>Left Sidebar - Strongly Typed by HTML5 UP</title>
+		<title>숙소 정보</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css?after" />
 	</head>
 	<body class="left-sidebar is-preload">
 		<div id="page-wrapper">
@@ -25,7 +25,7 @@
 					<div class="container">
 						<div class="row">
 							<!-- Content -->
-							<div id="content" class="col-8 col-12-medium imp-medium">
+							<div id="content" class="col-12-medium imp-medium lod_content">
 								<div class="inner">
 									<header>
 										<ul class="lod_menu">
@@ -52,6 +52,7 @@
 			<script src="assets/js/main.js"></script>
 		 <script>
 	
+		 /* 비동기 통신으로 카테고리별 숙소 정보 조회해오는 비동기 통신 Script */
 		$(function(){
 			$("#ho").click();
 		});
@@ -64,11 +65,11 @@
 				url : "/moosa/selectList.lo",
 				data : {category :$(this).text()},
 				success : function(list){
-					console.log(list)
+					//console.log(list)
 					var html = "";
 					for (var i in list){
 						
-						html += '<section class="tiles"><article class="style1"><span class="image"><img src="/moosa'+list[i].Thumbnail+'" alt="" /></span><a href="/moosa/lodDetail.lo?lno='+list[i].lodNo+'"><h2 id="contentTitle">'+list[i].lodName+'</h2><div class="content"><p>'+list[i].lodAddress+'</p></div></a></article></section>';
+						html += '<section class="tiles"><article class="style2"><span class="image"><img src="/moosa'+list[i].Thumbnail+'" alt="" /></span><a href="/moosa/lodDetail.lo?lno='+list[i].lodNo+'"><h2 id="contentTitle">'+list[i].lodName+'</h2><div class="content"><p>'+list[i].lodAddress+'</p></div></a></article></section>';
 					}
 					$("#contentDiv").html(html);
 				

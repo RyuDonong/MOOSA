@@ -25,6 +25,7 @@ public class LodgingViewController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    //숙소 페이지 연결 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("views/lod/lodListView.jsp").forward(request, response);
 		
