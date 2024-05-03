@@ -15,6 +15,19 @@
 	//스크립틀릿에서 쿠키 접근하기 
 	Cookie[] cookies = request.getCookies();
 	
+	String saveId="";
+	
+	if(cookies !=null){
+		
+		for(Cookie c : cookies){
+			
+			if(c.getName().equals("userId")){
+				saveId = c.getValue();
+				break;
+			}
+		}
+	}
+	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +35,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	
+	<!-- Popper JS -->
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
@@ -299,6 +324,16 @@ footer a {
     </style>
 </head>
 <body>
+
+	<script>
+		    //로그인 실패 알림메세지
+		var msg = "<%=alertMsg%>";
+		
+		if(msg!="null"){ 
+			alert(msg); 
+			<%session.removeAttribute("alertMsg");%>
+		}
+	</script>
     
 <div class="container" id="container">
   <div class="form-container sign-up-container">
@@ -311,8 +346,8 @@ footer a {
     <form id="login-form" action="<%=contextPath%>/login.me" method="post">
       <div class="social-container">
       </div>
-      <input type="text" name="userId" placeholder="아이디"/>
-      <input type="password" name="userPwd" placeholder="비밀번호" />
+      <input type="text" name="userId" id="loginId" placeholder="아이디" required/>
+      <input type="password" name="userPwd" placeholder="비밀번호" required/>
       <input type="checkbox" name="saveId" id="saveId"><label for="saveId">아이디 저장</label>
       <br><br>
       <button  type="submit" id="button">로그인</button>
@@ -333,6 +368,18 @@ footer a {
 	function main(){
 		"${contextPath }/index.jsp";
 	}
+	
+	$(function(){
+		
+		var saveId = "${cookie.userId.value}";
+		
+		if(saveId!=""){
+			$("#saveId").attr("checked", true);
+			
+			$("#loginId").val(saveId);
+		}
+		
+	});
 	</script>
 </body>
 </html>

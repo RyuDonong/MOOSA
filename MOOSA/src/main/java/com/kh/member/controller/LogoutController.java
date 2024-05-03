@@ -6,18 +6,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class login
+ * Servlet implementation class LoginoutController
  */
-@WebServlet("/loginPage.go")
-public class login extends HttpServlet {
+@WebServlet("/logout.me") //로그아웃 
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public login() {
+    public LogoutController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,8 +26,15 @@ public class login extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    //로그아웃
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/common/loginPage.jsp").forward(request, response);
+		
+		 HttpSession session = request.getSession();
+		 
+		 session.removeAttribute("loginUser");
+		 
+		 response.sendRedirect(request.getContextPath()); //메인페이지로 보내기
+		
 	}
 
 	/**
