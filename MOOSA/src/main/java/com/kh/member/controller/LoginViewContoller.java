@@ -68,10 +68,11 @@ request.setCharacterEncoding("UTF-8");
 		
 		
 		if(loginUser==null) { //실패시
-			System.out.println("로그인 실패");
+			session.setAttribute("alertMsg", "아이디 또는 비밀번호가 틀렸습니다.");
+			response.sendRedirect(request.getContextPath()+"/loginPage.go");
 		}else { //성공시
 			session.setAttribute("loginUser", loginUser);
-			System.out.println("로그인 성공");
+			session.setAttribute("alertMsg", "MOOSA에 오신걸 환영합니다!");
 			
 			response.sendRedirect(request.getContextPath());
 		}
