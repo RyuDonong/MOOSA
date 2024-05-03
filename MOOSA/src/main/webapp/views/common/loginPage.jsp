@@ -324,6 +324,16 @@ footer a {
     </style>
 </head>
 <body>
+
+	<script>
+		    //로그인 실패 알림메세지
+		var msg = "<%=alertMsg%>";
+		
+		if(msg!="null"){ 
+			alert(msg); 
+			<%session.removeAttribute("alertMsg");%>
+		}
+	</script>
     
 <div class="container" id="container">
   <div class="form-container sign-up-container">
