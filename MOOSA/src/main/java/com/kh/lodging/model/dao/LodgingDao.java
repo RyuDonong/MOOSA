@@ -73,7 +73,8 @@ public class LodgingDao {
 								 ,rset.getString("LOD_ADDRESS")
 								 ,rset.getString("LOD_INFO")
 								 ,rset.getString("LOD_CATEGORY_NAME")
-								 ,rset.getString("THUMBNAIL"));		
+								 ,rset.getString("THUMBNAIL"));
+				
 			}
 			
 			
@@ -87,8 +88,8 @@ public class LodgingDao {
 		return lod;
 	}
 
+	//비동기 통신으로 숙소 리뷰 조회
 	public ArrayList<Review> selectReview(Connection conn, int lno) {
-
 		ArrayList<Review> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset =null;
@@ -98,14 +99,19 @@ public class LodgingDao {
 			pstmt.setInt(1, lno);
 			rset=pstmt.executeQuery();
 			while(rset.next()) {
+				list.add(new Review(rset.getInt("REVIEW_NO")
+								   ,rset.getString("REVIEW_CONTENT")
+								   ,rset.getString("USER_NAME")
+								   ,rset.getDate("CREATE_DATE")
+								   ,rset.getString("ROOM_NAME")
+								   ,rset.getInt("COUNT")
+								   ,rset.getString("THUMBNAIL")));
 				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 		return list;
 	}
 	
