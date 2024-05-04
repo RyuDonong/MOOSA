@@ -7,7 +7,7 @@ public class Lodging {
 	private String lodAddress;
 	private String lodInfo;
 	private String status;
-	private int userNo;
+	private String userNo;
 	private String category;
 	//파일 경로와 바뀐 파일명 합친변수
 	private String Thumbnail;
@@ -48,7 +48,7 @@ public class Lodging {
 	}
 
 
-	public Lodging(int lodNo, String lodName, String lodAddress, String lodInfo, String status, int userNo,
+	public Lodging(int lodNo, String lodName, String lodAddress, String lodInfo, String status, String userNo,
 			String category, String thumbnail) {
 		super();
 		this.lodNo = lodNo;
@@ -91,10 +91,10 @@ public class Lodging {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getUserNo() {
+	public String getUserNo() {
 		return userNo;
 	}
-	public void setUserNo(int userNo) {
+	public void setUserNo(String userNo) {
 		this.userNo = userNo;
 	}
 	public String getCategory() {

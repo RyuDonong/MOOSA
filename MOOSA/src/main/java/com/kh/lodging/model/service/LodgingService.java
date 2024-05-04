@@ -25,13 +25,13 @@ public class LodgingService {
 		JDBCTemplate.close(conn);
 		return lod;
 	}
-	//비동기통신 리뷰 조회 메소드
+// 	리뷰 조회 메소드
 	public ArrayList<Review> selectReview(int lno) {
-
 		Connection conn = JDBCTemplate.getConnection();
 		ArrayList<Review> list = new LodgingDao().selectReview(conn,lno);
 		JDBCTemplate.close(conn);
 		return list;
+		
 	}
 
 	

@@ -6,16 +6,30 @@ public class Review {
 
 	private int reviewNo;
 	private String reviewContent;
-	private int userNo;
+	private String userNo;
 	private Date createDate;
 	private String status;
-	private int Room_no;
+	private String roomNo;
 	private int count;
 	private int photoNo;
-	public Review() {
+	private String thumbnail;
+	
+	
+	
+
+
+	public Review(int reviewNo, String reviewContent, String userNo, Date createDate, String roomNo, int count,
+			String thumbnail) {
 		super();
+		this.reviewNo = reviewNo;
+		this.reviewContent = reviewContent;
+		this.userNo = userNo;
+		this.createDate = createDate;
+		this.roomNo = roomNo;
+		this.count = count;
+		this.thumbnail = thumbnail;
 	}
-	public Review(int reviewNo, String reviewContent, int userNo, Date createDate, String status, int room_no,
+	public Review(int reviewNo, String reviewContent, String userNo, Date createDate, String status, String roomNo,
 			int count, int photoNo) {
 		super();
 		this.reviewNo = reviewNo;
@@ -23,7 +37,7 @@ public class Review {
 		this.userNo = userNo;
 		this.createDate = createDate;
 		this.status = status;
-		Room_no = room_no;
+		this.roomNo = roomNo;
 		this.count = count;
 		this.photoNo = photoNo;
 	}
@@ -39,10 +53,10 @@ public class Review {
 	public void setReviewContent(String reviewContent) {
 		this.reviewContent = reviewContent;
 	}
-	public int getUserNo() {
+	public String getUserNo() {
 		return userNo;
 	}
-	public void setUserNo(int userNo) {
+	public void setUserNo(String userNo) {
 		this.userNo = userNo;
 	}
 	public Date getCreateDate() {
@@ -57,12 +71,6 @@ public class Review {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getRoom_no() {
-		return Room_no;
-	}
-	public void setRoom_no(int room_no) {
-		Room_no = room_no;
-	}
 	public int getCount() {
 		return count;
 	}
@@ -75,12 +83,31 @@ public class Review {
 	public void setPhotoNo(int photoNo) {
 		this.photoNo = photoNo;
 	}
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	
+	
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+	
+	
+	public void setRoomNo(String roomNo) {
+		this.roomNo = roomNo;
+	}
+	
+	
+	public Review() {
+		super();
+	}
 	@Override
 	public String toString() {
 		return "Review [reviewNo=" + reviewNo + ", reviewContent=" + reviewContent + ", userNo=" + userNo
-				+ ", createDate=" + createDate + ", status=" + status + ", Room_no=" + Room_no + ", count=" + count
+				+ ", createDate=" + createDate + ", status=" + status + ", roomNo=" + roomNo + ", count=" + count
 				+ ", photoNo=" + photoNo + "]";
 	}
 	
 	
 }
+

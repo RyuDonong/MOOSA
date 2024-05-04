@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
+    pageEncoding="UTF-8" import="com.kh.member.model.vo.Member" import="java.util.HashMap"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% 
+	
+
+%>
+
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP
@@ -36,6 +41,34 @@
 									
 									<h3>고객 리뷰</h3>
 									<div class="review">
+										<c:choose>
+											<c:when test="${empty list}">작성된 리뷰가 없습니다.</c:when>
+											<c:otherwise>
+												<c:forEach var="r" items="${list}">
+													<table>
+														<thead>
+															<tr>
+																<th>작성자</th>
+																<th>내용</th>
+																<c:if test="${not empty r.thumbnail}">
+																	<th>사진</th>
+																</c:if>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>${r.userNo }</td>
+																<td>${r.reviewContent}</td>
+																<c:if test="${not empty r.thumbnail}">
+																	<th><img alt="" src="/moosa${r.thumbnail }"></th>
+																</c:if>
+															</tr>
+														</tbody>	
+													</table> 
+													
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 									</div>
 									<h3>숙소 방 정보</h3>
 									<p></p>
@@ -44,83 +77,7 @@
 						</div>
 					</div>
 				</section>
-
-			<!-- Footer -->
-				<section id="footer">
-					<div class="container">
-						<header>
-							<h2>Questions or comments? <strong>Get in touch:</strong></h2>
-						</header>
-						<div class="row">
-							<div class="col-6 col-12-medium">
-								<section>
-									<form method="post" action="#">
-										<div class="row gtr-50">
-											<div class="col-6 col-12-small">
-												<input name="name" placeholder="Name" type="text" />
-											</div>
-											<div class="col-6 col-12-small">
-												<input name="email" placeholder="Email" type="text" />
-											</div>
-											<div class="col-12">
-												<textarea name="message" placeholder="Message"></textarea>
-											</div>
-											<div class="col-12">
-												<a href="#" class="form-button-submit button icon solid fa-envelope">Send Message</a>
-											</div>
-										</div>
-									</form>
-								</section>
-							</div>
-							<div class="col-6 col-12-medium">
-								<section>
-									<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat Phaselamet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur
-									leo nibh, rutrum eu malesuada.</p>
-									<div class="row">
-										<div class="col-6 col-12-small">
-											<ul class="icons">
-												<li class="icon solid fa-home">
-													1234 Somewhere Road<br />
-													Nashville, TN 00000<br />
-													USA
-												</li>
-												<li class="icon solid fa-phone">
-													(000) 000-0000
-												</li>
-												<li class="icon solid fa-envelope">
-													<a href="#">info@untitled.tld</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-6 col-12-small">
-											<ul class="icons">
-												<li class="icon brands fa-twitter">
-													<a href="#">@untitled</a>
-												</li>
-												<li class="icon brands fa-instagram">
-													<a href="#">instagram.com/untitled</a>
-												</li>
-												<li class="icon brands fa-dribbble">
-													<a href="#">dribbble.com/untitled</a>
-												</li>
-												<li class="icon brands fa-facebook-f">
-													<a href="#">facebook.com/untitled</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</section>
-							</div>
-						</div>
-					</div>
-					<div id="copyright" class="container">
-						<ul class="links">
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-				</section>
-
+				
 		</div>
 
 		<!-- Scripts -->
@@ -131,8 +88,11 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-			<script>
+			<!-- <script>
 				$(function(){
+					lodgingDetail();
+				});
+				function lodgingDetail(){
 					$.ajax({
 						url : "review.lo",
 						data : {lno : ${lod.lodNo}},
@@ -143,9 +103,8 @@
 							console.log("통신 오류")
 						}
 					});
-				});
-			
-			</script>
+				}
+			</script> -->
 
 	</body>
 </html>
