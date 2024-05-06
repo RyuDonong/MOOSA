@@ -91,6 +91,10 @@ header .lod_menu li.on button{ background: #B4DADB;}
 section.lod_content .tiles {}
 section.lod_content .tiles article{}
 
+.reviewPhoto{
+	width : 300px;
+	heght : 100px;
+}
 /* Tiles */
 
 .lod_content {width:100%;}
@@ -346,6 +350,19 @@ body.is-touch .lod_content .tiles article .content {
 	
 
 }
+
+.score {
+    display: flex;
+    gap: 5px;
+    padding: 0 0;
+}
+.score li{
+    list-style: none;
+    margin: 0 0;
+    padding: 0 0;
+}
+
+
 
 
 

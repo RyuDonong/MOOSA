@@ -11,7 +11,7 @@
 		<title>MOOSA 무사 이제와시냐</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css?after" />
 		
 		<style> /* 마이페이지 스타일 */
         .user-info {
@@ -92,7 +92,7 @@
 				<c:choose> 
 					<c:when test="${loginUser!=null }">
 						<li>
-						<a href="">
+						<a href="${contextPath }/mypage.me">
 							<div class="user-info"> <!-- 로그인 후 마이페이지 -->
 						        <img src="profile.png" class="profile-pic">
 						        <span>${loginUser.userName }</span>

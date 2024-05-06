@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.common.model.service.PhotoService;
+import com.kh.common.model.vo.Photo;
 import com.kh.lodging.model.service.LodgingService;
 import com.kh.lodging.model.vo.Lodging;
 import com.kh.lodging.model.vo.Review;
@@ -36,8 +38,11 @@ public class LodgingDetailController extends HttpServlet {
 		int lno= Integer.parseInt(request.getParameter("lno"));
 		Lodging lod= new LodgingService().selectDetailLodging(lno);
 		ArrayList<Review> list = new LodgingService().selectReview(lno);
+		
+		ArrayList<Photo> pList = new PhotoService().selectReviewPhoto(lno); 
 		request.setAttribute("lod",lod );
 		request.setAttribute("list",list );
+		request.setAttribute("pList", pList);
 		request.getRequestDispatcher("views/lod/lodDetailView.jsp").forward(request, response);
 	}
 

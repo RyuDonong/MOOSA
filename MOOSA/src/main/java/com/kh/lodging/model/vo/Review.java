@@ -11,6 +11,9 @@ public class Review {
 	private String status;
 	private String roomNo;
 	private int count;
+	public String getRoomNo() {
+		return roomNo;
+	}
 	private int photoNo;
 	private String thumbnail;
 	
