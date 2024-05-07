@@ -21,8 +21,7 @@ public class Review {
 	
 
 
-	public Review(int reviewNo, String reviewContent, String userNo, Date createDate, String roomNo, int count,
-			String thumbnail) {
+	public Review(int reviewNo, String reviewContent, String userNo, Date createDate, String roomNo, int count) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewContent = reviewContent;
@@ -30,7 +29,7 @@ public class Review {
 		this.createDate = createDate;
 		this.roomNo = roomNo;
 		this.count = count;
-		this.thumbnail = thumbnail;
+		
 	}
 	public Review(int reviewNo, String reviewContent, String userNo, Date createDate, String status, String roomNo,
 			int count, int photoNo) {

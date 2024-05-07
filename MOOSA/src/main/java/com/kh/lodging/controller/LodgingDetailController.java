@@ -14,6 +14,8 @@ import com.kh.common.model.vo.Photo;
 import com.kh.lodging.model.service.LodgingService;
 import com.kh.lodging.model.vo.Lodging;
 import com.kh.lodging.model.vo.Review;
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class LodgingDetailController
@@ -50,8 +52,7 @@ public class LodgingDetailController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

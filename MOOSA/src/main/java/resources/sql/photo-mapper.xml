@@ -2,10 +2,9 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="selectReviewPhoto">
-		SELECT FILE_PATH||CHANGE_NAME THUMBNAIL
-		FROM REVIEW
-		JOIN PHOTO P USING(PHOTO_NO)
+		SELECT FILE_PATH||CHANGE_NAME THUMBNAIL,REVIEW_NO
+		FROM PHOTO
 		WHERE FILE_LEVEL=2
-		AND REVIEW_NO=?
+		AND LOD_NO=?
 	</entry>
 </properties>

@@ -15,11 +15,41 @@ public class Member {
 	private String status;// STATUS VARCHAR2(1 BYTE)
 	private String gender;//GENDER	VARCHAR2(1 BYTE)
 	private int gradeNo;//GRADE_NO	NUMBER(10,0)
-	private int photoNo;//PHOTO_NO	NUMBER(30,0)
+	private int photoNo;
+	private String thumbnail;//PHOTO_NO	NUMBER(30,0)
 	
 	public Member() {
 		super();
 	}
+
+	
+	public Member(String userId, String phone, String email, String address) {
+		super();
+		this.userId = userId;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+	}
+
+
+	public Member(int userNo, String userId, String userPwd, String userName, String phone, String email,
+			String address, Date enrollDate, Date modifyDate, String status, String gender, int gradeNo, String thumbnail) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+		this.enrollDate = enrollDate;
+		this.modifyDate = modifyDate;
+		this.status = status;
+		this.gender = gender;
+		this.gradeNo = gradeNo;
+		this.thumbnail = thumbnail;
+	}
+	
 
 	public Member(int userNo, String userId, String userPwd, String userName, String phone, String email,
 			String address, Date enrollDate, Date modifyDate, String status, String gender, int gradeNo, int photoNo) {
@@ -38,6 +68,7 @@ public class Member {
 		this.gradeNo = gradeNo;
 		this.photoNo = photoNo;
 	}
+
 
 	public int getUserNo() {
 		return userNo;
@@ -135,20 +166,32 @@ public class Member {
 		this.gradeNo = gradeNo;
 	}
 
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
+
 	public int getPhotoNo() {
 		return photoNo;
 	}
 
+
 	public void setPhotoNo(int photoNo) {
 		this.photoNo = photoNo;
 	}
+
 
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
 				+ ", phone=" + phone + ", email=" + email + ", address=" + address + ", enrollDate=" + enrollDate
 				+ ", modifyDate=" + modifyDate + ", status=" + status + ", gender=" + gender + ", gradeNo=" + gradeNo
-				+ ", photoNo=" + photoNo + "]";
+				+ ", thumbnail=" + thumbnail + "]";
 	}
 
 	

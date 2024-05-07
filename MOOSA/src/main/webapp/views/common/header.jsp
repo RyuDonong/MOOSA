@@ -92,14 +92,14 @@
 				<c:choose> 
 					<c:when test="${loginUser!=null }">
 						<li>
-						<a href="${contextPath }/mypage.me">
 							<div class="user-info"> <!-- 로그인 후 마이페이지 -->
-						        <img src="profile.png" class="profile-pic">
-						        <span>${loginUser.userName }</span>
-						        <span style="padding:10px 10px;">${loginUser.email }</span>
+								<a href="${contextPath}/passwordChk.me" style="text-decoration: none; color:white;">
+							        <img src="profile.png" class="profile-pic">
+							        <span>${loginUser.userName } 님</span>
+							        <span style="padding:10px 10px;">${loginUser.email }</span>
+								</a>
 						        <span><button onclick="logout();" style="font-size:10px; padding:10px 10px;">로그아웃</button></span>
 						    </div>
-						</a>
 						</li>
 					</c:when>
 					
