@@ -44,6 +44,31 @@
 									<p></p>
 									
 									<h3>고객 리뷰</h3>
+									<div class="review-textarea">
+										<c:choose>
+											<c:when test="${not empty loginUser }">
+											<input type="hidden" name="userNo" value="${loginUser.userNo }">
+											<div class="rating">
+											  <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars"></label>
+											  <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars"></label>
+											  <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars"></label>
+											  <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars"></label>
+											  <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
+											</div>
+											<textarea name="review-content"rows="5" cols="100" required></textarea> <br>
+											<input type="file" id="reviewImg1" name="reviewImg1">
+											<input type="file" id="reviewImg2" name="reviewImg2">
+											<input type="file" id="reviewImg3" name="reviewImg3">
+											<button onclick="">작성</button>
+											</c:when>
+											<c:otherwise>
+												<textarea readonly rows="5" cols="100">로그인 후 이용 가능한 서비스 입니다.</textarea><br>
+											 	<button disabled>작성</button>
+												
+											</c:otherwise>
+										</c:choose>
+										
+									</div>
 									<div class="review">
 										<c:choose>
 											<c:when test="${empty list}">작성된 리뷰가 없습니다.</c:when>
@@ -63,7 +88,9 @@
 													<div>${r.roomNo }</div>
 													<div>${r.reviewContent}</div>
 													<c:forEach var="p" items="${pList }">
-														<div><img class="reviewPhoto" alt="" src="/moosa${p.thumbnail }"></div>
+														<c:if test="${not empty p.thumbnail|| r.reviewNo eq p.reviewNo }">
+															<div><img class="reviewPhoto" alt="" src="/moosa${p.thumbnail }"></div>
+														</c:if>
 													</c:forEach>
 												</c:forEach>
 											</c:otherwise>
@@ -85,6 +112,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+			
 			
 	</body>
 </html>

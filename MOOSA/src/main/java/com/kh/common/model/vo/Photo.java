@@ -11,6 +11,8 @@ public class Photo {
 	private int fileLevel;
 	private int tourNo;
 	private String thumbnail;
+	private int reviewNo;
+	
 	public Photo() {
 		super();
 	}
@@ -20,6 +22,11 @@ public class Photo {
 		this.thumbnail = thumbnail;
 	}
 
+	public Photo(String thumbnail, int reviewNo) {
+		super();
+		this.thumbnail = thumbnail;
+		this.reviewNo = reviewNo;
+	}
 	public Photo(int photoNo, String originName, String changeName, String filePath, String status, String lodNo,
 			int fileLevel, int tourNo, String thumbnail) {
 		super();
@@ -87,6 +94,15 @@ public class Photo {
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
+	
+	public int getReviewNo() {
+		return reviewNo;
+	}
+
+	public void setReviewNo(int reviewNo) {
+		this.reviewNo = reviewNo;
+	}
+
 	@Override
 	public String toString() {
 		return "Photo [photoNo=" + photoNo + ", originName=" + originName + ", changeName=" + changeName + ", filePath="

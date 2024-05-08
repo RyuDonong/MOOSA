@@ -1,6 +1,7 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.common.model.vo.Photo;
 import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
 
@@ -37,7 +39,7 @@ public class LoginViewContoller extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
@@ -63,7 +65,12 @@ request.setCharacterEncoding("UTF-8");
 		}
 		
 		Member loginUser = new MemberService().loginMember(userId,userPwd);
-		//
+		Photo profile = new MemberService().selectProfile(userId);
+		if(profile==null) {
+			profile=new Photo();
+			profile.setThumbnail("/resources/profileImages/noProfile.png");
+		}
+		
 		HttpSession session = request.getSession();
 		
 		
@@ -72,6 +79,7 @@ request.setCharacterEncoding("UTF-8");
 			response.sendRedirect(request.getContextPath()+"/loginPage.go");
 		}else { //성공시
 			session.setAttribute("loginUser", loginUser);
+			session.setAttribute("profile", profile);
 			session.setAttribute("alertMsg", "MOOSA에 오신걸 환영합니다!");
 			
 			response.sendRedirect(request.getContextPath());

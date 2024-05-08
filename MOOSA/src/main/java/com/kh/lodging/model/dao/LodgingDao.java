@@ -104,8 +104,7 @@ public class LodgingDao {
 								   ,rset.getString("USER_NAME")
 								   ,rset.getDate("CREATE_DATE")
 								   ,rset.getString("ROOM_NAME")
-								   ,rset.getInt("COUNT")
-								   ,rset.getString("THUMBNAIL")));
+								   ,rset.getInt("COUNT")));
 				
 			}
 		} catch (SQLException e) {
