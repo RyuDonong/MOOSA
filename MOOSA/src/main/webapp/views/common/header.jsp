@@ -1,9 +1,11 @@
+<%@page import="com.kh.common.model.vo.Photo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
 	String alertMsg = (String)session.getAttribute("alertMsg"); 
 	Member loginUser = (Member)session.getAttribute("loginUser");
+	Photo profile = (Photo)session.getAttribute("profile");
 %>
 <!DOCTYPE html>
 <html>
@@ -93,8 +95,8 @@
 					<c:when test="${loginUser!=null }">
 						<li>
 							<div class="user-info"> <!-- 로그인 후 마이페이지 -->
-								<a href="${contextPath}/passwordChk.me" style="text-decoration: none; color:white;">
-							        <img src="profile.png" class="profile-pic">
+								<a href="${contextPath}/myPage.me" style="text-decoration: none; color:white;">
+							        <img src="${contextPath }${profile.thumbnail}" class="profile-pic">
 							        <span>${loginUser.userName } 님</span>
 							        <span style="padding:10px 10px;">${loginUser.email }</span>
 								</a>

@@ -7,8 +7,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
+import com.kh.common.MoosaFileRenamePolicy;
+import com.kh.common.model.vo.Photo;
+import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
+import com.oreilly.servlet.MultipartRequest;
 
 /**
  * Servlet implementation class UpdateMemberController
@@ -38,13 +45,46 @@ public class UpdateMemberController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId= request.getParameter("userId");
-		String phone= request.getParameter("phone");
-		String address= request.getParameter("address");
-		String email = request.getParameter("email");
+//		System.out.println("여기 옴");
+		request.setCharacterEncoding("UTF-8");
+		if(ServletFileUpload.isMultipartContent(request)) {
+			//용량 정하기
+			int maxSize = 10*1024*1024;
+			//저장경로
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/profileImages/");
+			MultipartRequest multiRequest = new MultipartRequest(request,savePath,maxSize,"UTF-8",new MoosaFileRenamePolicy());
+			String userId= multiRequest.getParameter("userId");
+			String phone= multiRequest.getParameter("phone");
+			String address= multiRequest.getParameter("address");
+			String email = multiRequest.getParameter("email");
+			
+			Member updateM = new Member(userId,phone,email,address);
+			
+			
+			Photo p = null;
+			if(multiRequest.getOriginalFileName("profile")!=null) {
+				p= new Photo();
+				p.setOriginName(multiRequest.getOriginalFileName("profile"));
+				p.setChangeName(multiRequest.getFilesystemName("profile"));
+				p.setFilePath("/resources/profileImages/");
+			}
+			//데이터 담은 Photo객체와 유저 정보 같이 넘기기
+			int result= new MemberService().updateMember(updateM,p);
+			Member updateMember= new MemberService().selectMember(userId);
+			
+			HttpSession session = request.getSession();
+			String msg = "";
+			if(result>0) {
+				msg = "정보가 수정되었습니다!";
+				session.setAttribute("loginUser", updateMember);
+				session.setAttribute("profile", p);
+			}else {
+				msg = "정보 수정 실패했습니다. 관리자에게 문의하세요.";
+			}
+			session.setAttribute("alertMsg", msg);
+			response.sendRedirect(request.getContextPath()+"/updateMember.me");
+			}
+		}
 		
-		Member updateM = new Member(userId,phone,address,email);
-		
-	}
 
 }

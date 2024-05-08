@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class MyPageViewController
  */
-@WebServlet("/passwordChk.me")
+@WebServlet("/myPage.me")
 public class MyPageViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +30,7 @@ public class MyPageViewController extends HttpServlet {
 	 */
     //로그인 된 회원이라면 마이페이지로 이동 시키기
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+//		System.out.println("myPage 옴");
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginUser")==null) {
 			session.setAttribute("alertMst", "로그인후 이용해주세요.");

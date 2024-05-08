@@ -16,6 +16,12 @@ public class Photo {
 	public Photo() {
 		super();
 	}
+	
+	public Photo(String thumbnail) {
+		super();
+		this.thumbnail = thumbnail;
+	}
+
 	public Photo(String thumbnail, int reviewNo) {
 		super();
 		this.thumbnail = thumbnail;
