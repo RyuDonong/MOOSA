@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="loginMember">
-		SELECT * 
+		SELECT *
 		FROM MEMBER
 		WHERE USER_ID = ?
 		AND USER_PWD = ?
@@ -10,21 +10,60 @@
 	</entry>
 	<!-- 회원 정보 수정 -->
 	<entry key="updateMember">
-		UPDATE MEMBER SET PHONE=? , EMAIL=?, ADDRESS=?,MODIFY_DATE = SYSDATE WHERE USER_ID=? AND STATUS='Y'
+		UPDATE MEMBER SET PHONE=? , EMAIL=?,
+		ADDRESS=?,MODIFY_DATE = SYSDATE WHERE USER_ID=? AND STATUS='Y'
 	</entry>
 	<!-- 프로필 사진 수정 -->
 	<entry key="updateProfile">
-		UPDATE PHOTO SET ORIGIN_NAME = ?,CHANGE_NAME=?,FILE_PATH=? WHERE USER_ID=? 
+		UPDATE PHOTO SET ORIGIN_NAME =
+		?,CHANGE_NAME=?,FILE_PATH=? WHERE USER_ID=?
 	</entry>
 	<!-- 프로필 사진 조회 -->
 	<entry key="selectProfile">
-		SELECT FILE_PATH||CHANGE_NAME THUMBNAIL FROM PHOTO WHERE USER_ID = ? AND STATUS='Y'
+		SELECT FILE_PATH||CHANGE_NAME THUMBNAIL FROM PHOTO
+		WHERE USER_ID = ? AND STATUS='Y'
 	</entry>
 	<!-- 회원 비밀번호 변경 -->
 	<entry key="updatePwd">
-		UPDATE MEMBER SET USER_PWD=?,MODIFY_DATE = SYSDATE WHERE USER_ID=? AND USER_PWD=? AND STATUS='Y'
-	</entry>	
-	<entry key="deleteMember">
-		UPDATE MEMBER SET STATUS='N', MODIFY_DATE = SYSDATE WHERE USER_ID=?
+		UPDATE MEMBER SET USER_PWD=?,MODIFY_DATE = SYSDATE
+		WHERE USER_ID=? AND USER_PWD=? AND STATUS='Y'
 	</entry>
+	<entry key="deleteMember">
+		UPDATE MEMBER SET STATUS='N', MODIFY_DATE = SYSDATE
+		WHERE USER_ID=?
+	</entry>
+	<entry key="insertMember">
+		INSERT INTO MEMBER(USER_NO
+		,USER_ID
+		,USER_PWD
+		,USER_NAME
+		,PHONE
+		,EMAIL
+		,ADDRESS
+		,GENDER)
+		VALUES(SEQ_UNO.NEXTVAL
+		,?
+		,?
+		,?
+		,?
+		,?
+		,?
+		,?)
+
+	</entry>
+
+	<entry key="checkId">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_ID = ?
+	</entry>
+
+
+
+
+
+
+
+
+
 </properties>

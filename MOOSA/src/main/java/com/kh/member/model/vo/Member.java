@@ -32,6 +32,19 @@ public class Member {
 	}
 
 
+	public Member(String userId, String userPwd, String userName, String phone, String email,
+			String address, String gender) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+		this.gender = gender;
+	}
+
+
 	public Member(int userNo, String userId, String userPwd, String userName, String phone, String email,
 			String address, Date enrollDate, Date modifyDate, String status, String gender, int gradeNo, String thumbnail) {
 		super();

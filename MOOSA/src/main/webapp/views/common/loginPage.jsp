@@ -358,7 +358,7 @@ footer a {
        <div class="overlay-panel overlay-right">
         <h1>회원가입</h1>
         <br><br>
-        <button class="ghost" id="signUp" onclick="enrollForm();">회원가입</button>
+        <button class="ghost" id="signUp" onclick="termForm();">회원가입</button>
       </div>
     </div>
   </div>
@@ -380,6 +380,15 @@ footer a {
 		}
 		
 	});
+  	     function termForm(){
+		
+	
+		//회원가입 홈페이지로 이동하는 메소드
+		location.href = "<%=contextPath%>/terms.me";
+		
+		
+	}
+
 	</script>
 </body>
 </html>
