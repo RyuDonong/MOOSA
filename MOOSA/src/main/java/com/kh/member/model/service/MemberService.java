@@ -78,5 +78,36 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+
+    // 회원가입 메소드
+	public int insertMember(Member m) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new MemberDao().insertMember(conn, m);
+
+		if (result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+
+}
+	 //아이디 중복체크 메소드
+   	public Boolean checkId(String inputId) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Boolean flag = new MemberDao().checkId(conn,inputId);
+		
+		JDBCTemplate.close(conn);
+		
+		return flag;
+		
+	}
 	
 }
+
+	
+

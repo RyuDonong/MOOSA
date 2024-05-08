@@ -201,6 +201,58 @@ public class MemberDao {
 		}
 		return result;
 	}
-	
+    //회원가입 메소드
+		public int insertMember(Connection conn,Member m) {
+			
+			PreparedStatement pstmt = null; 
+			int result = 0; 
+			String sql = prop.getProperty("insertMember");
+			try {
+				pstmt = conn.prepareStatement(sql);
+			 	
+				pstmt.setString(1, m.getUserId());
+				pstmt.setString(2, m.getUserPwd());
+				pstmt.setString(3, m.getUserName());
+				pstmt.setString(4, m.getPhone());
+				pstmt.setString(5, m.getEmail());
+				pstmt.setString(6, m.getAddress());	
+				pstmt.setString(7, m.getGender());
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			return result;
+		}
+		
+		//아이디 중복확인 메소드 
+		public boolean checkId(Connection conn, String inputId) {
+			
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			String sql = prop.getProperty("checkId");
+			
+			boolean flag = false;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, inputId);
+				
+				rset = pstmt.executeQuery();
+				flag = rset.next();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return flag; 
+		}
+		
 
+
+	
 }
