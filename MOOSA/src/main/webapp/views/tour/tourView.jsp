@@ -65,19 +65,19 @@
 							      <a href="${contextPath }/list.tour"><span>해변</span></a>
 							    </li>
 							    <li class="list"> 
-							      <a href="${contextPath }/list.tour2"><span>일출ㆍ일몰</span></a>
+							      <a href="${contextPath }/list2.tour"><span>일출ㆍ일몰</span></a>
 							    </li>
 							    <li class="list"> 
-							      <a href="${contextPath }/list.tour3"><span>박물관ㆍ미술관</span></a>
+							      <a href="${contextPath }/list3.tour"><span>박물관ㆍ미술관</span></a>
 							    </li>
 							    <li class="list"> 
-							      <a href="${contextPath }/list.tour4"><span>축제</span></a>
+							      <a href="${contextPath }/list4.tour"><span>축제</span></a>
 							    </li>
 							    <li class="list"> 
-							      <a href="${contextPath }/list.tour5"><span>음식</span></a>
+							      <a href="${contextPath }/list5.tour"><span>음식</span></a>
 							    </li>
 							    <li class="list"> 
-							      <a href="${contextPath }/list.tour6"><span>액티비티</span></a>
+							      <a href="${contextPath }/list6.tour"><span>액티비티</span></a>
 							    </li>
 							    
 							    
