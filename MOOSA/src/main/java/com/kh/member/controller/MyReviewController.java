@@ -1,4 +1,4 @@
-package com.kh.lodging.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,24 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.common.model.service.PhotoService;
 import com.kh.common.model.vo.Photo;
-import com.kh.lodging.model.service.LodgingService;
-import com.kh.lodging.model.vo.Lodging;
 import com.kh.lodging.model.vo.Review;
-import com.kh.lodging.model.vo.Room;
+import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class LodgingDetailController
+ * Servlet implementation class MyReviewController
  */
-@WebServlet("/lodDetail.lo")
-public class LodgingDetailController extends HttpServlet {
+@WebServlet("/myReview.me")
+public class MyReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LodgingDetailController() {
+    public MyReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,19 +31,15 @@ public class LodgingDetailController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    //숙소 상제 페이지 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int lno= Integer.parseInt(request.getParameter("lno"));
 		
-		Lodging lod= new LodgingService().selectDetailLodging(lno);
-		ArrayList<Review> list = new LodgingService().selectReview(lno);
-		ArrayList<Room> rList = new LodgingService().selectRoom(lno);
-		ArrayList<Photo> pList = new PhotoService().selectReviewPhoto(lno); 
-		request.setAttribute("lod",lod );
-		request.setAttribute("list",list );
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+//		System.out.println(userNo);
+		ArrayList<Review> rList = new MemberService().selectMyReview(userNo);
+		ArrayList<Photo> pList = new MemberService().selectMyReviewPhoto(userNo);
 		request.setAttribute("rList", rList);
 		request.setAttribute("pList", pList);
-		request.getRequestDispatcher("views/lod/lodDetailView.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/member/myReview.jsp").forward(request, response);
 		
 	}
 
@@ -54,7 +47,8 @@ public class LodgingDetailController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

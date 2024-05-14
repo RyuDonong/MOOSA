@@ -57,8 +57,9 @@ public class UpdateMemberController extends HttpServlet {
 			String phone= multiRequest.getParameter("phone");
 			String address= multiRequest.getParameter("address");
 			String email = multiRequest.getParameter("email");
+			int photoNo = Integer.parseInt(multiRequest.getParameter("photoNo"));
 			
-			Member updateM = new Member(userId,phone,email,address);
+			Member updateM = new Member(userId,phone,email,address,photoNo);
 			
 			
 			Photo p = null;
@@ -67,6 +68,9 @@ public class UpdateMemberController extends HttpServlet {
 				p.setOriginName(multiRequest.getOriginalFileName("profile"));
 				p.setChangeName(multiRequest.getFilesystemName("profile"));
 				p.setFilePath("/resources/profileImages/");
+				p.setFileLevel(3);
+				p.setThumbnail(p.getFilePath()+p.getChangeName());
+				p.setPhotoNo(photoNo);
 			}
 			//데이터 담은 Photo객체와 유저 정보 같이 넘기기
 			int result= new MemberService().updateMember(updateM,p);
@@ -78,11 +82,12 @@ public class UpdateMemberController extends HttpServlet {
 				msg = "정보가 수정되었습니다!";
 				session.setAttribute("loginUser", updateMember);
 				session.setAttribute("profile", p);
+				//System.out.println(p);
 			}else {
 				msg = "정보 수정 실패했습니다. 관리자에게 문의하세요.";
 			}
 			session.setAttribute("alertMsg", msg);
-			response.sendRedirect(request.getContextPath()+"/updateMember.me");
+			response.sendRedirect(request.getContextPath()+"/updateMember.me?photoNo="+photoNo);
 			}
 		}
 		

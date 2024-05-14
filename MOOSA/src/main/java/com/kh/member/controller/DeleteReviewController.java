@@ -1,31 +1,27 @@
-package com.kh.lodging.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-import com.kh.common.model.vo.WishList;
-import com.kh.lodging.model.service.LodgingService;
-import com.kh.lodging.model.vo.Lodging;
 import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class LodgingSelectController
+ * Servlet implementation class DeleteReviewController
  */
-@WebServlet("/selectList.lo")
-public class LodgingSelectListController extends HttpServlet {
+@WebServlet("/deleteReview.me")
+public class DeleteReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LodgingSelectListController() {
+    public DeleteReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,17 +29,19 @@ public class LodgingSelectListController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    //숙소 카테고리별 조회 ajax
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String category = request.getParameter("category");//카테고리 가져오고
-		//System.out.println(listCount);
-		ArrayList<Lodging> list = new LodgingService().selectLodgingList(category);
-		response.setContentType("json/application;charset=UTF-8");
-//		System.out.println(list);
-		new Gson().toJson(list,response.getWriter());
-		
-
-		
+		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+//		System.out.println("여기 옴");
+		int result = new MemberService().deleteReview(reviewNo);
+		HttpSession session = request.getSession();
+		String msg = "";
+		if(result>0) {
+			msg = "삭제되었습니다.";
+		}else {
+			msg = "삭제되지 않았습니다. 관리자에게 문의하세요.";
+		}
+		session.setAttribute("alertMsg", msg);
+		response.sendRedirect(request.getContextPath()+"/myReview.me?userNo="+Integer.parseInt(request.getParameter("userNo")));
 	}
 
 	/**

@@ -23,12 +23,13 @@ public class Member {
 	}
 
 	
-	public Member(String userId, String phone, String email, String address) {
+	public Member(String userId, String phone, String email, String address,int photoNo) {
 		super();
 		this.userId = userId;
 		this.phone = phone;
 		this.email = email;
 		this.address = address;
+		this.photoNo = photoNo;
 	}
 
 

@@ -33,10 +33,10 @@
 													<button type="button" data-toggle="modal" data-target="#checkPwdForm">개인 정보 수정</button>
 												</li>
 												<li>
-													<a href="${contextPath }/selectWishList.ws">위시 리스트</a>
+													<a href="${contextPath }/selectWishList.me?userNo=${loginUser.userNo}">위시 리스트</a>
 												</li>
 												<li>
-													<a href="${contextPath }/myReview.re">나의 리뷰</a>
+													<a href="${contextPath }/myReview.me?userNo=${loginUser.userNo}">나의 리뷰</a>
 												</li>
 											</ul>
 										</section>

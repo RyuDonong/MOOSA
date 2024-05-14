@@ -1,31 +1,27 @@
-package com.kh.lodging.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-import com.kh.common.model.vo.WishList;
-import com.kh.lodging.model.service.LodgingService;
-import com.kh.lodging.model.vo.Lodging;
 import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class LodgingSelectController
+ * Servlet implementation class DeleteWishListController
  */
-@WebServlet("/selectList.lo")
-public class LodgingSelectListController extends HttpServlet {
+@WebServlet("/deleteWishList.me")
+public class DeleteWishListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LodgingSelectListController() {
+    public DeleteWishListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,17 +29,20 @@ public class LodgingSelectListController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    //숙소 카테고리별 조회 ajax
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String category = request.getParameter("category");//카테고리 가져오고
-		//System.out.println(listCount);
-		ArrayList<Lodging> list = new LodgingService().selectLodgingList(category);
-		response.setContentType("json/application;charset=UTF-8");
-//		System.out.println(list);
-		new Gson().toJson(list,response.getWriter());
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		String[] deleteWishList =request.getParameterValues("deleteWishList");
 		
-
-		
+		int result = new MemberService().deleteWishList(userNo,deleteWishList);
+		HttpSession session = request.getSession();
+		String msg = "";
+		if(result>0) {
+			msg = "위시리스트가 제거 되었습니다.";
+		}else {
+			msg = "위시리스트가 제거 되지 않았습니다. 관리자에게 문의하세요.";
+		}
+		session.setAttribute("alertMsg", msg);
+		response.sendRedirect(request.getContextPath()+"/selectWishList.me?userNo="+userNo);
 	}
 
 	/**
