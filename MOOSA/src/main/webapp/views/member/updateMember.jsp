@@ -33,9 +33,9 @@
 							<ul class="divided">
 								<li><a href="${contextPath }/updateMember.me">개인 정보 수정</a>
 								</li>
-								<li><a href="${contextPath }/selectWishList.ws">위시 리스트</a>
+								<li><a href="${contextPath }/selectWishList.me?userNo=${loginUser.userNo}">위시 리스트</a>
 								</li>
-								<li><a href="${contextPath }/myReview.re">나의 리뷰</a></li>
+								<li><a href="${contextPath }/myReview.me?userNo=${loginUser.userNo}">나의 리뷰</a></li>
 							</ul>
 						</section>
 					</div>
@@ -50,6 +50,7 @@
 							</header>
 							<form action="${contextPath}/updateMember.me" method="post"
 								id="updateMemberForm" enctype="multipart/form-data">
+								<input type="hidden" name="photoNo" value="${loginUser.photoNo }">
 								아이디 : <input name="userId" value="${loginUser.userId}" readonly><br>
 								연락처 : <input type="text" value="${loginUser.phone}" name="phone">
 								이메일 : <input type="email" name="email"
@@ -89,6 +90,7 @@
 	<script src="assets/js/main.js"></script>
 
 	<script>
+	//프로필 사진 미리 보기
 		function loadImg(inputFile) {
 			if (inputFile.files.length == 1) {
 				var reader = new FileReader();

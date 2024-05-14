@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.common.JDBCTemplate;
+import com.kh.common.model.vo.BoardPagingBar;
+import com.kh.common.model.vo.Photo;
 import com.kh.lodging.model.dao.LodgingDao;
 import com.kh.lodging.model.vo.Lodging;
 import com.kh.lodging.model.vo.Review;
+import com.kh.lodging.model.vo.Room;
 
 public class LodgingService {
 
@@ -25,6 +28,13 @@ public class LodgingService {
 		JDBCTemplate.close(conn);
 		return lod;
 	}
+	//숙소 방 정보 조회
+	public ArrayList<Room> selectRoom(int lno) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Room> rList = new LodgingDao().selectRoom(conn,lno);
+		JDBCTemplate.close(conn);
+		return rList;
+	}
 // 	리뷰 조회 메소드
 	public ArrayList<Review> selectReview(int lno) {
 		Connection conn = JDBCTemplate.getConnection();
@@ -32,6 +42,34 @@ public class LodgingService {
 		JDBCTemplate.close(conn);
 		return list;
 		
+	}
+	//리뷰 작성 메소드(insert)
+	public int insertReview(Review r, ArrayList<Photo> pList) {
+		Connection conn = JDBCTemplate.getConnection();
+		//reviewNo를 뽑아오기
+		int reviewNo = new LodgingDao().selectReviewNo(conn);
+		r.setReviewNo(reviewNo); //뽑아온 시퀀스 reviewNo 넣어주기
+		int result = new LodgingDao().insertReview(conn,r);
+		int result2=1; //첨부파일이 없더라도 수행될수 있도록 1로 만들기
+		if(result>0&&pList!=null) {
+			//리뷰글이 등록 되고 리뷰사진이 있을경우 
+			//등록할 리뷰 번호와 함께 등록하기
+			result2=new LodgingDao().insertReviewPhoto(conn,pList,reviewNo);
+		}
+		if(result*result2>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result*result2;
+	}
+	//숙소 개수 조회해오기
+	public int listCount(String category) {
+		Connection conn = JDBCTemplate.getConnection();
+		int listCount = new LodgingDao().listCount(conn,category);
+		JDBCTemplate.close(conn);
+		return listCount;
 	}
 	
 	

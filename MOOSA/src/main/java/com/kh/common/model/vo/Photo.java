@@ -27,6 +27,16 @@ public class Photo {
 		this.thumbnail = thumbnail;
 		this.reviewNo = reviewNo;
 	}
+	
+	public Photo(int photoNo, String originName,String changeName, String thumbnail, int reviewNo) {
+		super();
+		this.photoNo = photoNo;
+		this.originName = originName;
+		this.changeName=changeName;
+		this.thumbnail = thumbnail;
+		this.reviewNo = reviewNo;
+	}
+
 	public Photo(int photoNo, String originName, String changeName, String filePath, String status, String lodNo,
 			int fileLevel, int tourNo, String thumbnail) {
 		super();

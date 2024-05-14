@@ -66,6 +66,7 @@ public class LoginViewContoller extends HttpServlet {
 		
 		Member loginUser = new MemberService().loginMember(userId,userPwd);
 		Photo profile = new MemberService().selectProfile(userId);
+		
 		if(profile==null) {
 			profile=new Photo();
 			profile.setThumbnail("/resources/profileImages/noProfile.png");

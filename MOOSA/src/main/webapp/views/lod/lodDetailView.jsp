@@ -20,6 +20,16 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style type="text/css">
+		#scoreDiv label{
+			display:inline;
+		}
+		#scoreDiv input[type=checkbox]{
+			display:inline;
+		}
+		
+		
+		</style>
 	</head>
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
@@ -44,27 +54,42 @@
 									<p></p>
 									
 									<h3>고객 리뷰</h3>
+									<input type="radio">
+									<input type="checkbox">
 									<div class="review-textarea">
 										<c:choose>
 											<c:when test="${not empty loginUser }">
-											<input type="hidden" name="userNo" value="${loginUser.userNo }">
-											<div class="rating">
-											  <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars"></label>
-											  <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars"></label>
-											  <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars"></label>
-											  <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars"></label>
-											  <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
-											</div>
-											<textarea name="review-content"rows="5" cols="100" required></textarea> <br>
-											<input type="file" id="reviewImg1" name="reviewImg1">
-											<input type="file" id="reviewImg2" name="reviewImg2">
-											<input type="file" id="reviewImg3" name="reviewImg3">
-											<button onclick="">작성</button>
+												<form action="insertReview.lo" id="reviewForm" method="post" enctype="multipart/form-data">
+													<input type="hidden" name="userNo" value="${loginUser.userNo }">
+													<input type="hidden" name="lno" value = ${lod.lodNo }>
+													<!-- 별점 입력 영역 -->
+													<div id="scoreDiv">
+														별점을 작성해 주세요 <br>
+														<label for="rate1"><img id="starImg1" src="${contextPath }/images/star.png"></label><input type="radio" name="count" value="1" id="rate1">
+												        <label for="rate2"><img id="starImg2" src="${contextPath }/images/star.png"></label><input type="radio" name="count" value="2" id="rate2">
+												        <label for="rate3"><img id="starImg3" src="${contextPath }/images/star.png"></label><input type="radio" name="count" value="3" id="rate3">
+												        <label for="rate4"><img id="starImg4" src="${contextPath }/images/star.png"></label><input type="radio" name="count" value="4" id="rate4">
+												        <label for="rate5"><img id="starImg5" src="${contextPath }/images/star.png"></label><input type="radio" name="count" value="5" id="rate5">
+													</div>
+													<div>
+														방을 골라주세요 <br>
+														<select name=roomNo >
+															<c:forEach var="d" items="${rList}">
+																<option value=${d.roomNo }>${d.roomName }</option>
+															</c:forEach>
+														</select>
+													</div> <br>
+													<textarea name="review-content"rows="5" cols="100" required></textarea> <br>
+													<input type="file" id="reviewImg1" name="reviewImg1">
+													<input type="file" id="reviewImg2" name="reviewImg2">
+													<input type="file" id="reviewImg3" name="reviewImg3">
+													<button type="submit">작성</button>
+												</form>
 											</c:when>
 											<c:otherwise>
 												<textarea readonly rows="5" cols="100">로그인 후 이용 가능한 서비스 입니다.</textarea><br>
 											 	<button disabled>작성</button>
-												
+													
 											</c:otherwise>
 										</c:choose>
 										
@@ -74,6 +99,7 @@
 											<c:when test="${empty list}">작성된 리뷰가 없습니다.</c:when>
 											<c:otherwise>
 												<c:forEach var="r" items="${list}">
+													<!-- 반복문으로 별점 뽑아내기 -->
 													<ul class="score">
 														<li>
 														 	<c:forEach begin="1" end="${r.count}">
@@ -88,7 +114,7 @@
 													<div>${r.roomNo }</div>
 													<div>${r.reviewContent}</div>
 													<c:forEach var="p" items="${pList }">
-														<c:if test="${not empty p.thumbnail|| r.reviewNo eq p.reviewNo }">
+														<c:if test="${not empty p && r.reviewNo eq p.reviewNo }">
 															<div><img class="reviewPhoto" alt="" src="/moosa${p.thumbnail }"></div>
 														</c:if>
 													</c:forEach>
@@ -111,8 +137,20 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
-			
+	
+			<!-- 별점 script -->
+			<script>
+			$("#scoreDiv input[type=radio]").on("click",function(){
+				//console.log($(this).val());
+				var value = $(this).val();
+				//만약 한번 누르고 다른 값을 다시 누르면 초기화
+				$("#scoreDiv label").children().attr("src","${contextPath}/images/star.png")
+				for(let i=0;i<value;i++){
+					//value만큼 반복 해서 속성에 접근
+					$("#scoreDiv label").children("#starImg"+(i+1)).attr("src","${contextPath}/images/fullStar.png")
+				}
+			});
+			</script>
 			
 	</body>
 </html>

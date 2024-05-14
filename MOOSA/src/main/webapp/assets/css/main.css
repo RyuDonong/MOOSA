@@ -95,6 +95,10 @@ section.lod_content .tiles article{}
 	width : 300px;
 	heght : 100px;
 }
+#tiles>.wishListCheck{
+	width : 10px;
+	height:10px;
+}
 /* Tiles */
 
 .lod_content {width:100%;}
@@ -361,6 +365,8 @@ body.is-touch .lod_content .tiles article .content {
     margin: 0 0;
     padding: 0 0;
 }
+
+
 
 
 

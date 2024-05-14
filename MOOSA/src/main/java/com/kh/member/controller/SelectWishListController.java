@@ -1,4 +1,4 @@
-package com.kh.lodging.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,23 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.kh.common.model.vo.WishList;
-import com.kh.lodging.model.service.LodgingService;
 import com.kh.lodging.model.vo.Lodging;
 import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class LodgingSelectController
+ * Servlet implementation class SelectWishListController
  */
-@WebServlet("/selectList.lo")
-public class LodgingSelectListController extends HttpServlet {
+@WebServlet("/selectWishList.me")
+public class SelectWishListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LodgingSelectListController() {
+    public SelectWishListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,17 +30,12 @@ public class LodgingSelectListController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    //숙소 카테고리별 조회 ajax
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String category = request.getParameter("category");//카테고리 가져오고
-		//System.out.println(listCount);
-		ArrayList<Lodging> list = new LodgingService().selectLodgingList(category);
-		response.setContentType("json/application;charset=UTF-8");
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		ArrayList<Lodging> list = new MemberService().selectWishList(userNo);
+		request.setAttribute("list", list);
 //		System.out.println(list);
-		new Gson().toJson(list,response.getWriter());
-		
-
-		
+		request.getRequestDispatcher("views/member/myWishList.jsp").forward(request, response);
 	}
 
 	/**
