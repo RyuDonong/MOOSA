@@ -339,6 +339,19 @@ body {
     .cherry_blossom {
       overflow-y: auto; /* 수직 스크롤 추가 */
     }
+    
+   .btn-review {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background-color: #F3CECD;
+      color: white;
+      text-align: center;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+    }
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -442,7 +455,11 @@ body {
 			</div>
 			
 		</div>
-		<button onclick="review();">리뷰 ></button>
+		<a href="${contextPath}/index.jsp" class="btn-review">메인가기</a>
+		
+		<a href="${contextPath}/course.go" class="btn-review">다른 계절 선택하기</a>
+		
+		<a href="${contextPath}/list.rv?currentPage=1" class="btn-review">리뷰가기</a>
 		
 		</section>
 

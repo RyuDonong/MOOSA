@@ -13,7 +13,7 @@ import com.kh.course.model.vo.Reply;
 /**
  * Servlet implementation class ReplyInsertController
  */
-@WebServlet("/insertReply.re")
+@WebServlet("/insertReply.rv")
 public class ReplyInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
