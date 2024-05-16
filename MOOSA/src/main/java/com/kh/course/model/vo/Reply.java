@@ -3,121 +3,89 @@ package com.kh.course.model.vo;
 import java.sql.Date;
 
 public class Reply {
-	private Date createDate;				//	CREATE_DATE	DATE
-	private int likes;				//	LIKES	NUMBER
-	private int refBno;				//	REF_BNO	NUMBER
-	private String replyWriter;				//	REPLY_WRITER	NUMBER
-	private int replyNO;				//	REPLY_NO	NUMBER
-	private String status;				//	STATUS	VARCHAR2(1 BYTE)
-	private String replyContent;				//	REPLY_CONTENT	VARCHAR2(2000 BYTE)
-	
-	
+	private int replyNo; // REPLY_NO NUMBER
+	private String replyContent;// REPLY_CONTENT VARCHAR2(400 BYTE)
+	private int refBno;// REF_BNO NUMBER
+	private String replyWriter;// REPLY_WRITER NUMBER
+	private Date createDate;// CREATE_DATE DATE
+	private String status;// STATUS VARCHAR2(1 BYTE)
+
 	public Reply() {
 		super();
 	}
-
-
-	public Reply(Date createDate, int likes, int refBno, String replyWriter, int replyNO, String status,
-			String replyContent) {
+	
+	public Reply(int replyNo, String replyContent, int refBno, String replyWriter, Date createDate, String status) {
 		super();
-		this.createDate = createDate;
-		this.likes = likes;
+		this.replyNo = replyNo;
+		this.replyContent = replyContent;
 		this.refBno = refBno;
 		this.replyWriter = replyWriter;
-		this.replyNO = replyNO;
+		this.createDate = createDate;
 		this.status = status;
-		this.replyContent = replyContent;
 	}
 	
 	
 
-	
-
-
-	public Reply(Date createDate, String replyWriter, int replyNO, String replyContent) {
+	public Reply(int replyNo, String replyContent, String replyWriter, Date createDate) {
 		super();
-		this.createDate = createDate;
-		this.replyWriter = replyWriter;
-		this.replyNO = replyNO;
+		this.replyNo = replyNo;
 		this.replyContent = replyContent;
-	}
-
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-
-	public void setCreateDate(Date createDate) {
+		this.replyWriter = replyWriter;
 		this.createDate = createDate;
 	}
 
-
-	public int getLikes() {
-		return likes;
+	public int getReplyNo() {
+		return replyNo;
 	}
 
-
-	public void setLikes(int likes) {
-		this.likes = likes;
+	public void setReplyNo(int replyNo) {
+		this.replyNo = replyNo;
 	}
-
-
-	public int getRefBno() {
-		return refBno;
-	}
-
-
-	public void setRefBno(int refBno) {
-		this.refBno = refBno;
-	}
-
-
-	public String getReplyWriter() {
-		return replyWriter;
-	}
-
-
-	public void setReplyWriter(String replyWriter) {
-		this.replyWriter = replyWriter;
-	}
-
-
-	public int getReplyNO() {
-		return replyNO;
-	}
-
-
-	public void setReplyNO(int replyNO) {
-		this.replyNO = replyNO;
-	}
-
-
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 
 	public String getReplyContent() {
 		return replyContent;
 	}
 
-
 	public void setReplyContent(String replyContent) {
 		this.replyContent = replyContent;
 	}
 
+	public int getRefBno() {
+		return refBno;
+	}
+
+	public void setRefBno(int refBno) {
+		this.refBno = refBno;
+	}
+
+	public String getReplyWriter() {
+		return replyWriter;
+	}
+
+	public void setReplyWriter(String replyWriter) {
+		this.replyWriter = replyWriter;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
-		return "Reply [createDate=" + createDate + ", likes=" + likes + ", refBno=" + refBno + ", replyWriter="
-				+ replyWriter + ", replyNO=" + replyNO + ", status=" + status + ", replyContent=" + replyContent + "]";
+		return "Reply [replyNo=" + replyNo + ", replyContent=" + replyContent + ", refBno=" + refBno + ", replyWriter="
+				+ replyWriter + ", createDate=" + createDate + ", status=" + status + "]";
 	}
-	
-	
+
 }
