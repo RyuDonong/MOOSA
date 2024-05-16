@@ -58,8 +58,7 @@
 								주소 : <input type="text" name="address" value="${loginUser.address}"><br>
 								<!-- 프로필 사진 미리보기 -->
 								<img src="${contextPath }${profile.thumbnail }" id="profile-pre">
-								<input type="file" name="profile" onchange="loadImg(this);"
-									value="${profile.originName}">
+								<input type="file" name="profile" onchange="loadImg(this);">
 								<button type="submit">수정하기</button>
 
 								<button type="button" data-toggle="modal"

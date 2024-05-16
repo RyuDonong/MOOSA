@@ -32,14 +32,13 @@ public class MemberService {
 		// 회원정보가 수정이 됐고 수정하려는 프로필 사진이 있다면 
 		if(result>0 && p!=null) {
 			//디폴트사진이 아닌 회원이 수정했던 사진이 있다면
-			if(updateM.getPhotoNo()!=5) {
+			if(updateM.getPhotoNo()!=1) {
 				result2 = new MemberDao().updateProfile(conn,updateM,p);
 			}else {
 				//수정했던 사진이 없다면
 				result2 = new MemberDao().insertProfile(conn,updateM,p);
 			}
 		}
-		
 		if(result*result2>0) {
 			JDBCTemplate.commit(conn);
 		}else {

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.multi.MultiMenuItemUI;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
@@ -57,11 +58,11 @@ public class UpdateMemberController extends HttpServlet {
 			String phone= multiRequest.getParameter("phone");
 			String address= multiRequest.getParameter("address");
 			String email = multiRequest.getParameter("email");
-			int photoNo = Integer.parseInt(multiRequest.getParameter("photoNo"));
-			
+			int photoNo = Integer.parseInt(request.getParameter("photoNo"));
+			//기존 프로필 사진 조회해와서 번호 추출하여 회원 정보 수정 할때 수정하기
 			Member updateM = new Member(userId,phone,email,address,photoNo);
 			
-			
+			//순서가 잘못 되었음 파일 생성이 먼저여야 수정이 가능
 			Photo p = null;
 			if(multiRequest.getOriginalFileName("profile")!=null) {
 				p= new Photo();
@@ -70,10 +71,12 @@ public class UpdateMemberController extends HttpServlet {
 				p.setFilePath("/resources/profileImages/");
 				p.setFileLevel(3);
 				p.setThumbnail(p.getFilePath()+p.getChangeName());
-				p.setPhotoNo(photoNo);
+				
 			}
 			//데이터 담은 Photo객체와 유저 정보 같이 넘기기
 			int result= new MemberService().updateMember(updateM,p);
+			
+			//정보 갱신을 위한 조회
 			Member updateMember= new MemberService().selectMember(userId);
 			
 			HttpSession session = request.getSession();

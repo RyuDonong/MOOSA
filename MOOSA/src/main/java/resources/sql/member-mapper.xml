@@ -40,7 +40,8 @@
 		,PHONE
 		,EMAIL
 		,ADDRESS
-		,GENDER)
+		,GENDER
+		,PHOTO_NO)
 		VALUES(SEQ_UNO.NEXTVAL
 		,?
 		,?
@@ -48,7 +49,8 @@
 		,?
 		,?
 		,?
-		,?)
+		,?
+		,1)
 
 	</entry>
 

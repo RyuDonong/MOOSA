@@ -107,7 +107,7 @@
 	<!-- Header -->
 	
 		
-	<div id="audio-back">
+	<!-- <div id="audio-back">
 		 <div id="audioPlayer">
 		  <div class="player-header">
 		    <span id="music-title"></span>
@@ -118,7 +118,7 @@
 		  </div>
 		  <audio id="myAudio" src="resources/uploadFiles/travel.mp4"></audio>
 		</div>
-	</div>		
+	</div>		 -->
 	
 	
 		<section id="header">
