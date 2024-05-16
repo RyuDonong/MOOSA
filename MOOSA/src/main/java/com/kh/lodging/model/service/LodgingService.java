@@ -44,7 +44,7 @@ public class LodgingService {
 		
 	}
 	//리뷰 작성 메소드(insert)
-	public int insertReview(Review r, ArrayList<Photo> pList) {
+	public int insertReview(Review r, ArrayList<Photo> pList,int lno) {
 		Connection conn = JDBCTemplate.getConnection();
 		//reviewNo를 뽑아오기
 		int reviewNo = new LodgingDao().selectReviewNo(conn);
@@ -54,7 +54,7 @@ public class LodgingService {
 		if(result>0&&pList!=null) {
 			//리뷰글이 등록 되고 리뷰사진이 있을경우 
 			//등록할 리뷰 번호와 함께 등록하기
-			result2=new LodgingDao().insertReviewPhoto(conn,pList,reviewNo);
+			result2=new LodgingDao().insertReviewPhoto(conn,pList,reviewNo,lno);
 		}
 		if(result*result2>0) {
 			JDBCTemplate.commit(conn);
@@ -64,12 +64,13 @@ public class LodgingService {
 		JDBCTemplate.close(conn);
 		return result*result2;
 	}
-	//숙소 개수 조회해오기
-	public int listCount(String category) {
+	
+	//숙소 디테일 뷰에서 보여줄 방 사진 조회
+	public ArrayList<Photo> selectRoomPhoto(int lno) {
 		Connection conn = JDBCTemplate.getConnection();
-		int listCount = new LodgingDao().listCount(conn,category);
+		ArrayList<Photo> rpList = new LodgingDao().selectRoomPhoto(conn,lno);
 		JDBCTemplate.close(conn);
-		return listCount;
+		return rpList;
 	}
 	
 	

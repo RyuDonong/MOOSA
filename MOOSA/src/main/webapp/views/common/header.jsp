@@ -68,7 +68,7 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a class="icon solid fa-home" href="${contextPath }/index.jsp"><span>홈으로</span></a></li>
+							<li><a href="${contextPath }/index.jsp"><span>홈으로</span></a></li>
 							<!-- <li>
 								<a href="#" class="icon fa-chart-bar"><span>관광명소</span></a>
 								<ul>
@@ -86,10 +86,10 @@
 									<li><a href="#">Veroeros feugiat</a></li>
 								</ul>
 							</li> -->
-							<li><a class="icon solid fa-cog" href="${contextPath }/list.tour"><span>관광명소</span></a></li>
-							<li><a class="icon solid fa-cog" href="${contextPath }/list.lo"><span>숙소</span></a></li>
-							<li><a class="icon solid fa-retweet" href="${contextPath }/course.go"><span>코스추천</span></a></li>
-							<li><a class="icon solid fa-sitemap" href="${contextPath }/list.lo"><span>소통게시판</span></a></li>
+							<li><a href="${contextPath }/list.tour"><span>관광명소</span></a></li>
+							<li><a href="${contextPath }/list.lo"><span>숙소</span></a></li>
+							<li><a href="${contextPath }/course.go"><span>코스추천</span></a></li>
+							<li><a href="${contextPath }/list.lo"><span>소통게시판</span></a></li>
 				<%--로그인 전 마이페이지 --%>
 				<c:choose> 
 					<c:when test="${loginUser!=null }">
