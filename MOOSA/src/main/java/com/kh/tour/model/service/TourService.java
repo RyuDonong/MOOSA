@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import com.kh.board.model.vo.Board;
 import com.kh.common.JDBCTemplate;
 import com.kh.tour.model.dao.TourDao;
+import com.kh.tour.model.vo.TourBoard;
 import com.kh.tour.model.vo.TourPhoto;
 
 public class TourService {
 
 	//사진게시글 작성메소드
-			public int insertThumbnail(Board b, ArrayList<TourPhoto> tpList) {
+			public int insertThumbnail(TourBoard b, ArrayList<TourPhoto> tpList) {
 				Connection conn = JDBCTemplate.getConnection();
 				
 				//게시글 번호 먼저 추출하기 (해당 번호를 첨부파일이 참조해야하기때문에)  
@@ -37,10 +38,10 @@ public class TourService {
 				
 				return result*result2;
 			}
-			public ArrayList<Board> selectThumbnailList() {
+			public ArrayList<TourBoard> selectThumbnailList() {
 				Connection conn = JDBCTemplate.getConnection();
 				
-				ArrayList<Board> list = new TourDao().selectThumbnailList(conn);
+				ArrayList<TourBoard> list = new TourDao().selectThumbnailList(conn);
 				
 				//select니까 자원반납만 
 				JDBCTemplate.close(conn);
@@ -68,10 +69,10 @@ public class TourService {
 				return result;
 			}
 			//게시글 상세조회
-			public Board selectBoard(int bno) {
+			public TourBoard selectBoard(int bno) {
 				Connection conn = JDBCTemplate.getConnection();
 				
-				Board b = new TourDao().selectBoard(conn,bno);
+				TourBoard b = new TourDao().selectBoard(conn,bno);
 				//select구문이니 트랜잭션 처리필요없음 
 				JDBCTemplate.close(conn);
 				

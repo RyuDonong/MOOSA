@@ -11,11 +11,7 @@ String contextPath = request.getContextPath();
 
 <!DOCTYPE HTML>
 
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 <head>
 <title>관광명소</title>
@@ -51,17 +47,16 @@ String contextPath = request.getContextPath();
 	}
 }
 
-        .img {
-            width: 100%;
-            height: auto;
-            max-width: 200px; /* 이미지 최대 너비 설정 */
-            max-height: 200px; /* 이미지 최대 높이 설정 */
-        }
-         section#features {
-            padding: 0;
-        }
-        
-        
+.img {
+	width: 100%;
+	height: auto;
+	max-width: 200px; /* 이미지 최대 너비 설정 */
+	max-height: 200px; /* 이미지 최대 높이 설정 */
+}
+
+section#features {
+	padding: 0;
+}
 </style>
 
 
@@ -76,7 +71,6 @@ String contextPath = request.getContextPath();
 if ((loginUser != null) && loginUser.getUserId().equals("admin")) {
 %>
 <div align="center">
-	<!-- 		 	<button onclick="location.href='oooo'">글작성</button> -->
 	<a href="<%=contextPath%>/insert.to" class="btn btn-info">관광명소 추가</a>
 
 </div>
@@ -90,13 +84,6 @@ if ((loginUser != null) && loginUser.getUserId().equals("admin")) {
 	<h3>                                            해변                                 일출*일몰                       액티비티                               음식                                   축제</h3>
 </pre>
 
-
-<!-- 글 클릭했을때 상세보기 페이지 작성하기 
-			jsp : thumbnailDetailView.jsp 
-			controller : ThumbnailDetailController 
-			method : thumbnailDetail();
-			참고 페이지 : 사진게시글 작성페이지 
-		 -->
 
 <body class="homepage is-preload">
 	<div id="page-wrapper">

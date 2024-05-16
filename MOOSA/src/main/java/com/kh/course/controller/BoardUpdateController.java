@@ -109,14 +109,14 @@ public class BoardUpdateController extends HttpServlet {
 			HttpSession session = request.getSession();
 			if (result > 0) {// 성공시
 				session.setAttribute("alertMsg", "게시글 수정완료");
-				response.sendRedirect(request.getContextPath() + "/detail.re?bno=" + boardNo);
+				response.sendRedirect(request.getContextPath() + "/detail.rv?bno=" + boardNo);
 				if (at != null && at.getFileNo() != 0) {
 					new File(savePath + multiRequest.getParameter("originFileName")).delete();
 				}
 
 			} else {
 				session.setAttribute("alertMsg", "게시글 수정실패");
-				response.sendRedirect(request.getContextPath() + "/detail.re?bno=" + boardNo);
+				response.sendRedirect(request.getContextPath() + "/detail.rv?bno=" + boardNo);
 			}
 		}
 

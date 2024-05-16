@@ -79,7 +79,7 @@
 							<tr>
 								<th>댓글작성</th>
 								 <td>
-								 	<textarea id="replyContent" rows="3" cols="50" style="resize:none;"></textarea>
+								 	<textarea id="replyContent" rows="3" cols="50" style="resize:none;" required></textarea>
 								 </td>
 								 <td>
 								 <button  onclick="insertReply();">댓글작성</button> 
@@ -115,7 +115,7 @@
 	</div>
     
   
-   
+   <%@include file = "/views/common/footer.jsp"%>
     <script>
         function insertReply(){
             $.ajax({
