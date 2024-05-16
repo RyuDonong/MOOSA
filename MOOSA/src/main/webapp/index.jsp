@@ -4,25 +4,125 @@
 
 <!DOCTYPE HTML>
 
+
 <html>
 	<head>
 		<title>MOOSA 무사 이제와시냐</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	    <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+		<!-- Popper JS -->
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<style>
+		
+		/* ========== 이미지 슬라이드 =========== */
+		
+        .slider {
+		  width: 500px;
+		  height: 300px;
+		  position: relative;
+		  overflow: hidden;
+		}
+
+		.slide {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  opacity: 0;
+		  transition: opacity 1s ease-in-out;
+		}
+
+		.slide.active {
+		  opacity: 1;
+		}
+		
+		.prev, .next {
+		  position: absolute;
+		  top: 50%;
+		  transform: translateY(-50%);
+		  font-size: 16px;
+		  padding: 10px;
+		  cursor: pointer;
+		  
+		  z-index: 1; /* 버튼이 이미지 위에 위치하도록 z-index 설정 */
+  		  opacity: 1; /* 버튼의 투명도를 1로 설정 */
+  		  overflow:visible;
+		  border:none;
+		  background:transparent;
+		}
+		
+		.prev {
+		  left: 20px;
+		}
+		
+		.next {
+		  right: 20px;
+		}
+		
+    </style>
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
-
+		
+			
 			<!-- 네비바 include -->
 			<%@include file = "/views/common/header.jsp"%>
 			
+			
+			
+			
+			
+			<!-- Main Banner -->
+			
+					<div class="container" align="center">
+							<div class="slider">
+								<button class="prev">◁</button>
+									        <div class="slide" >
+										        <a href="https://www.naver.com" target="_blank">
+										           <img src="views/common/images/jeju1.jpg" style="width: 100%; height: auto;">
+										        </a>
+									        </div>
+									        <div class="slide">
+										        <a href="https://www.naver.com" target="_blank">
+										          <img src="views/common/images/jeju2.jpg" style="width: 100%; height: auto;">
+										        </a>
+									        </div>
+									        <div class="slide">
+										        <a href="https://www.naver.com" target="_blank">
+										          <img src="views/common/images/jeju3.jpg" style="width: 100%; height: auto;">
+										        </a>
+									        </div>
+							    <button class="next">▷</button>
+						    </div>
+					</div>
+			
 				
-			<!-- Features -->
+			<!-- 숙소 -->
 				<section id="features">
 					<div class="container">
 						<header>
-							<h2>Gentlemen, behold! This is <strong>Strongly Typed</strong>!</h2>
+							<h2>MOOSA : 인기숙소</h2>
+						</header>
+						<div class="lod-list" style="display:flex;">
+							
+						</div>
+					</div>
+				</section>
+				
+				
+				<!-- 관광명소 -->
+				<section id="features">
+					<div class="container">
+						<header>
+							<h2><strong>관광명소</strong>!</h2>
 						</header>
 						<div class="row aln-center">
 							<div class="col-4 col-6-medium col-12-small">
@@ -74,24 +174,78 @@
 						</div>
 					</div>
 				</section>
-
-			<!-- Banner -->
-				<section id="banner">
+				
+				
+				<!-- 코스추천 -->
+				<section id="features">
 					<div class="container">
-						<p>Use this space for <strong>profound thoughts</strong>.<br />
-						Or an enormous ad. Whatever.</p>
+						<header>
+							<h2><strong>코스추천</strong>!</h2>
+						</header>
+						<div class="row aln-center">
+							<div class="col-4 col-6-medium col-12-small">
+
+								<!-- Feature -->
+									<section>
+										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+										<header>
+											<h3>Okay, so what is this?</h3>
+										</header>
+										<p>This is <strong>Strongly Typed</strong>, a free, fully responsive site template
+										by <a href="http://html5up.net">HTML5 UP</a>. Free for personal and commercial use under the
+										<a href="http://html5up.net/license">CCA 3.0 license</a>.</p>
+									</section>
+
+							</div>
+							<div class="col-4 col-6-medium col-12-small">
+
+								<!-- Feature -->
+									<section>
+										<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+										<header>
+											<h3>Nice! What is HTML5 UP?</h3>
+										</header>
+										<p><a href="http://html5up.net">HTML5 UP</a> is a side project of <a href="http://twitter.com/ajlkn">AJâs</a> (= me).
+										I started it as a way to both test my responsive tools and sharpen up my coding
+										and design skills a bit.</p>
+									</section>
+
+							</div>
+							<div class="col-4 col-6-medium col-12-small">
+
+								<!-- Feature -->
+									<section>
+										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+										<header>
+											<h3>What's this built with?</h3>
+										</header>
+										<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
+										sites and apps. All of my templates at <a href="http://html5up.net">HTML5 UP</a> are built using these tools.</p>
+									</section>
+
+							</div>
+							<div class="col-12">
+								<ul class="actions">
+									<li><a href="#" class="button icon solid fa-file">Tell Me More</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</section>
+				
+				
+
+			
 
 			<!-- Main -->
-				<section id="main">
+			<!-- 	<section id="main">
 					<div class="container">
 						<div class="row">
 
-							<!-- Content -->
+							Content
 								<div id="content" class="col-8 col-12-medium">
 
-									<!-- Post -->
+									Post
 										<article class="box post">
 											<header>
 												<h2><a href="#">I donât want to say <strong>itâs the aliens</strong> ...<br />
@@ -113,7 +267,7 @@
 											</ul>
 										</article>
 
-									<!-- Post -->
+									Post
 										<article class="box post">
 											<header>
 												<h2><a href="#">By the way, many thanks to <strong>regularjane</strong>
@@ -147,15 +301,15 @@
 
 								</div>
 
-							<!-- Sidebar -->
+							Sidebar
 								<div id="sidebar" class="col-4 col-12-medium">
 
-									<!-- Excerpts -->
+									Excerpts
 										<section>
 											<ul class="divided">
 												<li>
 
-													<!-- Excerpt -->
+													Excerpt
 														<article class="box excerpt">
 															<header>
 																<span class="date">July 30</span>
@@ -168,7 +322,7 @@
 												</li>
 												<li>
 
-													<!-- Excerpt -->
+													Excerpt
 														<article class="box excerpt">
 															<header>
 																<span class="date">July 28</span>
@@ -181,7 +335,7 @@
 												</li>
 												<li>
 
-													<!-- Excerpt -->
+													Excerpt
 														<article class="box excerpt">
 															<header>
 																<span class="date">July 24</span>
@@ -195,12 +349,12 @@
 											</ul>
 										</section>
 
-									<!-- Highlights -->
+									Highlights
 										<section>
 											<ul class="divided">
 												<li>
 
-													<!-- Highlight -->
+													Highlight
 														<article class="box highlight">
 															<header>
 																<h3><a href="#">Something of note</a></h3>
@@ -218,7 +372,7 @@
 												</li>
 												<li>
 
-													<!-- Highlight -->
+													Highlight
 														<article class="box highlight">
 															<header>
 																<h3><a href="#">Something of less note</a></h3>
@@ -242,84 +396,100 @@
 						</div>
 					</div>
 				</section>
-
+ -->
 			<!-- Footer -->
-				<section id="footer">
-					<div class="container">
-						<header>
-							<h2>Questions or comments? <strong>Get in touch:</strong></h2>
-						</header>
-						<div class="row">
-							<div class="col-6 col-12-medium">
-								<section>
-									<form method="post" action="#">
-										<div class="row gtr-50">
-											<div class="col-6 col-12-small">
-												<input name="name" placeholder="Name" type="text" />
-											</div>
-											<div class="col-6 col-12-small">
-												<input name="email" placeholder="Email" type="text" />
-											</div>
-											<div class="col-12">
-												<textarea name="message" placeholder="Message"></textarea>
-											</div>
-											<div class="col-12">
-												<a href="#" class="form-button-submit button icon solid fa-envelope">Send Message</a>
-											</div>
-										</div>
-									</form>
-								</section>
-							</div>
-							<div class="col-6 col-12-medium">
-								<section>
-									<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat Phaselamet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur
-									leo nibh, rutrum eu malesuada.</p>
-									<div class="row">
-										<div class="col-6 col-12-small">
-											<ul class="icons">
-												<li class="icon solid fa-home">
-													1234 Somewhere Road<br />
-													Nashville, TN 00000<br />
-													USA
-												</li>
-												<li class="icon solid fa-phone">
-													(000) 000-0000
-												</li>
-												<li class="icon solid fa-envelope">
-													<a href="#">info@untitled.tld</a>
-												</li>
-											</ul>
-										</div>
-										<div class="col-6 col-12-small">
-											<ul class="icons">
-												<li class="icon brands fa-twitter">
-													<a href="#">@untitled</a>
-												</li>
-												<li class="icon brands fa-instagram">
-													<a href="#">instagram.com/untitled</a>
-												</li>
-												<li class="icon brands fa-dribbble">
-													<a href="#">dribbble.com/untitled</a>
-												</li>
-												<li class="icon brands fa-facebook-f">
-													<a href="#">facebook.com/untitled</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</section>
-							</div>
-						</div>
-					</div>
-					<div id="copyright" class="container">
-						<ul class="links">
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-				</section>
+			<%@include file = "/views/common/footer.jsp"%>	
 
 		</div>
+		
+	<script>
+	//=========== 페이지 처음 시작시 가져올 데이터 ==========
+		$(function () {
+    const audio = document.getElementById('myAudio');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+
+    playPauseBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = '||';
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = '▶';
+        }
+    });
+
+  //=========== <숙소> 페이지 처음 시작시 가져올 데이터 ==========
+    $.ajax({
+        url: "/moosa/main.info",
+        success: function (list) {
+            var lodList = "";
+            for (var i = 0; i < list.length; i++) {
+                lodList += "<div class='col-4 col-6-medium col-12-small'>"
+                    + "<section>"
+                    + "<a href='http://www.naver.com'>"
+                    + "<img src='/moosa" + list[i].filePath + "" + list[i].changeName + "' style='width:100%; height:auto;'>"
+                    + "</a>"
+                    + "</header>"
+                    + "<h3>" + list[i].boardTitle + "</h3>"
+                    + "</header>"
+                    + "<body>"
+                    + "<p>" + list[i].boardContent + "</p>"
+                    + "</body>"
+                    + "</section>"
+                    + "</div>";
+            }
+            $('.lod-list').html(lodList);
+            console.log('데이터 불러오기 성공!!');
+        },
+        error: function () {
+            console.log('데이터 불러오기 실패');
+        }
+    });
+});
+
+
+	
+	 //========== 이미지 슬라이드 ===========
+		$(function() {
+		  var slides = $('.slide');
+		  var currentSlide = 0;
+		  
+		//페이지 로드 처음엔 사진을 바로 보여줘야
+		  slides.eq(currentSlide).addClass('active');
+		  setTimeout(function(){ 
+			  var slideInterval = setInterval(nextSlide, 7000);
+		  },0);
+
+		  function nextSlide() { //(현재슬라이드 +1) % 슬라이드 이미지 갯수
+		    slides.eq(currentSlide).removeClass('active');
+		    currentSlide = (currentSlide + 1) % slides.length;
+		    slides.eq(currentSlide).addClass('active');
+		  }
+
+		  function prevSlide() {
+		    slides.eq(currentSlide).removeClass('active');
+		    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+		    slides.eq(currentSlide).addClass('active');
+		  }
+
+		  $('.next').click(function(e){
+			  e.preventDefault(); // 기본 동작 방지 (내장객체, click,submit등을 기본동작을 취소)
+			    nextSlide();
+		  });
+		  
+		  $('.prev').click(function(e){
+			  e.preventDefault();
+		  		prevSlide();
+		  });
+		  	
+		  $('.slide img').click(function(e) {
+			    e.preventDefault();
+			    window.open($(this).parent('a').attr('href')); // URL 새 탭에서 열기
+			   
+			    console.log($('.slide a').attr('href'));
+			});
+		});
+    </script>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
