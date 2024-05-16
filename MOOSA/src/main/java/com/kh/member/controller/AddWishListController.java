@@ -41,8 +41,10 @@ public class AddWishListController extends HttpServlet {
 			for(Lodging l : list) {
 				if(l.getLodNo()==lno) {//조회해온 데이터에서 새로 위시리스트 담을 숙소 번호 비교해서 있다면 삭제
 					result = new MemberService().deleteWishList(userNo, lno);
+					break;
 				}else {
 					result = new MemberService().addWishList(lno,userNo);
+					break;
 				}
 			}
 		}else {//조회 해온 데이터가 없다면

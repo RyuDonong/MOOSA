@@ -33,6 +33,7 @@ public class SelectWishListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		ArrayList<Lodging> list = new MemberService().selectWishList(userNo);
+//		System.out.println(list);
 		request.setAttribute("list", list);
 //		System.out.println(list);
 		request.getRequestDispatcher("views/member/myWishList.jsp").forward(request, response);

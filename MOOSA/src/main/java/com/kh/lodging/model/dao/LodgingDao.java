@@ -118,11 +118,11 @@ public class LodgingDao {
 		return rList;
 	}
 	//숙소 리뷰 조회
-	public ArrayList<Review> selectReview(Connection conn, int lno) {
+	public ArrayList<Review> selectEveryReview(Connection conn, int lno) {
 		ArrayList<Review> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset =null;
-		String sql = prop.getProperty("selectReview");
+		String sql = prop.getProperty("selectEveryReview");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, lno);
