@@ -368,7 +368,7 @@ body {
 				<div class="head">
 					<div class="number-box">
 						<span>01</span>
-					</div>
+
 					<h2>
 						<span class="small">첫번째 코스</span><br> 엉덩물계곡
 					</h2>

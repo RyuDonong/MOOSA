@@ -19,6 +19,15 @@ public class Course {
 		this.courseContent = courseContent;
 		this.coursePhoto = coursePhoto;
 	}
+	
+	
+
+	public Course(int courseNo, String courseName, String courseContent) {
+		super();
+		this.courseNo = courseNo;
+		this.courseName = courseName;
+		this.courseContent = courseContent;
+	}
 
 	public int getCourseNo() {
 		return courseNo;
