@@ -10,11 +10,11 @@
 	
 	<!-- 사진게시글 작성 구문 -->
 	<entry key="insertThumbnail">
-		INSERT INTO BOARD(BOARD_NO
-						 ,BOARD_TITLE
-						 ,BOARD_CONTENT
-						 ,BOARD_WRITER
-						 ,CATEGORY_NO)
+		INSERT INTO TOURBOARD(TOURBOARD_NO
+						 ,TOURBOARD_TITLE
+						 ,TOURBOARD_CONTENT
+						 ,TOURBOARD_WRITER
+						 ,TOURCATEGORY_NO)
 	            VALUES(?
 	            	   ,?
 	            	   ,?
@@ -29,7 +29,7 @@
 		                      ,CHANGE_NAME
 		                      ,FILE_PATH
 		                      ,FILE_LEVEL
-		                      ,TOUR_NO)
+		                      )
             VALUES(SEQ_PNO.NEXTVAL            
                   ,?
                   ,?
@@ -37,40 +37,44 @@
                   ,?
                   ,5
                   ,3)
-	
-	
+                  ,5)
 	</entry>
 	
 	
 	<entry key="selectThumbnailList">
-		SELECT BOARD_NO
-		      ,BOARD_TITLE
-		      ,COUNT
-		      ,BOARD_CONTENT
+		SELECT TOURBOARD_NO
+		      ,TOURBOARD_TITLE
+		      ,TOUR_COUNT
+		      ,TOURBOARD_CONTENT
 		      ,FILE_PATH || CHANGE_NAME THUMBNAIL
 		FROM BOARD B 
 		JOIN PHOTO ON (BOARD_NO =  REF_BNO)
 		WHERE B.STATUS='Y'
 		AND FILE_LEVEL=5
 		ORDER BY CREATE_DATE DESC
+		FROM TOURBOARD B 
+		JOIN PHOTO ON (TOURBOARD_NO =  REF_BNO)
+		WHERE B.TOUR_STATUS='Y'
+		AND FILE_LEVEL=5
+		ORDER BY TOURCREATE_DATE DESC
 	</entry>
 		<!-- 게시글 조회수증가 -->
 	<entry key="increaseCount">
-		UPDATE BOARD
-		SET COUNT = COUNT+1
-		WHERE BOARD_NO=?
-		AND STATUS='Y'
+		UPDATE TOURBOARD
+		SET TOUR_COUNT = TOUR_COUNT+1
+		WHERE TOURBOARD_NO=?
+		AND TOUR_STATUS='Y'
 	</entry>
 	<!-- 게시글 단일 조회 -->
 	<entry key="selectBoard">
-		SELECT BOARD_NO
-			 , BOARD_TITLE
-			  ,BOARD_CONTENT
+		SELECT TOURBOARD_NO
+			 , TOURBOARD_TITLE
+			  ,TOURBOARD_CONTENT
 			  ,USER_ID
-			  ,CREATE_DATE
-		FROM BOARD B
-        JOIN MEMBER ON (USER_NO=BOARD_WRITER)
-		WHERE BOARD_NO = ?
+			  ,TOURCREATE_DATE
+		FROM TOURBOARD B
+        JOIN MEMBER ON (USER_NO=TOURBOARD_WRITER)
+		WHERE TOURBOARD_NO = ?
 		AND B.STATUS ='Y'
 	</entry>
 	<entry key="selectAttachment">
