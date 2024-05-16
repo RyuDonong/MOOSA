@@ -35,12 +35,6 @@ public class IndexFirstLoadTour extends HttpServlet {
 
 		ArrayList<TourBoard> list = new TourService().selectTour();
 		
-		for(TourBoard t : list) {
-			
-			System.out.println(t);
-		}
-		
-		
 		
 		response.setContentType("json/application;charset=utf-8");
 		

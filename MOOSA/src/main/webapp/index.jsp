@@ -161,8 +161,8 @@
 		
 	<script>
 	//=========== 페이지 처음 시작시 가져올 데이터 ==========
-	$(function () {
-	    const audio = document.getElementById('myAudio');
+	 $(function () {
+	    /*const audio = document.getElementById('myAudio');
 	    const playPauseBtn = document.getElementById('playPauseBtn');
 	
 	    playPauseBtn.addEventListener('click', () => {
@@ -173,7 +173,7 @@
 	            audio.pause();
 	            playPauseBtn.textContent = '▶';
 	        }
-    });
+    }); */
 
   //=========== <숙소> 페이지 처음 시작시 가져올 데이터 ==========
     $.ajax({
@@ -241,7 +241,7 @@
 		            for (var i = 0; i < list.length; i++) {
 		                lodList += "<div class='col-4 col-6-medium col-12-small'>"
 		                    + "<section>"
-		                    + "<a href='http://www.naver.com'>"
+		                    + "<a href='/moosa/course.go'>"
 		                    + "<img src='/moosa" + list[i].filePath + "" + list[i].changeName + "' style='width:100%; height:auto;'>"
 		                    + "</a>"
 		                    + "</header>"
@@ -260,12 +260,40 @@
 		            console.log('데이터 불러오기 실패');
 		        }
 	    	});
+  
+	//=========== <게시판> 페이지 처음 시작시 가져올 데이터 ==========
+		  $.ajax({
+		        url: "/moosa/main.info",
+		        success: function (list) {
+		            var lodList = "";
+		            for (var i = 0; i < list.length; i++) {
+		                lodList += "<div class='col-4 col-6-medium col-12-small'>"
+		                    + "<section>"
+		                    + "<a href='http://www.naver.com'>"
+		                    + "<img src='/moosa" + list[i].filePath + "" + list[i].changeName + "' style='width:100%; height:auto;'>"
+		                    + "</a>"
+		                    + "</header>"
+		                    + "<h3>" + list[i].boardTitle + "</h3>"
+		                    + "</header>"
+		                    + "<body>"
+		                    + "<p>" + list[i].boardContent + "</p>"
+		                    + "</body>"
+		                    + "</section>"
+		                    + "</div>";
+		            }
+		            $('.b-list').html(lodList);
+		            console.log('데이터 불러오기 성공!!');
+		        },
+		        error: function () {
+		            console.log('데이터 불러오기 실패');
+		        }
+	    	});
+		
 	  });
 	
 	
 	
 	
-	//=========== <게시판> 페이지 처음 시작시 가져올 데이터 ==========
 		
 		
 

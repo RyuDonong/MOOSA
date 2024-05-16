@@ -36,7 +36,6 @@ public class IndexFirstLoad extends HttpServlet {
 		ArrayList<Board> list = new BoardService().indexFirstLoad();
 		
 		
-		
 		response.setContentType("json/application;charset=utf-8");
 		
 		Gson gson = new Gson();

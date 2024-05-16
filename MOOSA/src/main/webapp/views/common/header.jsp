@@ -187,7 +187,7 @@
 			}
 			
 
-		    $(function(){
+		   /*  $(function(){
 		    	$.ajax({
 			        url: "/moosa/music.info",
 			        success: function (result) {
@@ -203,7 +203,7 @@
 			            console.log('데이터 불러오기 실패');
 			        }
 			    });
-		    });
+		    }); */
 			
 		</script>
 </body>

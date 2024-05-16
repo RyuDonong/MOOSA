@@ -35,10 +35,6 @@ public class IndexFirstLoadCourse extends HttpServlet {
 		
 		ArrayList<Board> list = new BoardService().selectReviewList();
 		
-		
-		
-		response.setContentType("json/application;charset=utf-8");
-		
 		Gson gson = new Gson();
 		gson.toJson(list,response.getWriter());
 	}
