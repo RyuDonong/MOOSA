@@ -20,6 +20,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<!-- swiper cdn -->
+		<!-- CSS -->
+		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+		
+		<!-- JS -->
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		<!-- /swiper cdn -->
 		<style type="text/css">
 		#scoreDiv label{
 			display:inline;
@@ -50,12 +57,29 @@
 									<h3>숙소 정보</h3>
 									<p>${lod.category }</p>
 									<div>${lod.lodAddress }</div>
+									<hr>
 									<h3>숙소 방 정보</h3>
-									<p></p>
-									
+									<div class="roomInfoWrap">
+										<c:forEach items="${rList }" var="a">
+											<div class="roomInfo">
+												<div class="roomImagesSlider">
+												    <div class="swiper-wrapper">
+												    	<c:forEach items="${rpList }" var='rp'>
+														    <c:if test="${a.roomNo eq rp.roomNo }">
+															    <div class="swiper-slide"><img src="${contextPath }${rp.thumbnail }"></div>
+														    </c:if>
+												    	</c:forEach>
+												    </div>
+											    	<div class="swiper-button-prev"></div>
+													<div class="swiper-button-next"></div>
+										    	</div>
+												<div>${a.roomName }</div>
+												<div>${a.roomInfo }</div>
+											</div>
+										</c:forEach>
+									</div>
+									<hr>
 									<h3>고객 리뷰</h3>
-									<input type="radio">
-									<input type="checkbox">
 									<div class="review-textarea">
 										<c:choose>
 											<c:when test="${not empty loginUser }">
@@ -85,11 +109,12 @@
 													<input type="file" id="reviewImg3" name="reviewImg3">
 													<button type="submit">작성</button>
 												</form>
+												<hr>
 											</c:when>
 											<c:otherwise>
 												<textarea readonly rows="5" cols="100">로그인 후 이용 가능한 서비스 입니다.</textarea><br>
 											 	<button disabled>작성</button>
-													
+												<hr>	
 											</c:otherwise>
 										</c:choose>
 										
@@ -113,11 +138,16 @@
 													<div>${r.userNo }</div>
 													<div>${r.roomNo }</div>
 													<div>${r.reviewContent}</div>
-													<c:forEach var="p" items="${pList }">
-														<c:if test="${not empty p && r.reviewNo eq p.reviewNo }">
-															<div><img class="reviewPhoto" alt="" src="/moosa${p.thumbnail }"></div>
-														</c:if>
-													</c:forEach>
+													<div class="reviewPhoto">
+														<c:forEach var="p" items="${pList }">
+															<c:if test="${not empty p && r.reviewNo eq p.reviewNo }">
+																<div>	
+																	<img  alt="" src="/moosa${p.thumbnail }">
+																</div>
+															</c:if>
+														</c:forEach>
+													</div>
+													<hr>
 												</c:forEach>
 											</c:otherwise>
 										</c:choose>
@@ -150,6 +180,18 @@
 					$("#scoreDiv label").children("#starImg"+(i+1)).attr("src","${contextPath}/images/fullStar.png")
 				}
 			});
+			
+			const mySwiper = new Swiper('.roomImagesSlider', {
+				loop: true,
+				autoplay: {
+					    delay: 3000
+				}, 
+			    navigation: {
+				    nextEl: '.swiper-button-next',
+				    prevEl: '.swiper-button-prev',
+				},	  
+			
+				});
 			</script>
 			
 	</body>

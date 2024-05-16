@@ -33,12 +33,12 @@
 					<div class="container">
 						<div class="row">
 							<!-- Sidebar -->
-								<div id="sidebar" class="col-4 col-12-medium">
+								<div id="sidebar" class="col-3 col-12-medium">
 									<!-- Excerpts -->
 										<section>
 											<ul class="divided">
 												<li >
-													<button type="button" data-toggle="modal" data-target="#checkPwdForm">개인 정보 수정</button>
+													<a data-toggle="modal" data-target="#checkPwdForm">개인 정보 수정</a>
 												</li>
 												<li>
 													<a href="${contextPath }/selectWishList.me?userNo=${loginUser.userNo}">위시 리스트</a>
@@ -68,9 +68,9 @@
 														<input type="hidden" name="userNo" value="${loginUser.userNo }">
 														<div id="wishListDiv">
 															<c:forEach var ="i" items="${list }">
-																<section class="tiles">
+																<article class="tiles">
 																<input type="checkbox" name="deleteWishList" value="${i.lodNo }">
-																	<article class="style2">
+																	<div class="style2">
 																		<span class="image">
 																			<img src="${contextPath }${i.thumbnail}" alt="" />
 																		</span>
@@ -80,8 +80,8 @@
 																				<p>${ i.lodAddress}</p>
 																			</div>
 																		</a>
-																	</article>
-																</section>
+																	</div>
+																</article>
 															</c:forEach>
 														</div>
 														<button>삭제하기</button>

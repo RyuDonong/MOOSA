@@ -41,6 +41,52 @@
             margin-right: 15px;
         }
 
+		/* ========== 음악재생 =========== */
+		#audioPlayer {
+		  width: 300px;
+		  height: 50px;
+		  align : center;
+		  background-color: #F0F0F0;
+		  border-radius: 10px;
+		  border : noen;
+		  padding: 10px;
+		  color: #fff;
+		  font-family: Arial, sans-serif;
+		  display:flex;
+		}
+		
+		.player-header {
+		  text-align: center;
+		  margin-bottom: 10px;
+		}
+		
+		#music-title {
+		  font-weight: bold;
+		  color:skyblue;
+		  font-size: 16px;
+		}
+		
+		.player-controls {
+		  display: flex;
+		  justify-content: center;
+		}
+		
+		#playPauseBtn {
+		  width: 1px;	
+		  height: 15px;
+		  margin-top : 15%;
+		  margin-left: 50%;
+		  background-color: #ccc;
+		  border: none;
+		  font-size: 10px;
+		  line-height: 1px;
+		  cursor: pointer;
+		}
+		
+		#audio-back{
+		  background-color : white;
+		}
+
     	</style>
 	</head>
 <body>
@@ -58,6 +104,22 @@
 		}
 	</script>
 	<!-- Header -->
+	
+		
+	<div id="audio-back">
+		 <div id="audioPlayer">
+		  <div class="player-header">
+		    <span id="music-title"></span>
+		  </div>
+		  
+		  <div class="player-controls">
+		    <button id="playPauseBtn"></button>
+		  </div>
+		  <audio id="myAudio" src="resources/uploadFiles/travel.mp4"></audio>
+		</div>
+	</div>		
+	
+	
 		<section id="header">
 			<div class="container">
 
@@ -68,7 +130,7 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a class="icon solid fa-home" href="${contextPath }/index.jsp"><span>홈으로</span></a></li>
+							<li><a href="${contextPath }/index.jsp"><span>홈으로</span></a></li>
 							<!-- <li>
 								<a href="#" class="icon fa-chart-bar"><span>관광명소</span></a>
 								<ul>
@@ -86,10 +148,17 @@
 									<li><a href="#">Veroeros feugiat</a></li>
 								</ul>
 							</li> -->
+<<<<<<< HEAD
 							<li><a class="icon solid fa-cog" href="${contextPath }/tour.to"><span>관광명소</span></a></li>
 							<li><a class="icon solid fa-cog" href="${contextPath }/list.lo"><span>숙소</span></a></li>
 							<li><a class="icon solid fa-retweet" href="${contextPath }/course.go"><span>코스추천</span></a></li>
 							<li><a class="icon solid fa-sitemap" href="${contextPath }/list.lo"><span>소통게시판</span></a></li>
+=======
+							<li><a href="${contextPath }/list.tour"><span>관광명소</span></a></li>
+							<li><a href="${contextPath }/list.lo"><span>숙소</span></a></li>
+							<li><a href="${contextPath }/course.go"><span>코스추천</span></a></li>
+							<li><a href="${contextPath }/list.lo"><span>소통게시판</span></a></li>
+>>>>>>> refs/remotes/origin/main
 				<%--로그인 전 마이페이지 --%>
 				<c:choose> 
 					<c:when test="${loginUser!=null }">
@@ -122,6 +191,26 @@
 			function logout(){
 				location.href = "${contextPath}/logout.me";
 			}
+			
+
+		    $(function(){
+		    	$.ajax({
+			        url: "/moosa/music.info",
+			        success: function (result) {
+			            
+			            var musicTitle = "<h3>"+result+"</h3>";
+			            console.log(result);
+			            
+			            $('#music-title').html(musicTitle);
+			            
+			            console.log('데이터 불러오기 성공!!');
+			        },
+			        error: function () {
+			            console.log('데이터 불러오기 실패');
+			        }
+			    });
+		    });
+			
 		</script>
 </body>
 </html>

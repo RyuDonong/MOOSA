@@ -41,13 +41,16 @@ public class LodgingDetailController extends HttpServlet {
 		Lodging lod= new LodgingService().selectDetailLodging(lno);
 		ArrayList<Review> list = new LodgingService().selectReview(lno);
 		ArrayList<Room> rList = new LodgingService().selectRoom(lno);
-		ArrayList<Photo> pList = new PhotoService().selectReviewPhoto(lno); 
+		ArrayList<Photo> rpList = new LodgingService().selectRoomPhoto(lno);//방 사진
+		ArrayList<Photo> pList = new PhotoService().selectReviewPhoto(lno); //리뷰사진
+//		System.out.println(rList);
+//		System.out.println(rpList);
 		request.setAttribute("lod",lod );
 		request.setAttribute("list",list );
 		request.setAttribute("rList", rList);
+		request.setAttribute("rpList", rpList);
 		request.setAttribute("pList", pList);
 		request.getRequestDispatcher("views/lod/lodDetailView.jsp").forward(request, response);
-		
 	}
 
 	/**

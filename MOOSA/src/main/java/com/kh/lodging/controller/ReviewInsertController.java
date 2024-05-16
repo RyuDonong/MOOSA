@@ -85,7 +85,7 @@ public class ReviewInsertController extends HttpServlet {
 				}
 			}
 			
-			int result = new LodgingService().insertReview(r,pList);
+			int result = new LodgingService().insertReview(r,pList,lno);
 			HttpSession session = request.getSession();
 			String msg = "";
 			if(result>0) {

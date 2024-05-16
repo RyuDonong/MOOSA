@@ -36,6 +36,8 @@
 									</header>
 									<div id="contentDiv">
 									</div>
+									<div id="pagingDiv">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -65,13 +67,12 @@
 				url : "${contextPath}/selectList.lo",
 				data : {category :$(this).text()},
 				success : function(list){
-					
 					var html = "";
 					for (var i in list){
 						html += '<section class="tiles">';
 						html += '<article class="style2">';
 						html += '<span class="image">';
-						html += '<img src="/moosa'+list[i].Thumbnail+'" alt="" />';
+						html += '<img src="/moosa'+list[i].Thumbnail+'"/>';
 						html += '</span>';
 						html += '<a href="/moosa/lodDetail.lo?lno='+list[i].lodNo+'">';
 						html += '<h2 id="contentTitle">'+list[i].lodName+'</h2>';

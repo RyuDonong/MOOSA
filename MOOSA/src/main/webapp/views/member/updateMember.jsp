@@ -27,7 +27,7 @@
 			<div class="container">
 				<div class="row">
 					<!-- Sidebar -->
-					<div id="sidebar" class="col-4 col-12-medium">
+					<div id="sidebar" class="col-3 col-12-medium">
 						<!-- Excerpts -->
 						<section>
 							<ul class="divided">
@@ -51,15 +51,15 @@
 							<form action="${contextPath}/updateMember.me" method="post"
 								id="updateMemberForm" enctype="multipart/form-data">
 								<input type="hidden" name="photoNo" value="${loginUser.photoNo }">
-								아이디 : <input name="userId" value="${loginUser.userId}" readonly><br>
+								아이디 : <input type="text" name="userId" value="${loginUser.userId}" readonly><br>
 								연락처 : <input type="text" value="${loginUser.phone}" name="phone">
 								이메일 : <input type="email" name="email"
-									value="${loginUser.email}"><br> 주소 : <input
-									name="address" value="${loginUser.address}"><br>
+									value="${loginUser.email}"><br> 
+								주소 : <input type="text" name="address" value="${loginUser.address}"><br>
 								<!-- 프로필 사진 미리보기 -->
 								<img src="${contextPath }${profile.thumbnail }" id="profile-pre">
 								<input type="file" name="profile" onchange="loadImg(this);"
-									value="${contextPath }${profile.thumbnail }">
+									value="${profile.originName}">
 								<button type="submit">수정하기</button>
 
 								<button type="button" data-toggle="modal"

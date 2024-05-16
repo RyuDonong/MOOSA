@@ -12,6 +12,7 @@ public class Photo {
 	private int tourNo;
 	private String thumbnail;
 	private int reviewNo;
+	private int roomNo;
 	
 	public Photo() {
 		super();
@@ -28,6 +29,13 @@ public class Photo {
 		this.reviewNo = reviewNo;
 	}
 	
+	public Photo(String thumbnail,String lodNo,  int roomNo) {
+		super();
+		this.thumbnail = thumbnail;
+		this.lodNo = lodNo;
+		this.roomNo = roomNo;
+	}
+
 	public Photo(int photoNo, String originName,String changeName, String thumbnail, int reviewNo) {
 		super();
 		this.photoNo = photoNo;
@@ -113,11 +121,19 @@ public class Photo {
 		this.reviewNo = reviewNo;
 	}
 
+	public int getRoomNo() {
+		return roomNo;
+	}
+
+	public void setRoomNo(int roomNo) {
+		this.roomNo = roomNo;
+	}
+
 	@Override
 	public String toString() {
 		return "Photo [photoNo=" + photoNo + ", originName=" + originName + ", changeName=" + changeName + ", filePath="
 				+ filePath + ", status=" + status + ", lodNo=" + lodNo + ", fileLevel=" + fileLevel + ", tourNo="
-				+ tourNo + ", thumbnail=" + thumbnail + "]";
+				+ tourNo + ", thumbnail=" + thumbnail + "roomNo="+roomNo+ "]";
 	}
 	
 	

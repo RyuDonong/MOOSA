@@ -1,0 +1,46 @@
+테이블 기술서
+
+B_ATTACHMENT (첨부파일 테이블)
+
+FILE_NO              파일번호 (시퀀스번호 : SEQ_ANO)
+FILE_NAME          기존 파일이름
+CHANGE_NAME   업로드시 바뀐 파일이름
+FILE_PATH           파일경로
+UPLOAD_DATE    게시판 수정 시 업데이트 날짜
+FILE_LEVEL          레벨 1 = 사진, 레벨2 = 그외파일
+STATUS              삭제여부
+REF_NO             게시글 번호 관계자
+
+==========================================
+
+BOARD (게시판 테이블)
+
+BOARD_NO           게시글 번호 (시퀀스번호 : SEQ_BNO)
+BOARD_TITLE         게시글 제목
+BOARD_CONTENT  게시글 내용
+COUNT                 조회수
+LIKES                    좋아요 갯수
+CREATE_DATE         작성일
+STATUS                 삭제여부
+BOARD_WRITER     작성자 (USER_NO 관계자)
+CATEGORY_NO      카테고리 (CATEGORY_NO 관계자)
+
+==========================================
+
+BOARD_CATEGORY (카테고리)
+
+CATEGORY_NO      카테고리번호 (게시판 CATEGORY_NO  관계자)
+CATEGORY_NAME  카테고리이름 (글작성, 게시판 목록 정렬)
+
+==========================================
+
+BOARD_REPLY (댓글)
+
+REPLY_NO           댓글번호
+REPLY_CONTENT  댓글내용
+CREATE_DATE      작성일
+STATUS               삭제여부
+REPLY_WRITER     작성자
+REF_BNO            게시글 번호와 관계자
+RECOMMEND     추천수
+HATE                 비추천수
