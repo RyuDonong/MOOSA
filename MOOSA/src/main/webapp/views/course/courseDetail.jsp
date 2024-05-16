@@ -340,7 +340,7 @@ body {
       overflow-y: auto; /* 수직 스크롤 추가 */
     }
     
-   .btn-review {
+    .btn-review {
       display: block;
       margin: 30px auto;
       padding: 10px 20px;
@@ -368,7 +368,7 @@ body {
 				<div class="head">
 					<div class="number-box">
 						<span>01</span>
-
+					</div>
 					<h2>
 						<span class="small">첫번째 코스</span><br> 엉덩물계곡
 					</h2>
@@ -469,7 +469,7 @@ body {
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
   function review(){
-	  location.href = "${contextPath}/list.rv?currentPage=1";
+	  location.href = "${contextPath}/list.re?currentPage=1";
   }
   
     $(document).ready(function() {

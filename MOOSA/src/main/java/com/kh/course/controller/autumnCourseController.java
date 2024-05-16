@@ -26,7 +26,7 @@ public class autumnCourseController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//여름코스디테일 페이지로 이동
+		//가을코스디테일 페이지로 이동
 		request.getRequestDispatcher("views/course/courseDetail3.jsp").forward(request, response);
 	}
 
