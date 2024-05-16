@@ -18,7 +18,7 @@ String contextPath = request.getContextPath();
 -->
 <html>
 <head>
-<title>Left Sidebar - Strongly Typed by HTML5 UP</title>
+<title>관광명소</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -77,7 +77,7 @@ if ((loginUser != null) && loginUser.getUserId().equals("admin")) {
 %>
 <div align="center">
 	<!-- 		 	<button onclick="location.href='oooo'">글작성</button> -->
-	<a href="<%=contextPath%>/insert.to" class="btn btn-info">글작성</a>
+	<a href="<%=contextPath%>/insert.to" class="btn btn-info">관광명소 추가</a>
 
 </div>
 

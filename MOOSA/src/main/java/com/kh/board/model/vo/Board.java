@@ -54,7 +54,15 @@ public class Board {
 		this.categoryName = categoryName;
 	}
 
-
+	public Board(int boardNo, String boardTitle, int count,String boardContent,String thumbnailImg) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.count = count;
+		this.boardContent = boardContent;
+		this.thumbnailImg = thumbnailImg;
+		
+	}
 
 	public Board(String boardTitle, String boardContent, int count, int likes, Date createDate, String userId,
 			String categoryName) {
@@ -230,6 +238,14 @@ public class Board {
 		this.changeName = changeName;
 	}
 
+	public String getThumbnailImg() {
+		return thumbnailImg;
+	}
+
+	public void setThumbnailImg(String thumbnailImg) {
+		this.thumbnailImg = thumbnailImg;
+	}
+	
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
