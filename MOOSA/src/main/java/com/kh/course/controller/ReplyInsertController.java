@@ -1,6 +1,7 @@
 package com.kh.course.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,7 @@ import com.kh.course.model.vo.Reply;
 /**
  * Servlet implementation class ReplyInsertController
  */
-@WebServlet("/insertReply.re")
+@WebServlet("/insertReply.rv")
 public class ReplyInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
