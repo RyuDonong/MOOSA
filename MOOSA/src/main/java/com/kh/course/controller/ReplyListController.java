@@ -16,7 +16,7 @@ import com.kh.course.model.vo.Reply;
 /**
  * Servlet implementation class ReplyListController
  */
-@WebServlet("/replyList.re")
+@WebServlet("/replyList.rv")
 public class ReplyListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
