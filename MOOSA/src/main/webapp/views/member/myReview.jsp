@@ -33,12 +33,12 @@
 					<div class="container">
 						<div class="row">
 							<!-- Sidebar -->
-								<div id="sidebar" class="col-4 col-12-medium">
+								<div id="sidebar" class="col-3 col-12-medium">
 									<!-- Excerpts -->
 										<section>
 											<ul class="divided">
 												<li >
-													<button type="button" data-toggle="modal" data-target="#checkPwdForm">개인 정보 수정</button>
+													<a data-toggle="modal" data-target="#checkPwdForm">개인 정보 수정</a>
 												</li>
 												<li>
 													<a href="${contextPath }/selectWishList.me?userNo=${loginUser.userNo}">위시 리스트</a>
@@ -61,30 +61,30 @@
 											<c:choose>
 												<c:when test="${not empty rList }">
 													<table>
+														<!-- <colgroup>
+															<col width="10%">
+															<col width="10%">
+															<col width="10%">
+															<col width="50%">
+														</colgroup> -->
 														<thead>
 															<tr>
 																<th>선택</th>
 																<th>리뷰 번호</th>
 																<th>리뷰 내용</th>
-																<th>리뷰 사진</th>
 															</tr>
 														</thead>
 														<tbody class="tbody">
 															<c:forEach var="r" items="${rList }">
 																<tr>
-																	<td id="radioTd"><input type="radio" value="${r.reviewNo}" id="choiceUpdate${r.reviewNo}" name="choiceUpdate"></td>
+																	<td id="radioTd"><input type="radio" class="choiceUpdate" value="${r.reviewNo}" id="choiceUpdate${r.reviewNo}" name="choiceUpdate"></td>
 																	<td>${r.reviewNo }</td>
 																	<td>${r.reviewContent }</td>
-																	<c:forEach var="p" items="${pList }">
-																		<c:if test="${r.reviewNo eq p.reviewNo}">
-																			<td><img src="${contextPath }${p.thumbnail}" style="width:200px; height:100px;"></td>
-																		</c:if>
-																	</c:forEach>
 																</tr>
 															</c:forEach>
 														</tbody>
 													</table>
-												<button onclick="updateReview();">수정하기</button>
+												<button onclick="return updateReview();">수정하기</button>
 												<button onclick="return deleteReview();">삭제하기</button>
 												</c:when>
 												<c:otherwise>
@@ -158,12 +158,38 @@
 		</div>
 	</div>
 		<script type="text/javascript">
+		//수정하기 버튼 눌렸을때 input radio 유효성 검사후 진행하기
 		function updateReview(){
+			var checkflag = false;
+			var radios = $("#radioTd input[type=radio]");
+			for(var i=0;i<radios.length;i++){
+				if(radios[i].checked){
+					checkflag = true;
+					break;
+				}
+			}
+			if(!checkflag){
+				alert("수정하려는 리뷰를 선택하세요");
+				return false;
+			}
 			var updateReviewNo = $("#radioTd input[type=radio]:checked").val();
 			//console.log(updateReviewNo);
 			location.href = "${contextPath}/updateReview.me?reviewNo="+updateReviewNo;
 		}
+		//삭제하기 버튼 눌렸을때 input radio 유효성 검사후 삭제 여부 한번더 물어본 뒤 진행하기
 		function deleteReview(){
+			var checkflag = false;
+			var radios = $("#radioTd input[type=radio]");
+			for(var i=0;i<radios.length;i++){
+				if(radios[i].checked){
+					checkflag = true;
+					break;
+				}
+			}
+			if(!checkflag){
+				alert("삭제하려는 리뷰를 선택하세요");
+				return false;
+			}
 			var flag = confirm("삭제된 리뷰는 되돌릴수 없습니다. 정말 삭제하시겠습니까?")
 			if(flag){
 				var deleteReviewNo = $("#radioTd input[type=radio]:checked").val();
@@ -171,6 +197,7 @@
 			}
 			return flag;
 		}
+		
 		</script>
 		
 	

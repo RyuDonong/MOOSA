@@ -15,11 +15,11 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style type="text/css">
-.tbody input[type=radio] {
+/* .tbody input[type=radio] {
 	width: 15px;
 	height: 15px;
 	appearance: auto;
-}
+} */
 	#scoreDiv label{
 		display:inline;
 	}
@@ -41,13 +41,13 @@
 			<div class="container">
 				<div class="row">
 					<!-- Sidebar -->
-					<div id="sidebar" class="col-4 col-12-medium">
+					<div id="sidebar" class="col-3 col-12-medium">
 						<!-- Excerpts -->
 						<section>
 							<ul class="divided">
 								<li>
-									<button type="button" data-toggle="modal"
-										data-target="#checkPwdForm">개인 정보 수정</button>
+									<a data-toggle="modal"
+										data-target="#checkPwdForm">개인 정보 수정</a>
 								</li>
 								<li><a href="${contextPath }/selectWishList.me?userNo=${loginUser.userNo}">위시 리스트</a>
 								</li>
@@ -72,7 +72,6 @@
 											<thead>
 												<tr>
 													<th>별점</th>
-													<th>리뷰 번호</th>
 													<th>리뷰 내용</th>
 												</tr>
 											</thead>
@@ -80,7 +79,6 @@
 												<tr>
 													<td>
 														<div id="scoreDiv">
-															별점을 작성해 주세요 <br>
 															<label for="rate1"><img id="starImg1" src="${contextPath }/images/star.png"></label><input type="radio" name="count" value="1" id="rate1">
 													        <label for="rate2"><img id="starImg2" src="${contextPath }/images/star.png"></label><input type="radio" name="count" value="2" id="rate2">
 													        <label for="rate3"><img id="starImg3" src="${contextPath }/images/star.png"></label><input type="radio" name="count" value="3" id="rate3">
@@ -88,7 +86,6 @@
 													        <label for="rate5"><img id="starImg5" src="${contextPath }/images/star.png"></label><input type="radio" name="count" value="5" id="rate5">
 														</div>
 													</td>
-													<td><input name="reviewNo" value="${r.reviewNo }" readonly></td>
 													<td><textarea rows="3" cols="80" name="reviewContent">${r.reviewContent }</textarea></td>
 												</tr>
 											</tbody>

@@ -23,6 +23,13 @@
 	<entry key="selectRoom">
 		SELECT ROOM_NO,ROOM_NAME,ROOM_INFO,PHOTO_NO FROM LODGING_DETAIL WHERE LOD_NO=? AND STATUS='Y'
 	</entry>
+	<!-- 방 사진 조회 -->
+	<entry key="selectRoomPhoto">
+		SELECT FILE_PATH||CHANGE_NAME THUMBNAIL,LOD_NO,ROOM_NO
+		FROM PHOTO
+		WHERE LOD_NO=? 
+		AND FILE_LEVEL=4
+	</entry>
 	<!-- 리뷰 조회 -->
 	<entry key="selectReview">SELECT REVIEW_NO,REVIEW_CONTENT,USER_NAME,CREATE_DATE,ROOM_NAME,COUNT
 								FROM REVIEW R
@@ -39,8 +46,8 @@
 	</entry>
 	<!-- 리뷰 사진등록 -->
 	<entry key="insertReviewPhoto">
-		INSERT INTO PHOTO(PHOTO_NO,ORIGIN_NAME,CHANGE_NAME,FILE_PATH,STATUS,FILE_LEVEL,REVIEW_NO)
-		VALUES(SEQ_PHN.NEXTVAL,?,?,?,'Y',?,?)
+		INSERT INTO PHOTO(PHOTO_NO,ORIGIN_NAME,CHANGE_NAME,FILE_PATH,STATUS,FILE_LEVEL,REVIEW_NO,LOD_NO)
+		VALUES(SEQ_PHN.NEXTVAL,?,?,?,'Y',?,?,?)
 	</entry>
 	<!-- 숙소 데이터 개수 뽑아오기 -->
 	<entry key="listCount">

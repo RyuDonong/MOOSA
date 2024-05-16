@@ -42,6 +42,7 @@ public class LodgingDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,category);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -186,7 +187,7 @@ public class LodgingDao {
 		return result;
 	}
 
-	public int insertReviewPhoto(Connection conn, ArrayList<Photo> pList, int reviewNo) {
+	public int insertReviewPhoto(Connection conn, ArrayList<Photo> pList, int reviewNo,int lno) {
 		PreparedStatement pstmt = null;
 		int result = 1; //사진이 여러개 왔을때 하나라도 0이라면 0이 되게 처리
 		String sql = prop.getProperty("insertReviewPhoto");
@@ -198,6 +199,7 @@ public class LodgingDao {
 					pstmt.setString(3, p.getFilePath());
 					pstmt.setInt(4, p.getFileLevel());
 					pstmt.setInt(5, reviewNo);
+					pstmt.setInt(6, lno);
 					result *= pstmt.executeUpdate();
 				}
 			} catch (SQLException e) {
@@ -208,18 +210,20 @@ public class LodgingDao {
 			}
 		return result;
 	}
-	//숙소 개수 조회해오기 // 숙소 개수 조회 맵퍼 작성하고 selectList컨트롤러 마저 작성하기
-	public int listCount(Connection conn,String category) {
+	//방 사진 조회 메소드
+	public ArrayList<Photo> selectRoomPhoto(Connection conn, int lno) {
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("listCount");
-		int listCount = 0;
+		String sql = prop.getProperty("selectRoomPhoto");
+		ArrayList<Photo> rpList = new ArrayList<>();
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, category);
+			pstmt.setInt(1, lno);
 			rset = pstmt.executeQuery();
-			if(rset.next()) {
-				listCount=rset.getInt("COUNT");
+			while(rset.next()) {
+				rpList.add(new Photo(rset.getString("THUMBNAIL")
+									,rset.getString("LOD_NO")
+									,rset.getInt("ROOM_NO")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -228,7 +232,8 @@ public class LodgingDao {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		return listCount;
+		
+		return rpList;
 	}
 	
 	

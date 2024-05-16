@@ -25,12 +25,12 @@
 					<div class="container">
 						<div class="row">
 							<!-- Sidebar -->
-								<div id="sidebar" class="col-4 col-12-medium">
+								<div id="sidebar" class="col-3 col-12-medium">
 									<!-- Excerpts -->
 										<section>
 											<ul class="divided">
 												<li >
-													<button type="button" data-toggle="modal" data-target="#checkPwdForm">개인 정보 수정</button>
+													<a data-toggle="modal" data-target="#checkPwdForm">개인 정보 수정</a>
 												</li>
 												<li>
 													<a href="${contextPath }/selectWishList.me?userNo=${loginUser.userNo}">위시 리스트</a>
