@@ -177,7 +177,7 @@
 
   //=========== <숙소> 페이지 처음 시작시 가져올 데이터 ==========
     $.ajax({
-	        url: "/moosa/main.info",
+	        url: "/moosa/lod.info",
 	        success: function (list) {
 	            var lodList = "";
 	            for (var i = 0; i < list.length; i++) {
