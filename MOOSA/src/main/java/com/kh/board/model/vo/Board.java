@@ -24,7 +24,6 @@ public class Board {
 	public Board() {
 		super();
 	}
-	
 
 	public Board(int boardNo, String boardTitle, String boardContent, int count, int likes, Date createDate,
 			String boardWriter, String userId, String categoryName, int rank, String filePath, String changeName) {
@@ -76,8 +75,6 @@ public class Board {
 		this.categoryName = categoryName;
 	}
 
-	
-
 	public Board(int boardNo, String boardTitle, String boardContent, int count, int likes, Date createDate,
 			String boardWriter, String userId, String categoryName) {
 		super();
@@ -92,9 +89,15 @@ public class Board {
 		this.categoryName = categoryName;
 	}
 
+	public Board(int boardNo, String boardTitle, String boardContent,String boardWriter, Date createDate) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardWriter = boardWriter;
+		this.createDate = createDate;
+	}
 	
-	
-
 	public Board(int boardNo, String boardTitle, String boardContent, int count, int likes, Date createDate,
 			String userId, String categoryName) {
 		super();
@@ -107,8 +110,6 @@ public class Board {
 		this.userId = userId;
 		this.categoryName = categoryName;
 	}
-
-
 
 	public Board(int boardNo, String boardTitle, String boardContent, int count, int likes, Date createDate,
 			String status, String boardWriter, String categoryNo, String userId, String categoryName) {
