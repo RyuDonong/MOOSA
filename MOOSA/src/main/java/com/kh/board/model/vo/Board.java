@@ -19,6 +19,8 @@ public class Board {
 	private String filePath;
 	private String changeName;
 	
+	private String thumbnailImg;
+	
 	public Board() {
 		super();
 	}
@@ -237,6 +239,5 @@ public class Board {
 				+ changeName + "]";
 	}
 
-	
-
 }
+	
