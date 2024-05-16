@@ -56,12 +56,13 @@ public class BoardInsertController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
+		
 		if (ServletFileUpload.isMultipartContent(request)) {
 
 			int maxSize = 10 * 1024 * 1024;
 
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/coursereviewImages/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/creviewImage/");
 
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",
 					new MyFileRenamePolicy());
@@ -84,7 +85,7 @@ public class BoardInsertController extends HttpServlet {
 				at = new Attachment();
 				at.setFileName(multiRequest.getOriginalFileName("UploadFile"));
 				at.setChangeName(multiRequest.getFilesystemName("UploadFile"));
-				at.setFilePath("/resources/coursereviewImages/");
+				at.setFilePath("/resources/creviewImage/");
 					
 			}
 			int result = new BoardService().insertBoard(b, at);
