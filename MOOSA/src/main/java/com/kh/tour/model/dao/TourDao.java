@@ -9,9 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
-
-import com.kh.board.model.vo.Board;
 import com.kh.common.JDBCTemplate;
+import com.kh.tour.model.vo.TourBoard;
 import com.kh.tour.model.vo.TourPhoto;
 
 public class TourDao {
@@ -61,7 +60,7 @@ public TourDao() {
 	}
 
 	// 사진게시글 작성
-	public int insertThumbnail(Connection conn, Board b) {
+	public int insertThumbnail(Connection conn, TourBoard b) {
 		// DML - insert
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -117,10 +116,10 @@ public TourDao() {
 	}
 
 	//사진게시글 목록 조회메소드
-		public ArrayList<Board> selectThumbnailList(Connection conn) {
+		public ArrayList<TourBoard> selectThumbnailList(Connection conn) {
 			//select 
 			ResultSet rset = null;
-			ArrayList<Board> list = new ArrayList<>();
+			ArrayList<TourBoard> list = new ArrayList<>();
 			Statement stmt = null;
 			
 			String sql = prop.getProperty("selectThumbnailList");
@@ -130,10 +129,10 @@ public TourDao() {
 				rset = stmt.executeQuery(sql);
 				
 				while(rset.next()) {
-					list.add(new Board(rset.getInt("BOARD_NO")
-							          ,rset.getString("BOARD_TITLE")
-							          ,rset.getInt("COUNT")
-							          ,rset.getString("BOARD_CONTENT")
+					list.add(new TourBoard(rset.getInt("TOURBOARD_NO")
+							          ,rset.getString("TOURBOARD_TITLE")
+							          ,rset.getInt("TOUR_COUNT")
+							          ,rset.getString("TOURBOARD_CONTENT")
 									  ,rset.getString("THUMBNAIL")));
 				}
 			} catch (SQLException e) {
@@ -172,9 +171,9 @@ public TourDao() {
 			return result;
 		}
 		//게시글 상세조회
-		public Board selectBoard(Connection conn, int bno) {
+		public TourBoard selectBoard(Connection conn, int bno) {
 			
-			Board b = null; //게시글정보담을 객체변수
+			TourBoard b = null; //게시글정보담을 객체변수
 			ResultSet rset = null; 
 			PreparedStatement pstmt = null;
 			String sql = prop.getProperty("selectBoard");
@@ -187,11 +186,11 @@ public TourDao() {
 				rset = pstmt.executeQuery();
 				
 				if(rset.next()) {
-					b = new Board(rset.getInt("BOARD_NO")
-								  ,rset.getString("BOARD_TITLE")
-								  ,rset.getString("BOARD_CONTENT")
+					b = new TourBoard(rset.getInt("TOURBOARD_NO")
+								  ,rset.getString("TOURBOARD_TITLE")
+								  ,rset.getString("TOURBOARD_CONTENT")
 								  ,rset.getString("USER_ID")
-								  ,rset.getDate("CREATE_DATE"));
+								  ,rset.getDate("TOURCREATE_DATE"));
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

@@ -156,8 +156,8 @@ input[type="submit"]:hover, input[type="reset"]:hover, button:hover {
 				<td></td>
 			</tr>
 			<tr>
-				<td>전화번호</td>
-				<td><input type="text" name="phone"></td>
+				<td>*전화번호</td>
+				<td><input type="text" name="phone" required></td>
 				<td></td>
 			</tr>
 			<tr>

@@ -13,10 +13,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 
-import com.kh.board.model.vo.Board;
 import com.kh.common.MoosaFileRenamePolicy;
 import com.kh.tour.model.service.TourService;
-import com.kh.tour.model.vo.Tour;
+import com.kh.tour.model.vo.TourBoard;
 import com.kh.tour.model.vo.TourPhoto;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -66,7 +65,7 @@ public class TourInsertController extends HttpServlet {
 			String content = multiRequest.getParameter("content");
 			String boardWriter = multiRequest.getParameter("userNo");
 					
-			Board b = new Board();
+			TourBoard b = new TourBoard();
 			b.setBoardTitle(title);
 			b.setBoardContent(content);
 			b.setBoardWriter(boardWriter);
