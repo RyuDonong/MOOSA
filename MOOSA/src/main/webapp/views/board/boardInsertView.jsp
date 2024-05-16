@@ -65,6 +65,7 @@
 					<input type="file" name="uploadFile">
 				</td>
 			</tr>
+			
 		</table>
 		<br><br>
 		<div align="center">

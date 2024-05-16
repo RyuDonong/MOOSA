@@ -18,6 +18,24 @@ public class BoardReply {
 	public BoardReply() {
 		super();
 	}
+	
+	
+	
+
+	public BoardReply(int replyNo, String replyContent, Date createDate, int replyWriter, String userId, int recommend,
+			int hate) {
+		super();
+		this.replyNo = replyNo;
+		this.replyContent = replyContent;
+		this.createDate = createDate;
+		this.replyWriter = replyWriter;
+		this.userId = userId;
+		this.recommend = recommend;
+		this.hate = hate;
+	}
+
+
+
 
 	public BoardReply(int replyNo, String replyContent, String likes, Date createDate, int replyWriter, String userId,
 			int recommend, int hate) {

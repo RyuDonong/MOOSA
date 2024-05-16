@@ -309,80 +309,34 @@
 		
 		//댓글 삭제버튼 
 		
-		//if(${loginUser.userId eq b.userId or loginUser eq 'admin' }){
-			
 			$('thead').on('click','.dButton',function(){
 				
-				alert('정말 삭제하시겠습니까?');
+				var c = confirm('정말 삭제하시겠습니까?');
 				//댓글번호지만 var replyLikes 변수 겹치지 않게
 				var replyNo = $(this).data('reply-writer'); 
 				
-				$.ajax({
-					url : "/moosa/delete.re",
-					data : {
-						replyNo : replyNo
-					},
-					success : function(result){
-						if(result>0){
-							alert("댓글삭제에 성공했어요!!");
-							selectReply();
-						}
-					},
-					error : function(){
-						alert("댓글삭제에 실패했어요 ㅠㅠ");
-					}
-				});
-			});
-			
-		//}else{
-		//	alert('작성한 유저가 아닙니다. 확인 후 다시 시도해주세요.')
-		//};
-		
-		
-		//댓글 좋아요 버튼
-		
-			//좋아요 취소를 기본변수로
-			var subCancel = false;
-		
-		$('thead').on('click','.lButton',function(){
-			//댓글번호
-			var replyLikes = $(this).data('reply-likes'); 
-			
-				if(subCancel){ //좋아요 취소
+				if(c){
+					
 					$.ajax({
-						url : "/moosa/likes.re",
+						url : "/moosa/delete.re",
 						data : {
-							replyLikes : replyLikes
+							replyNo : replyNo
 						},
-						success : function(){
-							subCancel = false;
-							alert("좋아요 취소 성공!!")
-							selectReply();
+						success : function(result){
+							if(result>0){
+								alert("댓글삭제에 성공했어요!!");
+								selectReply();
+							}
 						},
 						error : function(){
-							alert("좋아요 취소 실패 ㅠㅠ")
-						}
-					});
-				}else{ //좋아요
-					$.ajax({
-						url : "/moosa/likes.re",
-						type : "post",
-						data : {
-							replyLikes : replyLikes
-						},
-						success : function(){
-							subCancel = true;
-							alert("좋아요 성공!!")
-							selectReply();
-						},
-						error : function(){
-							alert("좋아요 실패 ㅠㅠ")
+							alert("댓글삭제에 실패했어요 ㅠㅠ");
 						}
 					});
 				}
-		});
-		
-		
+				
+				
+			});
+			
 		//댓글(따봉) 추천버튼
 			var thisRe = false;
 		$('thead').on('click','.cButton',function(){

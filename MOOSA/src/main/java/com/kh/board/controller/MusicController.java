@@ -34,6 +34,7 @@ public class MusicController extends HttpServlet {
 		
 		response.setContentType("text/html;charset=utf-8");
 		response.getWriter().print(music);
+		
 	}
 
 	/**

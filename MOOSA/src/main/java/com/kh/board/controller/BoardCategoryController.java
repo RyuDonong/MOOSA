@@ -33,7 +33,9 @@ public class BoardCategoryController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		int currentPage = request.getParameter("currentPage") == null ? 1 : Integer.parseInt(request.getParameter("currentPage"));
+		
+		//int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		//검색할 카테고리 넘버
 		int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));
 		
@@ -54,7 +56,7 @@ public class BoardCategoryController extends HttpServlet {
 		//페이지 최대갯수는 5개
 		pageLimit = 5;
 		//한페이지에서 보여줄 게시글 갯수는 DB가 얼마 없기에 3개씩
-		boardLimit = 3;
+		boardLimit = 5;
 		
 		//맨 마지막 페이지수는?
 		//총게시글 수 = 20 / 한페이지 보여줄 게시글수 = 3 == 6 페이지, 7페이지에서 게시글 2개

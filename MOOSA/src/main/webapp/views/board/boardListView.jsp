@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,18 +112,19 @@
 	
 	<!-- ===================================== 페이징 바 ======================================-->
 
-	<div align="center" class="pagingBar-area">
+<div align="center" class="pagingBar-area">
 
 		<!-- currentPage 가 1이면 이전버튼 disabled -->
 		<c:choose>
 			<c:when test="${bp.currentPage eq 1}">
-				<button class="btn btn-secondary" disabled>막힌 이전버튼</button>
+				<button class="btn btn-secondary" disabled>이전</button>
 			</c:when>
 			<c:otherwise>
 				<button class="btn btn-secondary"
 					onclick='location.href="${contextPath }/list.bo?currentPage=1"'>이전</button>
 			</c:otherwise>
 		</c:choose>
+		
 		<!-- 페이징 번호 begin ~ end 까지 불러오기 -->
 		<c:forEach var="p" begin="${bp.startPage }" end="${bp.endPage }">
 			<button class="btn btn-secondary"
@@ -131,7 +133,7 @@
 
 		<c:choose>
 			<c:when test="${bp.endPage eq bp.maxPage }">
-				<button class="btn btn-secondary" disabled>막힌 다음버튼</button>
+				<button class="btn btn-secondary" disabled>다음</button>
 			</c:when>
 			<c:otherwise>
 				<!-- 수정해야함 -->
@@ -140,6 +142,7 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
+	
 
 	<br>
 	<br>

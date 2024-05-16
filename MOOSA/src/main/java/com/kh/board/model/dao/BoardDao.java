@@ -420,7 +420,6 @@ public class BoardDao {
 					br.add(new BoardReply(
 							rset.getInt("REPLY_NO")
 							,rset.getString("REPLY_CONTENT")
-							,rset.getString("LIKES")
 							,rset.getDate("CREATE_DATE")
 							,rset.getInt("REPLY_WRITER")
 							,rset.getString("USER_ID")

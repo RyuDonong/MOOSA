@@ -171,7 +171,6 @@
 	<entry key="selectReply">
 	SELECT  REPLY_NO
             ,REPLY_CONTENT
-            ,LIKES
             ,CREATE_DATE
             ,REPLY_WRITER
             ,USER_ID
@@ -188,7 +187,6 @@
 	INSERT INTO BOARD_REPLY (
                          REPLY_NO
                         ,REPLY_CONTENT
-                        ,LIKES
                         ,CREATE_DATE
                         ,STATUS
                         ,REPLY_WRITER
@@ -199,7 +197,6 @@
                 VALUES(
                         SEQ_RNO.NEXTVAL
                        ,?
-                       ,DEFAULT
                        ,DEFAULT
                        ,DEFAULT
                        ,?
