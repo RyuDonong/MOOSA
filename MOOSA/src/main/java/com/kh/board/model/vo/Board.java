@@ -19,10 +19,11 @@ public class Board {
 	private String filePath;
 	private String changeName;
 	
+	private String thumbnailImg;
+	
 	public Board() {
 		super();
 	}
-	
 
 	public Board(int boardNo, String boardTitle, String boardContent, int count, int likes, Date createDate,
 			String boardWriter, String userId, String categoryName, int rank, String filePath, String changeName) {
@@ -52,7 +53,15 @@ public class Board {
 		this.categoryName = categoryName;
 	}
 
-
+	public Board(int boardNo, String boardTitle, int count,String boardContent,String thumbnailImg) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.count = count;
+		this.boardContent = boardContent;
+		this.thumbnailImg = thumbnailImg;
+		
+	}
 
 	public Board(String boardTitle, String boardContent, int count, int likes, Date createDate, String userId,
 			String categoryName) {
@@ -65,8 +74,6 @@ public class Board {
 		this.userId = userId;
 		this.categoryName = categoryName;
 	}
-
-	
 
 	public Board(int boardNo, String boardTitle, String boardContent, int count, int likes, Date createDate,
 			String boardWriter, String userId, String categoryName) {
@@ -82,9 +89,15 @@ public class Board {
 		this.categoryName = categoryName;
 	}
 
+	public Board(int boardNo, String boardTitle, String boardContent,String boardWriter, Date createDate) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardWriter = boardWriter;
+		this.createDate = createDate;
+	}
 	
-	
-
 	public Board(int boardNo, String boardTitle, String boardContent, int count, int likes, Date createDate,
 			String userId, String categoryName) {
 		super();
@@ -97,8 +110,6 @@ public class Board {
 		this.userId = userId;
 		this.categoryName = categoryName;
 	}
-
-
 
 	public Board(int boardNo, String boardTitle, String boardContent, int count, int likes, Date createDate,
 			String status, String boardWriter, String categoryNo, String userId, String categoryName) {
@@ -228,6 +239,14 @@ public class Board {
 		this.changeName = changeName;
 	}
 
+	public String getThumbnailImg() {
+		return thumbnailImg;
+	}
+
+	public void setThumbnailImg(String thumbnailImg) {
+		this.thumbnailImg = thumbnailImg;
+	}
+	
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
@@ -237,6 +256,5 @@ public class Board {
 				+ changeName + "]";
 	}
 
-	
-
 }
+	

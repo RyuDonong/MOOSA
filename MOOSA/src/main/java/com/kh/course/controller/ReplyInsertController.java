@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.course.model.service.CourseService;
+import com.kh.course.model.service.BoardService;
 import com.kh.course.model.vo.Reply;
 
 /**
  * Servlet implementation class ReplyInsertController
  */
-@WebServlet("/insertReply.bo")
+@WebServlet("/insertReply.re")
 public class ReplyInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,7 +46,7 @@ public class ReplyInsertController extends HttpServlet {
 		r.setReplyWriter(userNo);
 		r.setReplyContent(content);
 		
-		int result = new CourseService().insertReply(r);
+		int result = new BoardService().insertReply(r);
 		
 		response.getWriter().print(result);
 	}

@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String contextPath = request.getContextPath();
+%>
+
+
+
+
 
 <!DOCTYPE HTML>
 
@@ -10,225 +17,124 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Left Sidebar - Strongly Typed by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-				
-	<style>
-    .theme {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-	overflow: hidden;
-	background-color: #333; 
+<head>
+<title>관광명소</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+
+<style>
+/* 그리드 시스템 스타일 */
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -15px; /* 그리드 아이템 간격 조절 */
+	width: 100%; /* 한 행에 여러 개의 요소 포함 */
 }
 
-     .theme .list {
-       float: left;
-    }
-	 
-	 .theme .list a {
-       display: block;
-       color: white;
-       text-align: center;
-       padding: 14px 16px; 
-       text-decoration: none;
-       }
-       
-       .theme .list.active {
-       background-color: #4CAF50;
-       }
-       
-       
-	 
-	
-	</style>
-	
-	
-	
-	<body class="left-sidebar is-preload">
-		<div id="page-wrapper">
-<!-- Header -->
-				<%@include file = "/views/common/header.jsp"%>
-			
+.col-2 {
+	width: calc(25% - 30px); /* 4열 그리드, 여백 고려 */
+	margin: 15px; /* 그리드 아이템 간격 조절 */
+}
 
-				<!-- Features -->
-				<section id="features" class="jjy">
-					<div class="container">
-						<header>
-							<h3>
-							 <ul calss ="theme">
-							   <li class="list"> 
-							      <a href="${contextPath }/list.tour"><span>해변</span></a>
-							    </li>
-							    <li class="list"> 
-							      <a href="${contextPath }/list2.tour"><span>일출ㆍ일몰</span></a>
-							    </li>
-							    <li class="list"> 
-							      <a href="${contextPath }/list3.tour"><span>박물관ㆍ미술관</span></a>
-							    </li>
-							    <li class="list"> 
-							      <a href="${contextPath }/list4.tour"><span>축제</span></a>
-							    </li>
-							    <li class="list"> 
-							      <a href="${contextPath }/list5.tour"><span>음식</span></a>
-							    </li>
-							    <li class="list"> 
-							      <a href="${contextPath }/list6.tour"><span>액티비티</span></a>
-							    </li>
-							    
-							    
-							    
-							 
-							 
-							 </ul>
-							   
-							</h3>
-						</header>
-						<div class="row aln-center">
-							<div class="col-4 col-5-medium col-12-small">
+/* 반응형 그리드 시스템 */
+@media ( max-width : 980px) {
+	.col-2 {
+		width: calc(50% - 30px); /* 2열 그리드로 변경, 여백 고려 */
+	}
+}
 
-								<!-- Feature -->
-									<section>
-										<a href="#1" class="image featured"><img src="resources/tourImages/beach/beach1.jpg" alt="" /></a>
-										<header>
-											<h3>Okay, so what is this?</h3>
-										</header>
-										<p>This is <strong>Strongly Typed</strong>, a free, fully responsive site template
-										by <a href="http://html5up.net">HTML5 UP</a>. Free for personal and commercial use under the
-										<a href="http://html5up.net/license">CCA 3.0 license</a>.</p>
-									</section>
+@media ( max-width : 480px) {
+	.col-2 {
+		width: calc(100% - 30px); /* 1열 그리드로 변경, 여백 고려 */
+	}
+}
 
-							</div>
-							<div class="col-4 col-5-medium col-12-small">
+        .img {
+            width: 100%;
+            height: auto;
+            max-width: 200px; /* 이미지 최대 너비 설정 */
+            max-height: 200px; /* 이미지 최대 높이 설정 */
+        }
+         section#features {
+            padding: 0;
+        }
+        
+        
+</style>
 
-								<!-- Feature -->
-									<section>
-										<a href="#2" class="image featured"><img src="resources/tourImages/beach/beach2.jpg" alt="" /></a>
-										<header>
-											<h3>Nice! What is HTML5 UP?</h3>
-										</header>
-										<p><a href="http://html5up.net">HTML5 UP</a> is a side project of <a href="http://twitter.com/ajlkn">AJ’s</a> (= me).
-										I started it as a way to both test my responsive tools and sharpen up my coding
-										and design skills a bit.</p>
-									</section>
 
-							</div>
-							<div class="col-4 col-5-medium col-12-small">
+</head>
+<%@include file="/views/common/header.jsp"%>
 
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="resources/tourImages/beach/beach3.jpg" alt="" /></a>
-										<header>
-											<h3>What's this built with?</h3>
-										</header>
-										<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
-										sites and apps. All of my templates at <a href="http://html5up.net">HTML5 UP</a> are built using these tools.</p>
-									</section>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-							</div>
-							<div class="col-4 col-5-medium col-12-small">
+<br>
 
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="resources/tourImages/beach/beach4.jpg" alt="" /></a>
-										<header>
-											<h3>What's this built with?</h3>
-										</header>
-										<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
-										sites and apps. All of my templates at <a href="http://html5up.net">HTML5 UP</a> are built using these tools.</p>
-									</section>
+<%
+if ((loginUser != null) && loginUser.getUserId().equals("admin")) {
+%>
+<div align="center">
+	<!-- 		 	<button onclick="location.href='oooo'">글작성</button> -->
+	<a href="<%=contextPath%>/insert.to" class="btn btn-info">관광명소 추가</a>
 
-							</div>
-							<div class="col-4 col-5-medium col-12-small">
+</div>
 
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="resources/tourImages/beach/beach5.jpg" alt="" /></a>
-										<header>
-											<h3>What's this built with?</h3>
-										</header>
-										<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
-										sites and apps. All of my templates at <a href="http://html5up.net">HTML5 UP</a> are built using these tools.</p>
-									</section>
+<%
+}
+%>
+<br>
 
-							</div>
-							<div class="col-4 col-5-medium col-12-small">
+<pre>
+	<h3>                                            해변                                 일출*일몰                       액티비티                               음식                                   축제</h3>
+</pre>
 
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="resources/tourImages/beach/beach6.jpg" alt="" /></a>
-										<header>
-											<h3>What's this built with?</h3>
-										</header>
-										<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
-										sites and apps. All of my templates at <a href="http://html5up.net">HTML5 UP</a> are built using these tools.</p>
-									</section>
 
-							</div>
-								<div class="col-4 col-5-medium col-12-small">
+<!-- 글 클릭했을때 상세보기 페이지 작성하기 
+			jsp : thumbnailDetailView.jsp 
+			controller : ThumbnailDetailController 
+			method : thumbnailDetail();
+			참고 페이지 : 사진게시글 작성페이지 
+		 -->
 
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="resources/tourImages/beach/beach7.jpg" alt="" /></a>
-										<header>
-											<h3>Okay, so what is this?</h3>
-										</header>
-										<p>This is <strong>Strongly Typed</strong>, a free, fully responsive site template
-										by <a href="http://html5up.net">HTML5 UP</a>. Free for personal and commercial use under the
-										<a href="http://html5up.net/license">CCA 3.0 license</a>.</p>
-									</section>
-
-							</div>
-								<div class="col-4 col-5-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="resources/tourImages/beach/beach8.jpg" alt="" /></a>
-										<header>
-											<h3>Okay, so what is this?</h3>
-										</header>
-										<p>This is <strong>Strongly Typed</strong>, a free, fully responsive site template
-										by <a href="http://html5up.net">HTML5 UP</a>. Free for personal and commercial use under the
-										<a href="http://html5up.net/license">CCA 3.0 license</a>.</p>
-									</section>
-
-							</div>
-								<div class="col-4 col-5-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="resources/tourImages/beach/beach9.jpg" alt="" /></a>
-										<header>
-											<h3>Okay, so what is this?</h3>
-										</header>
-										<p>This is <strong>Strongly Typed</strong>, a free, fully responsive site template
-										by <a href="http://html5up.net">HTML5 UP</a>. Free for personal and commercial use under the
-										<a href="http://html5up.net/license">CCA 3.0 license</a>.</p>
-									</section>
-
-							</div>
-							
-						
-						
-						
-						
+<body class="homepage is-preload">
+	<div id="page-wrapper">
+		<!-- 반복문으로 썸네일 뽑아주기 -->
+		<section id="features">
+			<div class="container">
+				<div class="row">
+					<c:forEach var="th" items="${list}">
+						<div class="col-2">
+							<section>
+								<div class="image feat" align="center"
+									onclick="location.href='${contextPath}/detail.tO?bno=${th.boardNo}'">
+									<img src="${contextPath}${th.thumbnailImg}"
+										alt="Thumbnail Image" width="200" height="200">
+									<header>
+										<p>
+											<b>${th.boardTitle}</b><br> 조회수 : ${th.count}
+										</p>
+									</header>
+								</div>
+							</section>
 						</div>
-					</div>
-				</section>
+					</c:forEach>
+				</div>
+			</div>
+		</section>
+	</div>
 
-		</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
 
-	</body>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
 </html>

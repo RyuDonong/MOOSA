@@ -128,7 +128,7 @@ input[type="submit"]:hover, input[type="reset"]:hover, button:hover {
 
 
 	<h1>
-		<a href="http://localhost:8888/moosa/">MOOSA</a>
+		<a href="<%=contextPath%>">MOOSA</a>
 	</h1>
 	<form id="enroll-form" action="<%=contextPath%>/insert.me"
 		method="post">
@@ -199,6 +199,12 @@ input[type="submit"]:hover, input[type="reset"]:hover, button:hover {
 	<script>
 		function idCheck() {
 			var inputId = $("#userId").val();
+			 var idRegExp = /^[a-zA-Z0-9]{4,12}$/;
+	            if (!idRegExp.test(inputId)) {
+	                alert("아이디는 영문 대소문자와 숫자 4~12자리로 입력해야합니다.");
+	                $("#userId").focus();
+	                return false;
+	            }
 			$.ajax({
 				url : "${contextPath}/idCheck.me",
 				data : {
@@ -221,7 +227,11 @@ input[type="submit"]:hover, input[type="reset"]:hover, button:hover {
 				}
 			});
 		}
-
+ 
+		
+		
+		
+		
 		$(function() {
 			$("#pwChk").blur(function() {
 				if ($("#pwChk").val() == $("input[name='userPwd']").val()) {
@@ -233,8 +243,25 @@ input[type="submit"]:hover, input[type="reset"]:hover, button:hover {
 					$("#checkPw").css("color", "red");
 					$("#pwDoubleChk").val("false");
 				}
-			});
-		});
+	        });
+	    });
+	    
+$(function() {
+    // 휴대폰 번호 입력 필드에서 포커스가 떠날 때 이벤트를 처리합니다.
+    $("input[name='phone']").blur(function() {
+        // 사용자가 입력한 휴대폰 번호를 가져옵니다.
+        var phoneNumber = $(this).val();
+
+        // 휴대폰 번호의 길이가 11자리가 아닌 경우
+        if (phoneNumber.length !== 11) {
+            // 경고 메시지를 표시하고 입력 필드에 포커스를 맞춥니다.
+            alert("휴대폰 번호는 숫자 11자리로 입력해야합니다.");
+            $(this).val(""); // 입력 내용을 지웁니다.
+        } else {
+
+        }
+    });
+});
 	</script>
 
 

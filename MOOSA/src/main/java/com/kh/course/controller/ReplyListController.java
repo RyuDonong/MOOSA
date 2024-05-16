@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.kh.course.model.service.CourseService;
+import com.kh.course.model.service.BoardService;
 import com.kh.course.model.vo.Reply;
 
 /**
  * Servlet implementation class ReplyListController
  */
-@WebServlet("/replyList.bo")
+@WebServlet("/replyList.re")
 public class ReplyListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,15 +32,13 @@ public class ReplyListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		int refBno = Integer.parseInt(request.getParameter("bno"));
 		
-		ArrayList<Reply> list = new CourseService().replyList(refBno);
+		ArrayList<Reply> list = new BoardService().replyList(refBno);
 		
 		response.setContentType("json/application; charset=UTF-8");
 		
 		new Gson().toJson(list,response.getWriter());
-		
 	}
 
 	/**
