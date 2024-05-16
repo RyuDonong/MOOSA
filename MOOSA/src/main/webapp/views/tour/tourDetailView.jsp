@@ -54,14 +54,7 @@ String contextPath = request.getContextPath();
 				
 			</table>
 			<br><br>
-	<!-- 	 <Script>
-		$(function(){
-					console.log("${b.thumbnailImg}");
-				})
-				</Script> -->
-		
-			
-		
+	
 		</form>
 	
 	</div>

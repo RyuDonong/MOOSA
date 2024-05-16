@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String contextPath = request.getContextPath();
 %>
@@ -37,15 +37,12 @@ String contextPath = request.getContextPath();
 				</tr>
 				<tr>
 					<th>대표이미지</th>
-					<td colspan="3" align="center"  width="250" height="170">
-						<img id="titleImg">
-					</td>
+					<td colspan="3" align="center" width="250" height="170"><img
+						id="titleImg"></td>
 				</tr>
 				<tr>
 					<th>상세이미지</th>
-					<td width="150" height="120">
-						<img id="contentImg1" >
-					</td>
+					<td width="150" height="120"><img id="contentImg1"></td>
 				</tr>
 
 			</table>
@@ -54,8 +51,9 @@ String contextPath = request.getContextPath();
 			<div id="file-area">
 				<!-- onchange : input요소 상태가 변경되면 동작하는 이벤트 -->
 
-	<input type="file" id="file1" name="file1" onchange="loadImg(this,1);" required> 
-				<input type="file" id="file2" name="file2" onchange="loadImg(this,2);">
+				<input type="file" id="file1" name="file1"
+					onchange="loadImg(this,1);" required> <input type="file"
+					id="file2" name="file2" onchange="loadImg(this,2);">
 			</div>
 
 			<div align="center">
@@ -63,8 +61,8 @@ String contextPath = request.getContextPath();
 			</div>
 		</form>
 
-	<script>
-		$(function(){
+		<script>
+			$(function() {
 				//이미지영역 클릭했을때 input file 태그가 동작하도록 처리 
 				$("#titleImg").click(function() {
 					//대표이미지영역이 클릭되었을때 input file1 태그 클릭시키기
@@ -74,33 +72,20 @@ String contextPath = request.getContextPath();
 					//상세이미지영역이 클릭되었을때 input file 태그 클릭시키기
 					$("#file2").click();
 				});
-			
 
-		
-		//input file 숨기기
-		$("#file-area").hide();
-		
-		
-	});
-			
+				//input file 숨기기
+				$("#file-area").hide();
+
+			});
 
 			//onchange에서 동작할 함수 
 			function loadImg(inputFile, num) {
-				//inputFile : 현재 이벤트가 발생한 요소 (input type="file")
-				//num : 해당 요소가 몇번째인지
-				//inputFile.files : 업로드된 파일정보를 확인할수있는 속성(배열형식으로 담음 fileList)
-				//파일을 선택하면 0번 인덱스에 파일정보가 담긴다. 이때 length는 1이 된다
-				//파일을 선택했을땐 length가 1 선택하지 않았을땐 0 이기때문에 
-				//해당 조건으로 파일에대한 처리하기.
 
 				if (inputFile.files.length == 1) {//파일이 존재할때
 					//해당파일 정보를 읽어 미리보기 영역에 보여주기 
 					//파일 정보를 읽어줄 객체 FileReader() 준비 
 					var reader = new FileReader();
 
-					//파일을 읽어 해당 파일의 고유한 url을 생성해주는 메소드 
-					//readAsDataURL(파일정보) 이라는 메소드 
-					//우리가 넣은 파일정보는 inputFile.files[0] 에 담겨있다
 					reader.readAsDataURL(inputFile.files[0]);
 
 					//reader 객체가 해당파일 정보를 읽어오는 시점 onload
@@ -114,8 +99,10 @@ String contextPath = request.getContextPath();
 
 						switch (num) {
 						case 1:
-							$("#titleImg").attr("src", e.target.result);break;
-						case 2 : $("#contentImg1").attr("src",e.target.result); 
+							$("#titleImg").attr("src", e.target.result);
+							break;
+						case 2:
+							$("#contentImg1").attr("src", e.target.result);
 							break;
 
 						}
@@ -124,9 +111,11 @@ String contextPath = request.getContextPath();
 					//선택된 파일이 사라졌을때 src 비워주기
 					switch (num) {
 					case 1:
-						$("#titleImg").attr("src", null);break;
-					case 2 : $("#contentImg1").attr("src",null); break;
-						
+						$("#titleImg").attr("src", null);
+						break;
+					case 2:
+						$("#contentImg1").attr("src", null);
+						break;
 
 					}
 				}
