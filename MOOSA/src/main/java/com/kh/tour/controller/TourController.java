@@ -39,6 +39,8 @@ public class TourController extends HttpServlet {
 		ArrayList<TourBoard> list = new TourService().selectThumbnailList();
 		// 조회 데이터 전달 .
 		request.setAttribute("list", list);
+		
+		System.out.println(list);
 
 		// 사진 게시글 작성페이지로 이동
 		request.getRequestDispatcher("views/tour/tourView.jsp").forward(request, response);

@@ -115,7 +115,7 @@
 	</div>
     
   
-   
+   <%@include file = "/views/common/footer.jsp"%>
     <script>
         function insertReply(){
             $.ajax({

@@ -191,7 +191,7 @@
                 </div>
                 <div class="description">
                     <p>겨울은 차가운 계절입니다. 눈이 내리는 풍경을 감상하거나 온기를 느끼는 모임이 어울립니다.</p>
-                    <p>키워드: #눈 #추위  #온기</p>
+                    <p>#눈 #추위  #온기</p>
                     <br>
                     <a href="${contextPath}/course.wi">바로가기</a>
                 </div>
@@ -200,7 +200,7 @@
         
        
     </div>
-
+	<%@include file = "/views/common/footer.jsp"%>
     <script>
         function changeSeason(season) {
             const body = document.body;

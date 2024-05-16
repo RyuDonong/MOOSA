@@ -48,13 +48,13 @@ String contextPath = request.getContextPath();
 			</table>
 			<br> <br>
 
-			<div id="file-area">
-				<!-- onchange : input요소 상태가 변경되면 동작하는 이벤트 -->
+			 <div id="file-area">
+				onchange : input요소 상태가 변경되면 동작하는 이벤트
 
 				<input type="file" id="file1" name="file1"
 					onchange="loadImg(this,1);" required> <input type="file"
 					id="file2" name="file2" onchange="loadImg(this,2);">
-			</div>
+			</div> 
 
 			<div align="center">
 				<button type="submit">글작성</button>

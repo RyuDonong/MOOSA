@@ -47,17 +47,16 @@ String contextPath = request.getContextPath();
 	}
 }
 
-        .img {
-            width: 100%;
-            height: auto;
-            max-width: 200px; /* 이미지 최대 너비 설정 */
-            max-height: 200px; /* 이미지 최대 높이 설정 */
-        }
-         section#features {
-            padding: 0;
-        }
-        
-        
+.img {
+	width: 100%;
+	height: auto;
+	max-width: 200px; /* 이미지 최대 너비 설정 */
+	max-height: 200px; /* 이미지 최대 높이 설정 */
+}
+
+section#features {
+	padding: 0;
+}
 </style>
 
 
