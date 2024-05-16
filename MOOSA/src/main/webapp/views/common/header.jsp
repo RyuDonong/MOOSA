@@ -197,10 +197,10 @@
 			            
 			            $('#music-title').html(musicTitle);
 			            
-			            console.log('데이터 불러오기 성공!!');
+			           // console.log('데이터 불러오기 성공!!');
 			        },
 			        error: function () {
-			            console.log('데이터 불러오기 실패');
+			            //console.log('데이터 불러오기 실패');
 			        }
 			    });
 		    });

@@ -39,8 +39,9 @@ public class LodgingDetailController extends HttpServlet {
 		int lno= Integer.parseInt(request.getParameter("lno"));
 		
 		Lodging lod= new LodgingService().selectDetailLodging(lno);
-		ArrayList<Review> list = new LodgingService().selectReview(lno);
+		ArrayList<Review> list = new LodgingService().selectEveryReview(lno);
 		ArrayList<Room> rList = new LodgingService().selectRoom(lno);
+//		System.out.println(rList);
 		ArrayList<Photo> rpList = new LodgingService().selectRoomPhoto(lno);//방 사진
 		ArrayList<Photo> pList = new PhotoService().selectReviewPhoto(lno); //리뷰사진
 //		System.out.println(rList);

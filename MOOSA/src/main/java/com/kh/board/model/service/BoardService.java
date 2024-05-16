@@ -393,13 +393,13 @@ public class BoardService {
 		return list;
 	}
 
-	// =========== 메인페이지 첫 로드시 가져올 음악정보 =============
-	public String musicInfo() {
-		Connection conn = JDBCTemplate.getConnection();
-		String music = new BoardDao().musicInfo(conn);
-		JDBCTemplate.close(conn);
-		return music;
-	}
+//	// =========== 메인페이지 첫 로드시 가져올 음악정보 =============
+//	public String musicInfo() {
+//		Connection conn = JDBCTemplate.getConnection();
+//		String music = new BoardDao().musicInfo(conn);
+//		JDBCTemplate.close(conn);
+//		return music;
+//	}
 
 	
 

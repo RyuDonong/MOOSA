@@ -30,10 +30,10 @@ public class MusicController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String music = new BoardService().musicInfo();
-		
-		response.setContentType("text/html;charset=utf-8");
-		response.getWriter().print(music);
+//		String music = new BoardService().musicInfo();
+//		
+//		response.setContentType("text/html;charset=utf-8");
+//		response.getWriter().print(music);
 	}
 
 	/**

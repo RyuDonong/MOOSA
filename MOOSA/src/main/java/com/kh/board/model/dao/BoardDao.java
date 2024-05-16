@@ -852,28 +852,28 @@ public class BoardDao {
 	}
 
 	// =====배경음악======= 메인페이지 첫 로드시 가져올 정보 ===========
-	public String musicInfo(Connection conn) {
-		
-		String music = "";
-		ResultSet rset = null;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("musicInfo");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rset = pstmt.executeQuery();
-			if(rset.next()) {
-				music =  rset.getString("FILE_NAME");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
-		return music;
-	}
+//	public String musicInfo(Connection conn) {
+//		
+//		String music = "";
+//		ResultSet rset = null;
+//		PreparedStatement pstmt = null;
+//		String sql = prop.getProperty("musicInfo");
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			rset = pstmt.executeQuery();
+//			if(rset.next()) {
+//				music =  rset.getString("FILE_NAME");
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			JDBCTemplate.close(rset);
+//			JDBCTemplate.close(pstmt);
+//		}
+//		return music;
+//	}
 
 }
 
