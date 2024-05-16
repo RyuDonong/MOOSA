@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.common.JDBCTemplate;
-import com.kh.common.model.vo.BoardPagingBar;
 import com.kh.common.model.vo.Photo;
 import com.kh.lodging.model.dao.LodgingDao;
 import com.kh.lodging.model.vo.Lodging;
@@ -71,6 +70,14 @@ public class LodgingService {
 		ArrayList<Photo> rpList = new LodgingDao().selectRoomPhoto(conn,lno);
 		JDBCTemplate.close(conn);
 		return rpList;
+	}
+	
+	//========== 메인페이지 로드 =================
+	public ArrayList<Lodging> selectLodgingMain() {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Lodging> rList = new LodgingDao().selectLodgingMain(conn);
+		JDBCTemplate.close(conn);
+		return rList;
 	}
 	
 	

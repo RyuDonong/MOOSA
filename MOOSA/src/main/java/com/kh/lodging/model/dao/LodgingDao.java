@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.common.JDBCTemplate;
-import com.kh.common.model.vo.BoardPagingBar;
 import com.kh.common.model.vo.Photo;
 import com.kh.lodging.model.vo.Lodging;
 import com.kh.lodging.model.vo.Review;
@@ -234,6 +233,32 @@ public class LodgingDao {
 		}
 		
 		return rpList;
+	}
+
+	//========== 메인페이지 로드 =================
+	public ArrayList<Lodging> selectLodgingMain(Connection conn) {
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectLodgingMain");
+		ArrayList<Lodging> lList = new ArrayList<>();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				lList.add(new Lodging(rset.getString("LOD_NAME")
+									,rset.getString("LOD_ADDRESS")
+									,rset.getString("FILE_PATH")
+									,rset.getString("CHANGE_NAME")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return lList;
 	}
 	
 	

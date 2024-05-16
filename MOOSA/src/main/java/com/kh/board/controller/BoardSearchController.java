@@ -73,12 +73,9 @@ public class BoardSearchController extends HttpServlet {
 		
 		
 		switch(searchOption) {
-		
 			case 1 : list = bs.searchTitle(sc,bp); break; //제목으로 검색
 			case 2 : list = bs.searchContent(sc,bp); break; //내용으로 검색
 			case 3 : list = bs.searchUserId(sc,bp); break; //아이디로 검색
-			
-			
 		}
 		
 		

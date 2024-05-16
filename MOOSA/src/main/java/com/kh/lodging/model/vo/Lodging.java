@@ -12,11 +12,25 @@ public class Lodging {
 	//파일 경로와 바뀐 파일명 합친변수
 	private String Thumbnail;
 	
+	private String filePath;
+	private String changeName;
+	
 	public Lodging() {
 		super();
 	}
 	
 	
+	public Lodging(String lodName, String lodAddress, String filePath, String changeName) {
+		super();
+		this.lodName = lodName;
+		this.lodAddress = lodAddress;
+		this.filePath = filePath;
+		this.changeName = changeName;
+	}
+
+
+
+
 	public Lodging(int lodNo, String lodName, String lodAddress, String thumbnail) {
 		super();
 		this.lodNo = lodNo;
@@ -114,6 +128,26 @@ public class Lodging {
 		return "Lodging [lodNo=" + lodNo + ", lodName=" + lodName + ", lodAddress=" + lodAddress + ", lodInfo="
 				+ lodInfo + ", status=" + status + ", userNo=" + userNo + ", category=" + category + ", Thumbnail="
 				+ Thumbnail + "]";
+	}
+
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+
+	public String getChangeName() {
+		return changeName;
+	}
+
+
+	public void setChangeName(String changeName) {
+		this.changeName = changeName;
 	}
 	
 	

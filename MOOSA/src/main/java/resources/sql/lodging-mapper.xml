@@ -52,4 +52,14 @@
 	<entry key="listCount">
 		SELECT COUNT(*) COUNT FROM LODGING L JOIN LOD_CATEGORY LD USING(LOD_CATEGORY_NO) WHERE L.STATUS='Y' AND LOD_CATEGORY_NAME = ?
 	</entry>
+	
+	<!-- 메인페이지 로드 -->
+	<entry key="selectLodgingMain">
+		SELECT *
+		FROM(SELECT LOD_NAME,LOD_ADDRESS,FILE_PATH,CHANGE_NAME
+		FROM LODGING
+		JOIN PHOTO USING (LOD_NO))
+		WHERE ROWNUM &lt; 4
+	</entry>
+	
 </properties>

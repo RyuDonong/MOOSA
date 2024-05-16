@@ -83,17 +83,17 @@
 							<div class="slider">
 								<button class="prev">◁</button>
 									        <div class="slide" >
-										        <a href="https://www.naver.com" target="_blank">
+										        <a href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%ED%92%8D%EC%B0%A8/place/17040007?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
 										           <img src="views/common/images/jeju1.jpg" style="width: 100%; height: auto;">
 										        </a>
 									        </div>
 									        <div class="slide">
-										        <a href="https://www.naver.com" target="_blank">
+										        <a href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%ED%92%8D%EC%B0%A8/place/20104174?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
 										          <img src="views/common/images/jeju2.jpg" style="width: 100%; height: auto;">
 										        </a>
 									        </div>
 									        <div class="slide">
-										        <a href="https://www.naver.com" target="_blank">
+										        <a href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%ED%92%8D%EC%B0%A8/place/1693044854?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
 										          <img src="views/common/images/jeju3.jpg" style="width: 100%; height: auto;">
 										        </a>
 									        </div>
@@ -183,14 +183,14 @@
 	            for (var i = 0; i < list.length; i++) {
 	                lodList += "<div class='col-4 col-6-medium col-12-small'>"
 	                    + "<section>"
-	                    + "<a href='http://www.naver.com'>"
+	                    + "<a href='/moosa/list.lo'>"
 	                    + "<img src='/moosa" + list[i].filePath + "" + list[i].changeName + "' style='width:100%; height:auto;'>"
 	                    + "</a>"
 	                    + "</header>"
-	                    + "<h3>" + list[i].boardTitle + "</h3>"
+	                    + "<h3>" + list[i].lodName + "</h3>"
 	                    + "</header>"
 	                    + "<body>"
-	                    + "<p>" + list[i].boardContent + "</p>"
+	                    + "<p>" + list[i].lodAddress + "</p>"
 	                    + "</body>"
 	                    + "</section>"
 	                    + "</div>";
@@ -290,12 +290,6 @@
 	    	});
 		
 	  });
-	
-	
-	
-	
-		
-		
 
 	 //========== 이미지 슬라이드 ===========
 		$(function() {

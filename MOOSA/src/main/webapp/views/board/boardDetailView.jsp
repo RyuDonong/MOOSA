@@ -136,8 +136,9 @@
 	<br>
 	
 	<div class="like-area" style="margin-left: 10%; margin-right: 10%;">
-		<button class="likeBtn" class="btn btn-primary" value="${b.boardNo }">글이
-			유익했다면 좋아요♡</button>
+		<button class="likeBtn" class="btn btn-primary" value="${b.boardNo }">
+		글이 유익했다면 좋아요♡
+		</button>
 	</div>
 
 	<br>
