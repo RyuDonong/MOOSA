@@ -36,6 +36,8 @@
 									</header>
 									<div id="contentDiv">
 									</div>
+									<div id="pagingDiv">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -62,17 +64,26 @@
 			$(this).parent('li').siblings().removeClass('on');
 			//console.log($(this).text());
 			$.ajax({
-				url : "/moosa/selectList.lo",
+				url : "${contextPath}/selectList.lo",
 				data : {category :$(this).text()},
 				success : function(list){
-					//console.log(list)
 					var html = "";
 					for (var i in list){
-						
-						html += '<section class="tiles"><article class="style2"><span class="image"><img src="/moosa'+list[i].Thumbnail+'" alt="" /></span><a href="/moosa/lodDetail.lo?lno='+list[i].lodNo+'"><h2 id="contentTitle">'+list[i].lodName+'</h2><div class="content"><p>'+list[i].lodAddress+'</p></div></a></article></section>';
+						html += '<section class="tiles">';
+						html += '<article class="style2">';
+						html += '<span class="image">';
+						html += '<img src="/moosa'+list[i].Thumbnail+'"/>';
+						html += '</span>';
+						html += '<a href="/moosa/lodDetail.lo?lno='+list[i].lodNo+'">';
+						html += '<h2 id="contentTitle">'+list[i].lodName+'</h2>';
+						html += '<div class="content"><p>'+list[i].lodAddress+'</p></div>';
+						html += '</a></article>';
+						if(${not empty loginUser}){
+							html += '<button onclick="return addWishList('+list[i].lodNo+',${loginUser.userNo});">위시리스트</button>';
+						}
+						html += '</section>';
 					}
 					$("#contentDiv").html(html);
-				
 				},
 				error : function(){
 					console.log("통신 실패");
@@ -80,6 +91,33 @@
 			});
 			
 		});
+		//위시리스트 추가
+		function addWishList(lno,userNo){
+			var flag = confirm("위시리스트를 변경하시겠습니까?");
+			if(flag){
+				$.ajax({
+					url : "${contextPath}/addWishList.me",
+					data : {
+						lno:lno,
+						userNo:userNo
+					},
+					success : function(result){
+						
+						if(result>0){
+							alert("위시리스트 변경 성공 마이페이지에서 확인하세요.");
+						}else{
+							alert("위시리스트 변경 실패 관리자에게 문의하세요.");
+						}
+					},
+					error : function(){
+						console.log("통신실패");
+					}
+				});
+			}else{
+				return false;
+			}
+			
+		};
 	</script> 
 
 	</body>

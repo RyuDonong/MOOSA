@@ -34,7 +34,8 @@ public class PhotoDao {
 			pstmt.setInt(1, lno);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				pList.add(new Photo(rset.getString("THUMBNAIL")));
+				pList.add(new Photo(rset.getString("THUMBNAIL")
+								   ,rset.getInt("REVIEW_NO")));
 				
 			}
 			

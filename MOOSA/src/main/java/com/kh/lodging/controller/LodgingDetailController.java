@@ -14,6 +14,7 @@ import com.kh.common.model.vo.Photo;
 import com.kh.lodging.model.service.LodgingService;
 import com.kh.lodging.model.vo.Lodging;
 import com.kh.lodging.model.vo.Review;
+import com.kh.lodging.model.vo.Room;
 
 /**
  * Servlet implementation class LodgingDetailController
@@ -36,12 +37,18 @@ public class LodgingDetailController extends HttpServlet {
     //숙소 상제 페이지 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int lno= Integer.parseInt(request.getParameter("lno"));
+		
 		Lodging lod= new LodgingService().selectDetailLodging(lno);
 		ArrayList<Review> list = new LodgingService().selectReview(lno);
-		
-		ArrayList<Photo> pList = new PhotoService().selectReviewPhoto(lno); 
+		ArrayList<Room> rList = new LodgingService().selectRoom(lno);
+		ArrayList<Photo> rpList = new LodgingService().selectRoomPhoto(lno);//방 사진
+		ArrayList<Photo> pList = new PhotoService().selectReviewPhoto(lno); //리뷰사진
+//		System.out.println(rList);
+//		System.out.println(rpList);
 		request.setAttribute("lod",lod );
 		request.setAttribute("list",list );
+		request.setAttribute("rList", rList);
+		request.setAttribute("rpList", rpList);
 		request.setAttribute("pList", pList);
 		request.getRequestDispatcher("views/lod/lodDetailView.jsp").forward(request, response);
 	}
@@ -50,8 +57,7 @@ public class LodgingDetailController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

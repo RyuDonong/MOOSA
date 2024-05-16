@@ -6,12 +6,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.common.JDBCTemplate;
+import com.kh.common.model.vo.BoardPagingBar;
+import com.kh.common.model.vo.Photo;
 import com.kh.lodging.model.vo.Lodging;
 import com.kh.lodging.model.vo.Review;
+import com.kh.lodging.model.vo.Room;
 
 
 public class LodgingDao {
@@ -36,9 +40,9 @@ public class LodgingDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		try {
-			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,category);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -87,8 +91,33 @@ public class LodgingDao {
 		}
 		return lod;
 	}
-
-	//비동기 통신으로 숙소 리뷰 조회
+	//숙소 방 정보 조회
+	public ArrayList<Room> selectRoom(Connection conn, int lno) {
+		ArrayList<Room> rList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectRoom");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, lno);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Room r = new Room(rset.getInt("ROOM_NO")
+								 ,rset.getString("ROOM_NAME")
+								 ,rset.getString("ROOM_INFO")
+								 ,rset.getInt("PHOTO_NO"));
+				rList.add(r);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return rList;
+	}
+	//숙소 리뷰 조회
 	public ArrayList<Review> selectReview(Connection conn, int lno) {
 		ArrayList<Review> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -104,8 +133,7 @@ public class LodgingDao {
 								   ,rset.getString("USER_NAME")
 								   ,rset.getDate("CREATE_DATE")
 								   ,rset.getString("ROOM_NAME")
-								   ,rset.getInt("COUNT")
-								   ,rset.getString("THUMBNAIL")));
+								   ,rset.getInt("COUNT")));
 				
 			}
 		} catch (SQLException e) {
@@ -114,7 +142,99 @@ public class LodgingDao {
 		}
 		return list;
 	}
-	
+
+	//리뷰 번호 추출 메소드
+	public int selectReviewNo(Connection conn) {
+		int reviewNo = 0;
+		ResultSet rset = null;
+		Statement stmt = null;
+		String sql = prop.getProperty("selectReviewNo");
+		try {
+			stmt=conn.createStatement();
+			rset = stmt.executeQuery(sql);
+			if(rset.next()) {
+				reviewNo=rset.getInt("RVN");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return reviewNo;
+	}
+
+	//리뷰 글 작성메소드
+	public int insertReview(Connection conn, Review r) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReview");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, r.getReviewNo());
+			pstmt.setString(2, r.getReviewContent());
+			pstmt.setInt(3, Integer.parseInt(r.getUserNo()));
+			pstmt.setInt(4, Integer.parseInt(r.getRoomNo()));
+			pstmt.setInt(5, r.getCount());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertReviewPhoto(Connection conn, ArrayList<Photo> pList, int reviewNo,int lno) {
+		PreparedStatement pstmt = null;
+		int result = 1; //사진이 여러개 왔을때 하나라도 0이라면 0이 되게 처리
+		String sql = prop.getProperty("insertReviewPhoto");
+			try {
+				for(Photo p : pList) {
+					pstmt=conn.prepareStatement(sql);
+					pstmt.setString(1, p.getOriginName());
+					pstmt.setString(2, p.getChangeName());
+					pstmt.setString(3, p.getFilePath());
+					pstmt.setInt(4, p.getFileLevel());
+					pstmt.setInt(5, reviewNo);
+					pstmt.setInt(6, lno);
+					result *= pstmt.executeUpdate();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+		return result;
+	}
+	//방 사진 조회 메소드
+	public ArrayList<Photo> selectRoomPhoto(Connection conn, int lno) {
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectRoomPhoto");
+		ArrayList<Photo> rpList = new ArrayList<>();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, lno);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				rpList.add(new Photo(rset.getString("THUMBNAIL")
+									,rset.getString("LOD_NO")
+									,rset.getInt("ROOM_NO")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return rpList;
+	}
 	
 	
 }

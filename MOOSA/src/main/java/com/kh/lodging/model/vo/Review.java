@@ -11,18 +11,23 @@ public class Review {
 	private String status;
 	private String roomNo;
 	private int count;
-	public String getRoomNo() {
-		return roomNo;
-	}
 	private int photoNo;
 	private String thumbnail;
 	
+	public Review() {
+		super();
+	}
 	
-	
+	public Review(int reviewNo, String reviewContent, Date createDate, String roomNo, int count) {
+		super();
+		this.reviewNo = reviewNo;
+		this.reviewContent = reviewContent;
+		this.createDate = createDate;
+		this.roomNo = roomNo;
+		this.count = count;
+	}
 
-
-	public Review(int reviewNo, String reviewContent, String userNo, Date createDate, String roomNo, int count,
-			String thumbnail) {
+	public Review(int reviewNo, String reviewContent, String userNo, Date createDate, String roomNo, int count) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewContent = reviewContent;
@@ -30,7 +35,7 @@ public class Review {
 		this.createDate = createDate;
 		this.roomNo = roomNo;
 		this.count = count;
-		this.thumbnail = thumbnail;
+		
 	}
 	public Review(int reviewNo, String reviewContent, String userNo, Date createDate, String status, String roomNo,
 			int count, int photoNo) {
@@ -95,15 +100,15 @@ public class Review {
 		this.thumbnail = thumbnail;
 	}
 	
+	public String getRoomNo() {
+		return roomNo;
+	}
 	
 	public void setRoomNo(String roomNo) {
 		this.roomNo = roomNo;
 	}
 	
 	
-	public Review() {
-		super();
-	}
 	@Override
 	public String toString() {
 		return "Review [reviewNo=" + reviewNo + ", reviewContent=" + reviewContent + ", userNo=" + userNo

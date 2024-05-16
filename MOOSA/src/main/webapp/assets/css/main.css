@@ -91,14 +91,28 @@ header .lod_menu li.on button{ background: #B4DADB;}
 section.lod_content .tiles {}
 section.lod_content .tiles article{}
 
-.reviewPhoto{
+.reviewPhoto > div{
 	width : 300px;
-	heght : 100px;
+	height : 180px;
+	overflow:hidden;
+	display:inline-block;
+}
+.reviewPhoto > div + div {margin-left: 10px;}
+.reviewPhoto > div img {width: 100%; height:100%; display:block;}
+
+.reviewPhotoTd {display:flex; gap:4px;}
+.reviewPhotoTd > div {width:200px; height:100px; overflow:hidden;}
+.reviewPhotoTd > div img{width:100%; height:100%;}
+.reviewPhotoTd > div + div  {}
+#tiles>.wishListCheck{
+	width : 10px;
+	height:10px;
 }
 /* Tiles */
 
 .lod_content {width:100%;}
-.lod_content #contentDiv {display:flex;}
+.lod_content #contentDiv {display:flex; flex-wrap:wrap; gap:2%;}
+.lod_content #contentDiv .tiles {width:32%;}
 
 .lod_content .tiles {
 	display: -moz-flex;
@@ -126,6 +140,7 @@ section.lod_content .tiles article{}
 	/*width: calc(33.33333% - 2.5em);*/
 	/*margin: 2.5em 0 0 2.5em;*/
 	width:90%;
+	margin-bottom: 1rem;
 }
 
 .lod_content .tiles article > .image {
@@ -136,6 +151,7 @@ section.lod_content .tiles article{}
 	position: relative;
 	display: block;
 	width: 100%;
+	height: clamp(70px, 15vw, 216px);
 	border-radius: 4px;
 	overflow: hidden;
 }
@@ -143,6 +159,7 @@ section.lod_content .tiles article{}
 .lod_content .tiles article > .image img {
 	display: block;
 	width: 100%;
+	height: 100%;
 }
 
 .lod_content .tiles article > .image:before {
@@ -355,12 +372,38 @@ body.is-touch .lod_content .tiles article .content {
     display: flex;
     gap: 5px;
     padding: 0 0;
+    margin:2rem 0 0;
 }
 .score li{
     list-style: none;
     margin: 0 0;
     padding: 0 0;
 }
+
+#wishListDiv {
+	display:flex;
+	flex-wrap : wrap;
+	gap: 2%;
+		
+}
+#wishListDiv .tiles { width:32%;}
+#wishListDiv .tiles h2 {margin:0 0; font-size: 1em; text-align:left;}
+#wishListDiv .tiles .content p {margin:0 0; font-size: 0.8em;}
+
+
+
+
+
+.box.post img {vertical-align : middle;}
+
+.roomInfoWrap {    display: flex;
+    gap: 10px;
+    overflow-y: auto;
+    padding: 0 0 20px;}
+.roomImagesSlider {overflow:hidden; position:relative; width:320px; height:160px; border-radius:12px;}
+.roomImagesSlider img {width: 100%; height:100%;}
+.swiper-button-next, .swiper-button-prev {color:#3d3a3a;}
+
 
 
 
