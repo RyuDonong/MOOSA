@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%
 String alertMsg = (String) session.getAttribute("alertMsg");
 Member loginUser = (Member) session.getAttribute("loginUser");
+String contextPath = request.getContextPath();
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +15,7 @@ Member loginUser = (Member) session.getAttribute("loginUser");
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <style>
-/* Card sizing */
-/* Colors */
-/* Calculations */
-/* Placeholders */
+
 @import url("https://hangeul.pstatic.net/hangeul_static/css/NanumMiNiSonGeurSsi.css");
 @media ( min-width : 1000px) {
 	#timeline .demo-card:nth-child(even) .head::after, #timeline .demo-card:nth-child(odd) .head::after
@@ -293,59 +293,61 @@ body {
 	border-color: #F3CECD;
 }
 
-#reply-area {
-	margin-top: 20px;
-}
+.cherry_blossom {
+      overflow: hidden;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: url('https://i.imgur.com/7M6L1Cd.jpg') center center no-repeat;
+      background-size: cover;
+      perspective: 1000px;
+    }
 
-table {
-	width: 80%;
-	border-collapse: collapse;
-	margin: 0 auto;
-}
+    .cherry_blossom .petal {
+      position: absolute;
+      background: linear-gradient(-45deg, #ffb6c1 0%, #ffc5d0 40%, #ffdfe6 80%);
+      border-radius: 10% 50% 40% 50%;
+      z-index: 1;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      pointer-events: none;
+      transform-style: preserve-3d;
+      transition: transform 1000ms linear;
+    }
 
-th, td {
-	padding: 10px;
-	text-align: center;
-}
+    @keyframes fall {
+      0% {
+        top: -110%;
+        opacity: 0;
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+      }
 
-th {
-	background-color: #f2f2f2;
-}
+      80% {
+        opacity: 1;
+      }
 
-textarea {
-	width: 100%;
-	padding: 8px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	resize: none;
-}
+      100% {
+        top: 110%;
+        opacity: 0;
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+      }
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* 수평 스크롤 제거 */
+    }
+    .cherry_blossom {
+      overflow-y: auto; /* 수직 스크롤 추가 */
+    }
 
-button {
-	padding: 10px 20px;
-	background-color: #4CAF50;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-button:disabled {
-	background-color: #cccccc;
-	cursor: not-allowed;
-}
-
-button:hover {
-	background-color: #45a049;
-}
-h1{
-  font-family: 'NanumMiNiSonGeurSsi';
-  
-
-}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
+
 <body>
-	<section id=timeline>
+	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
+	<section id="timeline" class="cherry_blossom">
 		<h1>따뜻한 제주 봄 코스</h1>
 		<p class="leader">봄기운 느껴지는 제주 코스</p>
 		<div class="demo-card-wrapper">
@@ -355,14 +357,15 @@ h1{
 						<span>01</span>
 					</div>
 					<h2>
-						<span class="small">Subtitle</span> Technology
+						<span class="small">첫번째 코스</span><br> 엉덩물계곡
 					</h2>
 				</div>
 				<div class="body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Soluta reiciendis deserunt doloribus consequatur, laudantium odio
-						dolorum laboriosam.</p>
-					<img src="http://placehold.it/1000x500" alt="Graphic">
+					<p>
+					중문관광단지의 색달해수욕장 뒷편으로 펼쳐진 노란빛 계곡입니다 2월 말부터 3월중순까지 이곳은 물대신 노란빛으로 가득합니다. 
+					 길게 유채꽃길이 있어 예쁜풍경을 볼 수 있습니다
+					</p>
+					<img src="${contextPath}/resources/coursereviewImages/spr2.jpg" alt="Graphic">
 				</div>
 			</div>
 
@@ -372,14 +375,14 @@ h1{
 						<span>02</span>
 					</div>
 					<h2>
-						<span class="small">Subtitle</span> Confidence
+						<span class="small">두번째 코스</span><br> 색달 해수 욕장 <br>
 					</h2>
 				</div>
 				<div class="body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Soluta reiciendis deserunt doloribus consequatur, laudantium odio
-						dolorum laboriosam.</p>
-					<img src="http://placehold.it/1000x500" alt="Graphic">
+					<p>
+						엉덩물계곡 바로 앞에 있는 색달해수욕장은 예쁜 모래사장이 있고 맑고 청록한 바다색깔을 볼수 있습니다
+					</p>
+					<img src="${contextPath}/resources/coursereviewImages/spr4.jpg" alt="Graphic">
 				</div>
 			</div>
 
@@ -389,14 +392,15 @@ h1{
 						<span>03</span>
 					</div>
 					<h2>
-						<span class="small">Subtitle</span> Adaptation
+						<span class="small">세번째 코스</span><br> 카페 루시아
 					</h2>
 				</div>
 				<div class="body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Soluta reiciendis deserunt doloribus consequatur, laudantium odio
-						dolorum laboriosam.</p>
-					<img src="http://placehold.it/1000x500" alt="Graphic">
+					<p>
+						중문관광단지에서 차로 약 15분거리에 위치한 카페 루시아입니다 안에 들어가서 밖에 뷰를 보면 
+						박수기정과 유채꽃을 보면서 음료수과빵을 먹으면서 편안하게 쉴 수 있는 곳입니다
+					</p>
+					<img src="${contextPath}/resources/coursereviewImages/spr5.jpg" alt="Graphic">
 				</div>
 			</div>
 
@@ -406,14 +410,15 @@ h1{
 						<span>04</span>
 					</div>
 					<h2>
-						<span class="small">Subtitle</span> Consistency
+						<span class="small">4번째 코스</span><br> 녹산로
 					</h2>
 				</div>
 				<div class="body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Soluta reiciendis deserunt doloribus consequatur, laudantium odio
-						dolorum laboriosam.</p>
-					<img src="http://placehold.it/1000x500" alt="Graphic">
+					<p>
+						땅에는 유채꽃이 하늘에는 벚꽃들이 피어있는 코스인 녹산로는 3~4월 제주도의 필수 코스 입니다 
+						드라이브 구경해도 좋고 걸어가면서 봄기운을 느껴보는 것도 좋습니다.
+					</p>
+					<img src="${contextPath}/resources/coursereviewImages/spr1.jpg" alt="Graphic">
 				</div>
 			</div>
 
@@ -423,110 +428,63 @@ h1{
 						<span>05</span>
 					</div>
 					<h2>
-						<span class="small">Subtitle</span> Conversion
+						<span class="small">5번째 코스</span><br> 가파도
 					</h2>
 				</div>
 				<div class="body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Soluta reiciendis deserunt doloribus consequatur, laudantium odio
-						dolorum laboriosam.</p>
-					<img src="http://placehold.it/1000x500" alt="Graphic">
+					<p>
+						벚꽃도 다 진 4월 초중순 가파도에서는 청보리축제가 열리는데도 가파도에서는 청보리로 가득해집니다
+						섬이 거의 평지라 한바퀴 산책하는것도 좋고 자전거로 한바퀴 도는 것도 좋습니다.
+					</p>
+					<img src="${contextPath}/resources/coursereviewImages/spr3.jpg" alt="Graphic">
 				</div>
+			
 			</div>
-
+			
 		</div>
-	</section>
-	<!-- 댓글창 -->
-	<div id=reply-area>
-		<table border="1" align="center">
-			<thead>
-				<c:choose>
-					<c:when test="${not empty loginUser }">
-						<tr>
-							<th>댓글작성</th>
-							<td><textarea id="replyContent" rows="3" cols="50"
-									style="resize: none;"></textarea></td>
-							<td><button onclick="insertReply();">댓글작성</button></td>
-						</tr>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<th>댓글작성</th>
-							<td><textarea readonly rows="3" cols="50"
-									style="resize: none;">회원이 아닙니다</textarea></td>
-							<td><button disabled>댓글작성</button></td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</thead>
-			<tbody>
-				<tr>
-					<td>작성자</td>
-					<td>내용</td>
-					<td>작성일</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+		<button onclick="review();">리뷰 ></button>
+		
+		</section>
 
-	<script>
-  	function insertReply(){
-  		
-  	$.ajax({
-  		url : "insertReply.bo",
-  		type : "post",
-  		data : {
-  			data : {
-  				content : $("#replyContent").val(),
-  				bno : ${b.boardNo},
-  				userNo : "${loginUser.userNo}""
-  			},
-  			success : function(result){
-  				if(result>0){
-  					$("#replyContent").val("");
-  					replyList();
-  				}else{
-  					alert("댓글 작성 실패");
-  				}
-  			},
-  			error : function(){
-  				
-  			}
-  			
-  		}
-  	});
+	
+  <!-- 벚꽃 -->
+  
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  function review(){
+	  location.href = "${contextPath}/list.rv?currentPage=1";
   }
-  	/* 댓글 목록 조회 함수 */
-  	
-  	function replyList(){
-  		$.ajax({
-  			url : "replyList.bo",
-  			data : {
-  				bno : ${b.boardNo}
-  			},
-  			success : function(list){
-  				
-  				var tr = "";
-  				
-  				for(var i in list){
-  					tr +="<tr>"
-  					   +"<td>"+ list[i].replyWriter +"</td>"
-  					   +"<td>"+ list[i].replyContent +"</td>"
-  					   +"<td>"+ list[i].replyDate +"</td>"
-  					   +"</tr>";
-  				}
-  				
-  				$("#reply-area tbody").html(tr);
-  				
-  			}
-  		});
-  	}
-  	
-  	$(function(){
-  		replyList();
-  	});
-  	
-  	
-  </script>
+  
+    $(document).ready(function() {
+        // 사쿠라 꽃잎이 흩날리는 애니메이션 효과 구현
+        function createPetal() {
+            const petalEl = $('<div class="petal"></div>');
+            const size = Math.random() * 20 + 10; // 꽃잎의 크기는 10px에서 30px 사이 랜덤으로 설정
+            const startPosX = Math.random() * document.body.clientWidth; // 시작 위치는 랜덤
+            const speed = Math.random() * 5 + 5; // 낙하 속도도 랜덤
+
+            petalEl.css({
+                width: size,
+                height: size,
+                left: startPosX,
+                top:"-20%"
+            });
+
+            $('.cherry_blossom').append(petalEl);
+
+            // 애니메이션 실행
+            petalEl.animate({
+                top: "120%",
+                opacity: 0
+            }, speed * 2500, function() {
+                // 애니메이션 종료 후 꽃잎 제거
+                petalEl.remove();
+            });
+        }
+
+        // 0.5초마다 꽃잎 생성
+        setInterval(createPetal, 500);
+    });
+</script>
 </body>
 </html>

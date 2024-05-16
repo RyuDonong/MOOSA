@@ -116,69 +116,84 @@
         p {
             font-size: 20px;
             font-weight: bolder;
+            color: white;
         }
         a{
             color: #f8f8f8;
         }
+        #summer{
+            background: url(https://wimg.mk.co.kr/meet/neds/2022/06/image_readtop_2022_557782_16562167665086621.jpg)
+        }
+
+        #spring{
+            background: url(https://i.pinimg.com/736x/fc/e0/1f/fce01ff9b49c54eb88609b19c8db2703.jpg);
+        }
+        #autumn{
+            background: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20120910_266%2Fhan_na0401_1347281920612inx7l_JPEG%2F%25A4%25AC%25A4%25B7%25A4%25BD%25A4%25B7%25A4%25BD%25A4%25B7%25A4%25BD_%25285%2529.jpg&type=sc960_832);
+        }
+        #winter{
+            background: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAxMDJfMjMw%2FMDAxNjA5NTUwNzgwNTUw.Li9l8NxxdXJZnljgrYKaMDfdoE74Yk-S6Q9mJEjES-kg.CYwbektayp77QjjZN1Em6c8xwZkXBeio8TIteTLVvXMg.GIF.asw8766%2F%25B0%25DC%25BF%25EF%25B4%25AB_13.gif&type=sc960_832_gif);
+        }
     </style>
-    <link rel="stylesheet" href="styles.css">
+   
 </head>
 
 <body>
     <%@include file = "/views/common/header.jsp"%>
+     
     <div class="container">
         <h1>계절을 선택하세요</h1>
             
         <div class="buttons">
             <div class="book" onclick="toggleDescription(this)">
-                <button class="season-button" onclick="changeSeason('spring')">봄</button>
-                <div class="cover" onclick="changeSeason('spring')">
+                <button    class="season-button" onclick="changeSeason('spring')">봄</button>
+                <div id="spring" class="cover" onclick="changeSeason('spring')">
                     <p>봄</p>
                 </div>
                 <div class="description">
                     <p>봄은 화창하고 따뜻한 계절입니다. 꽃이 피고 새싹이 돋아나는 시기로, 새로운 시작을 의미합니다.</p>
-                    <p>키워드: 꽃, 따뜻함, 새싹 </p>
+                    <p>#꽃 #따뜻함 #새싹 </p>
                     
                     <a href="${contextPath}/course.sp">바로가기</a>
                 </div>
             </div>
             
             <div class="book" onclick="toggleDescription(this)">
-                <button class="season-button" onclick="changeSeason('summer')">여름</button>
-                <div class="cover" onclick="changeSeason('summer')">
+                <button  class="season-button" onclick="changeSeason('summer')">여름</button>
+                <div id="summer" class="cover" onclick="changeSeason('summer')">
                     <p>여름</p>
                 </div>
                 <div class="description">
                     <p>여름은 덥고 활기찬 계절입니다. 해변에서 즐거운 시간을 보내거나 시원한 음료를 즐기기 좋습니다.</p>
-                    <p>키워드: 해변, 더위, 시원함 </p>
+                    <p>#해변  #더위  #시원함 </p>
                     
-                    <a href="https://example.com">바로가기</a>
+                    <a href="${contextPath}/course.su">바로가기</a>
                 </div>
             </div>
             
             <div class="book" onclick="toggleDescription(this)">
                 <button class="season-button" onclick="changeSeason('autumn')">가을</button>
-                <div class="cover" onclick="changeSeason('autumn')">
+                <div id="autumn" class="cover" onclick="changeSeason('autumn')">
                     <p>가을</p>
                 </div>
                 <div class="description">
                     <p>가을은 서늘하고 색이 아름다운 계절입니다. 단풍 구경을 하거나 따뜻한 차를 마시기 좋습니다.</p>
-                    <p>키워드: 단풍, 산책, 차</p>
+                    <p>#단풍 #산책 #차</p>
                     <br>
-                    <a href="https://example.com">바로가기</a>
+                    <a href="${contextPath}/course.au">바로가기</a>
                 </div>
             </div>
             
             <div class="book" onclick="toggleDescription(this)">
                 <button class="season-button" onclick="changeSeason('winter')">겨울</button>
-                <div class="cover" onclick="changeSeason('winter')">
+                <div id="winter" class="cover" onclick="changeSeason('winter')">
                     <p>겨울</p>
                 </div>
                 <div class="description">
                     <p>겨울은 차가운 계절입니다. 눈이 내리는 풍경을 감상하거나 온기를 느끼는 모임이 어울립니다.</p>
-                    <p>키워드: 눈, 추위, 온기</p>
+                    <p>키워드: #눈 #추위  #온기</p>
                     <br>
-                    <a href="https://example.com">바로가기</a>
+                    <a href="${contextPath}/course.wi">바로가기</a>
                 </div>
             </div>
         </div>

@@ -61,9 +61,7 @@ String contextPath = request.getContextPath();
 				</Script> -->
 		
 			
-			<div align="center">
-				<button type="button" onclick="location.href='${contextPath}/update.to?bno=${b.boardNo}'">글수정</button>
-			</div>
+		
 		</form>
 	
 	</div>
