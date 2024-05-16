@@ -70,6 +70,7 @@
 														<thead>
 															<tr>
 																<th>선택</th>
+																<th>별점</th>
 																<th>리뷰 번호</th>
 																<th>리뷰 내용</th>
 															</tr>
@@ -78,6 +79,18 @@
 															<c:forEach var="r" items="${rList }">
 																<tr>
 																	<td id="radioTd"><input type="radio" class="choiceUpdate" value="${r.reviewNo}" id="choiceUpdate${r.reviewNo}" name="choiceUpdate"></td>
+																	<td>
+																		<ul class="score">
+																			<li>
+																			 	<c:forEach begin="1" end="${r.count}">
+																					<img class="full" alt="" src="/moosa/images/fullStar.png">
+																				</c:forEach>
+																				<c:forEach begin="${r.count + 1}" end="5">
+																					<img alt="" src="/moosa/images/star.png">
+																				</c:forEach>
+																			</li>
+																		</ul>
+																	</td>
 																	<td>${r.reviewNo }</td>
 																	<td>${r.reviewContent }</td>
 																</tr>

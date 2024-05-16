@@ -68,6 +68,8 @@
 								<c:when test="${not empty r}">
 									<form action="${contextPath }/updateReview.me" method="post">
 										<input type="hidden" name="userNo" value="${loginUser.userNo }">
+										<input type="hidden" name="reviewNo" value="${r.reviewNo }">
+										
 										<table>
 											<thead>
 												<tr>
