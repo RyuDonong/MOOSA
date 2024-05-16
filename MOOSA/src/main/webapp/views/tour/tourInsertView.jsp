@@ -10,7 +10,7 @@ String contextPath = request.getContextPath();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관광명소 추가</title>
 
 
 </head>
@@ -18,7 +18,7 @@ String contextPath = request.getContextPath();
 	<%@include file="/views/common/header.jsp"%>
 	<div class="outer">
 		<br>
-		<h2 align="center">사진 게시글 작성</h2>
+		<h2 align="center">관광명소 추가</h2>
 		<br>
 
 		<form action="${contextPath }/insert.to" method="post"
