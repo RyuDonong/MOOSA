@@ -58,8 +58,7 @@ public class UpdateMemberController extends HttpServlet {
 			String phone= multiRequest.getParameter("phone");
 			String address= multiRequest.getParameter("address");
 			String email = multiRequest.getParameter("email");
-			int photoNo = Integer.parseInt(request.getParameter("photoNo"));
-			//기존 프로필 사진 조회해와서 번호 추출하여 회원 정보 수정 할때 수정하기
+			int photoNo=Integer.parseInt(multiRequest.getParameter("photoNo"));
 			Member updateM = new Member(userId,phone,email,address,photoNo);
 			
 			//순서가 잘못 되었음 파일 생성이 먼저여야 수정이 가능

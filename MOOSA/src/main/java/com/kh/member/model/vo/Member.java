@@ -205,8 +205,11 @@ public class Member {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
 				+ ", phone=" + phone + ", email=" + email + ", address=" + address + ", enrollDate=" + enrollDate
 				+ ", modifyDate=" + modifyDate + ", status=" + status + ", gender=" + gender + ", gradeNo=" + gradeNo
-				+ ", thumbnail=" + thumbnail + "]";
+				+ ", photoNo=" + photoNo + ", thumbnail=" + thumbnail + "]";
 	}
+
+
+	
 
 	
 	

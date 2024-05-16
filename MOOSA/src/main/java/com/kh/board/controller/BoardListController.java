@@ -48,6 +48,7 @@ public class BoardListController extends HttpServlet {
 		//DB에 저장돼 있는 게시글 갯수 불러오기
 		listCount = new BoardService().listCount();
 		
+		
 		//ListView 페이지에서 현재페이지 가져오기?
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		

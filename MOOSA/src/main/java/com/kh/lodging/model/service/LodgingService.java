@@ -35,9 +35,9 @@ public class LodgingService {
 		return rList;
 	}
 // 	리뷰 조회 메소드
-	public ArrayList<Review> selectReview(int lno) {
+	public ArrayList<Review> selectEveryReview(int lno) {
 		Connection conn = JDBCTemplate.getConnection();
-		ArrayList<Review> list = new LodgingDao().selectReview(conn,lno);
+		ArrayList<Review> list = new LodgingDao().selectEveryReview(conn,lno);
 		JDBCTemplate.close(conn);
 		return list;
 		

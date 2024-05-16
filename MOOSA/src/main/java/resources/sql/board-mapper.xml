@@ -259,6 +259,7 @@
 	<entry key="listCount">
 		SELECT COUNT(*) AS COUNT
 		FROM BOARD
+		WHERE STATUS = 'Y'
 	</entry>
 	
 	<!-- 검색 (제목으로) -->

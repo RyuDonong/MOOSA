@@ -38,13 +38,20 @@ public class AddWishListController extends HttpServlet {
 		//중복이라면 제거 하기
 		int result = 0;//결과값 받을 변수 준비
 		if(!list.isEmpty()) {//조회해온 데이터가 있다면 
+			boolean flag = false; // 조회해온 데이터에서 중복값이 있는지 없는지 담아둘 변수 
 			for(Lodging l : list) {
-				if(l.getLodNo()==lno) {//조회해온 데이터에서 새로 위시리스트 담을 숙소 번호 비교해서 있다면 삭제
-					result = new MemberService().deleteWishList(userNo, lno);
-				}else {
-					result = new MemberService().addWishList(lno,userNo);
+				if(l.getLodNo()==lno) {//조회해온 데이터에서 새로 위시리스트 담을 숙소 번호 비교해서 있다면 flag true
+					flag = true;
 				}
 			}
+			if(flag) {//조회해온 숙소 있다면 
+				result = new MemberService().deleteWishList(userNo, lno);
+//				System.out.println("==lno"+lno);
+			}else {//조회해온 숙소가 없다면 
+				result = new MemberService().addWishList(lno,userNo);
+//				System.out.println("!=lno"+lno);
+			}
+			
 		}else {//조회 해온 데이터가 없다면
 			result = new MemberService().addWishList(lno,userNo);
 		}
