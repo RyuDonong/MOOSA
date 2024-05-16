@@ -3,7 +3,6 @@ package com.kh.tour.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.kh.board.model.vo.Board;
 import com.kh.common.JDBCTemplate;
 import com.kh.tour.model.dao.TourDao;
 import com.kh.tour.model.vo.TourBoard;
@@ -98,5 +97,17 @@ public class TourService {
 				
 				JDBCTemplate.close(conn);
 				return tp;
+			}
+			
+			//================== 메인페이지 로드 ==============
+			public ArrayList<TourBoard> selectTour() {
+				Connection conn = JDBCTemplate.getConnection();
+				
+				ArrayList<TourBoard> list = new TourDao().selectTour(conn);
+				
+				//select니까 자원반납만 
+				JDBCTemplate.close(conn);
+				
+				return list;
 			}
 }

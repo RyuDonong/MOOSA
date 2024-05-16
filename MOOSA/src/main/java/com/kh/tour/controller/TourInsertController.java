@@ -70,10 +70,6 @@ public class TourInsertController extends HttpServlet {
 			b.setBoardContent(content);
 			b.setBoardWriter(boardWriter);
 
-			System.out.println(title);
-			System.out.println(content);
-			System.out.println(boardWriter);
-
 			// Attachment 처리
 			// 첨부파일의 경우 대표이미지에 required 속성을 작성했기 때문에 무조건 1개이상 넘어오게 된다.
 			// 여러개가 넘어온다면 여러개의 데이터를 받아서 처리해야한다.

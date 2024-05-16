@@ -3,14 +3,12 @@ package com.kh.tour.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.board.model.vo.Board;
 import com.kh.tour.model.service.TourService;
 import com.kh.tour.model.vo.TourBoard;
 
@@ -40,8 +38,6 @@ public class TourController extends HttpServlet {
 		// 조회 데이터 전달 .
 		request.setAttribute("list", list);
 		
-		System.out.println(list);
-
 		// 사진 게시글 작성페이지로 이동
 		request.getRequestDispatcher("views/tour/tourView.jsp").forward(request, response);
 

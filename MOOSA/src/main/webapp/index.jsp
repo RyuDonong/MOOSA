@@ -120,7 +120,7 @@
 						<header>
 							<h2>MOOSA : 관광명소</h2>
 						</header>
-						<div class="lod-list" style="display:flex;">
+						<div class="tour-list" style="display:flex;">
 							
 						</div>
 					</div>
@@ -202,6 +202,36 @@
 	            console.log('데이터 불러오기 실패');
 	        }
     	});
+  
+  //=========== <관광명소> 페이지 처음 시작시 가져올 데이터 ==========
+  $.ajax({
+	        url: "/moosa/tour.info",
+	        success: function (list) {
+	            var lodList = "";
+	            for (var i = 0; i < list.length; i++) {
+	                lodList += "<div class='col-4 col-6-medium col-12-small'>"
+	                    + "<section>"
+	                    + "<a href='/moosa/tour.to'>"
+	                    + "<img src='/moosa" +list[i].changeName  + "" + list[i].filePath + "' style='width:100%; height:auto;'>"
+	                    + "</a>"
+	                    + "</header>"
+	                    + "<h3>" + list[i].boardTitle + "</h3>"
+	                    + "</header>"
+	                    + "<body>"
+	                    + "<p>" + list[i].boardContent + "</p>"
+	                    + "</body>"
+	                    + "</section>"
+	                    + "</div>";
+	            }
+	            $('.tour-list').html(lodList);
+	            console.log('데이터 불러오기 성공!!');
+	        },
+	        error: function () {
+	            console.log('데이터 불러오기 실패');
+	        }
+    	});
+  
+  
   //=========== <코스 리뷰 추천> 페이지 처음 시작시 가져올 데이터 ==========
 	  
 		  $.ajax({
@@ -231,6 +261,9 @@
 		        }
 	    	});
 	  });
+	
+	
+	
 	
 	//=========== <게시판> 페이지 처음 시작시 가져올 데이터 ==========
 		

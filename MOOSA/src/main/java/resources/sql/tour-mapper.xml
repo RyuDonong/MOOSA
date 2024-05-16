@@ -35,9 +35,9 @@
                   ,?
                   ,?
                   ,?
-                  ,5
-                  ,3)
                   ,5)
+	
+	
 	</entry>
 	
 	
@@ -47,11 +47,6 @@
 		      ,TOUR_COUNT
 		      ,TOURBOARD_CONTENT
 		      ,FILE_PATH || CHANGE_NAME THUMBNAIL
-		FROM BOARD B 
-		JOIN PHOTO ON (BOARD_NO =  REF_BNO)
-		WHERE B.STATUS='Y'
-		AND FILE_LEVEL=5
-		ORDER BY CREATE_DATE DESC
 		FROM TOURBOARD B 
 		JOIN PHOTO ON (TOURBOARD_NO =  REF_BNO)
 		WHERE B.TOUR_STATUS='Y'
@@ -86,6 +81,14 @@
 		WHERE REF_BNO = ?
 	</entry>
 	
+	<!-- 메인페이지 로드 -->
+	<entry key="selectTour">
+		SELECT *
+		FROM(SELECT TOURBOARD_TITLE,TOURBOARD_CONTENT,CHANGE_NAME,FILE_PATH
+		FROM TOURBOARD
+		JOIN PHOTO ON (TOURBOARD_NO=REF_BNO))
+		WHERE ROWNUM &lt; 4
+	</entry>
 	
 
 </properties>

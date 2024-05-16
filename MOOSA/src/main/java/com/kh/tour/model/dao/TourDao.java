@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
+
 import com.kh.common.JDBCTemplate;
 import com.kh.tour.model.vo.TourBoard;
 import com.kh.tour.model.vo.TourPhoto;
@@ -265,6 +266,35 @@ public TourDao() {
 				JDBCTemplate.close(pstmt);
 			}
 			return tp;
+		}
+
+		//================== 메인페이지 로드 ==============
+		public ArrayList<TourBoard> selectTour(Connection conn) {
+			ResultSet rset = null;
+			ArrayList<TourBoard> list = new ArrayList<>();
+			Statement stmt = null;
+			
+			String sql = prop.getProperty("selectTour");
+					
+			try {
+				stmt = conn.createStatement();
+				rset = stmt.executeQuery(sql);
+				
+				while(rset.next()) {
+					list.add(new TourBoard(
+							          rset.getString("TOURBOARD_TITLE")
+							          ,rset.getString("TOURBOARD_CONTENT")
+							          ,rset.getString("CHANGE_NAME")
+							          ,rset.getString("FILE_PATH")));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(stmt);
+			}
+			return list;
 		}
 		
 		

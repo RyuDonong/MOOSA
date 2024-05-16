@@ -26,6 +26,20 @@ public class TourBoard {
 		super();
 	}
 
+	
+	
+	
+	public TourBoard(String boardTitle, String boardContent, String filePath, String changeName) {
+		super();
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.filePath = filePath;
+		this.changeName = changeName;
+	}
+
+
+
+
 	public TourBoard(int boardNo, String boardTitle, String boardContent, int count, int likes, Date createDate,
 			String boardWriter, String userId, String categoryName, int rank, String filePath, String changeName) {
 		super();
