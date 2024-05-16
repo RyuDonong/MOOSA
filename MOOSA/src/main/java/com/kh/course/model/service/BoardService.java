@@ -178,4 +178,16 @@ public class BoardService {
 		
 		return list;
 	}
+	
+	
+	//=============== 메인페이지에 불러올 리뷰 게시판 ==========
+	public ArrayList<Board> selectReviewList() {
+		Connection conn = JDBCTemplate.getConnection();
+
+		ArrayList<Board> list = new BoardDao().selectReviewList(conn);
+
+		JDBCTemplate.close(conn);
+
+		return list;
+	}
 }

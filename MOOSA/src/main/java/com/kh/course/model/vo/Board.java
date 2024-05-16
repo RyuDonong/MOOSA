@@ -12,9 +12,20 @@ public class Board {
 	private String status; // STATUS VARCHAR2(1 BYTE)
 	private String boardTitle; // BOARD_TITLE VARCHAR2(100 BYTE)
 	private String boardContent; // BOARD_CONTENT VARCHAR2(4000 BYTE)
+	
+	private String filePath;
+	private String changeName;
 
 	public Board() {
 		super();
+	}
+
+	public Board(String boardTitle, String boardContent, String filePath, String changeName) {
+		super();
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.filePath = filePath;
+		this.changeName = changeName;
 	}
 
 	public Board(Date createDate, String boardWriter, String category, int boardNo, int likes, int count, String status,
@@ -124,11 +135,31 @@ public class Board {
 		this.boardContent = boardContent;
 	}
 
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public String getChangeName() {
+		return changeName;
+	}
+
+	public void setChangeName(String changeName) {
+		this.changeName = changeName;
+	}
+
 	@Override
 	public String toString() {
 		return "Board [createDate=" + createDate + ", boardWriter=" + boardWriter + ", category=" + category
 				+ ", boardNo=" + boardNo + ", likes=" + likes + ", count=" + count + ", status=" + status
-				+ ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + "]";
+				+ ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", filePath=" + filePath
+				+ ", changeName=" + changeName + "]";
 	}
 
+	
+	
+	
 }

@@ -146,4 +146,12 @@
 		AND REF_BNO = ?
 	</entry>
 	
+	<!-- 메인페이지 로드  -->
+	<entry key="selectReviewList">
+		SELECT BOARD_TITLE,BOARD_CONTENT,CHANGE_NAME,FILE_PATH
+		FROM REVIEWBOARD
+		JOIN ATTACHMENT ON (BOARD_NO=REF_NO)
+	</entry>
+	
+	
 </properties>

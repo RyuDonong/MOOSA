@@ -385,5 +385,34 @@ public class BoardDao {
 			
 			return list;
 		}
+		
+		//=============== 메인페이지에 불러올 리뷰 게시판 ==========
+		public ArrayList<Board> selectReviewList(Connection conn) {
+			
+			ArrayList<Board> list = new ArrayList<>();
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			String sql = prop.getProperty("selectReviewList");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					list.add(new Board(
+								 rset.getString("BOARD_TITLE")
+								,rset.getString("BOARD_CONTENT")
+								,rset.getString("FILE_PATH")
+								,rset.getString("CHANGE_NAME")
+							));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			return list;
+		}
 
 }

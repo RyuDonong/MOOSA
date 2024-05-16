@@ -77,9 +77,6 @@
 			<%@include file = "/views/common/header.jsp"%>
 			
 			
-			
-			
-			
 			<!-- 메인배너 슬라이더-->
 			
 					<div class="container" align="center">
@@ -136,7 +133,7 @@
 						<header>
 							<h2>MOOSA : 코스</h2>
 						</header>
-						<div class="lod-list" style="display:flex;">
+						<div class="course-list" style="display:flex;">
 							
 						</div>
 					</div>
@@ -205,39 +202,40 @@
 	            console.log('데이터 불러오기 실패');
 	        }
     	});
-	
-	
+  //=========== <코스 리뷰 추천> 페이지 처음 시작시 가져올 데이터 ==========
+	  
+		  $.ajax({
+		        url: "/moosa/course.info",
+		        success: function (list) {
+		            var lodList = "";
+		            for (var i = 0; i < list.length; i++) {
+		                lodList += "<div class='col-4 col-6-medium col-12-small'>"
+		                    + "<section>"
+		                    + "<a href='http://www.naver.com'>"
+		                    + "<img src='/moosa" + list[i].filePath + "" + list[i].changeName + "' style='width:100%; height:auto;'>"
+		                    + "</a>"
+		                    + "</header>"
+		                    + "<h3>" + list[i].boardTitle + "</h3>"
+		                    + "</header>"
+		                    + "<body>"
+		                    + "<p>" + list[i].boardContent + "</p>"
+		                    + "</body>"
+		                    + "</section>"
+		                    + "</div>";
+		            }
+		            $('.course-list').html(lodList);
+		            console.log('데이터 불러오기 성공!!');
+		        },
+		        error: function () {
+		            console.log('데이터 불러오기 실패');
+		        }
+	    	});
+	  });
 	
 	//=========== <게시판> 페이지 처음 시작시 가져올 데이터 ==========
-    $.ajax({
-	        url: "/moosa/main.info",
-	        success: function (list) {
-	            var bList = "";
-	            for (var i = 0; i < list.length; i++) {
-	                bList += "<div class='col-4 col-6-medium col-12-small'>"
-	                    + "<section>"
-	                    + "<a href='http://www.naver.com'>"
-	                    + "<img src='/moosa" + list[i].filePath + "" + list[i].changeName + "' style='width:100%; height:auto;'>"
-	                    + "</a>"
-	                    + "</header>"
-	                    + "<h3>" + list[i].boardTitle + "</h3>"
-	                    + "</header>"
-	                    + "<body>"
-	                    + "<p>" + list[i].boardContent + "</p>"
-	                    + "</body>"
-	                    + "</section>"
-	                    + "</div>";
-	            }
-	            $('.b-list').html(lodList);
-	            console.log('데이터 불러오기 성공!!');
-	        },
-	        error: function () {
-	            console.log('데이터 불러오기 실패');
-	        }
-    	});
+		
+		
 
-});
-	
 	 //========== 이미지 슬라이드 ===========
 		$(function() {
 		  var slides = $('.slide');
