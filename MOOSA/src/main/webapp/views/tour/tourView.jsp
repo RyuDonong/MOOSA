@@ -4,13 +4,7 @@
 <%
 String contextPath = request.getContextPath();
 %>
-
-
-
-
-
 <!DOCTYPE HTML>
-
 <!--
 	Strongly Typed by HTML5 UP
 	html5up.net | @ajlkn
@@ -23,7 +17,6 @@ String contextPath = request.getContextPath();
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
-
 <style>
 /* 그리드 시스템 스타일 */
 .row {
@@ -63,41 +56,30 @@ String contextPath = request.getContextPath();
         
         
 </style>
-
-
 </head>
 <%@include file="/views/common/header.jsp"%>
-
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
 <br>
-
 <%
 if ((loginUser != null) && loginUser.getUserId().equals("admin")) {
 %>
 <div align="center">
 	<!-- 		 	<button onclick="location.href='oooo'">글작성</button> -->
 	<a href="<%=contextPath%>/insert.to" class="btn btn-info">관광명소 추가</a>
-
 </div>
-
 <%
 }
 %>
 <br>
-
 <pre>
 	<h3>                                            해변                                 일출*일몰                       액티비티                               음식                                   축제</h3>
 </pre>
-
-
 <!-- 글 클릭했을때 상세보기 페이지 작성하기 
 			jsp : thumbnailDetailView.jsp 
 			controller : ThumbnailDetailController 
 			method : thumbnailDetail();
 			참고 페이지 : 사진게시글 작성페이지 
 		 -->
-
 <body class="homepage is-preload">
 	<div id="page-wrapper">
 		<!-- 반복문으로 썸네일 뽑아주기 -->
@@ -124,17 +106,8 @@ if ((loginUser != null) && loginUser.getUserId().equals("admin")) {
 			</div>
 		</section>
 	</div>
-
-
-
-
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
 
 </body>
 </html>
