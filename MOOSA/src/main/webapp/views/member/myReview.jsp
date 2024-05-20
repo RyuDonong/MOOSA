@@ -71,7 +71,6 @@
 															<tr>
 																<th>선택</th>
 																<th>별점</th>
-																<th>리뷰 번호</th>
 																<th>리뷰 내용</th>
 															</tr>
 														</thead>
@@ -91,7 +90,6 @@
 																			</li>
 																		</ul>
 																	</td>
-																	<td>${r.reviewNo }</td>
 																	<td>${r.reviewContent }</td>
 																</tr>
 															</c:forEach>

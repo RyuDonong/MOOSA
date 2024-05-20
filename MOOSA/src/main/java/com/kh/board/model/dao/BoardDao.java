@@ -45,6 +45,10 @@ public class BoardDao {
 		// 현재페이지 * 한페이지에 보여줄 게시글수(3) ==> 3, 6, 9
 		int endRow = bp.getCurrentPage() * bp.getBoardLimit();
 		
+		
+		System.out.println(startRow);
+		System.out.println(endRow);
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);

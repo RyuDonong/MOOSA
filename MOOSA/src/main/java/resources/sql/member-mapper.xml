@@ -34,15 +34,16 @@
 	</entry>
 	<entry key="insertMember">
 		INSERT INTO MEMBER(USER_NO
-		,USER_ID
-		,USER_PWD
-		,USER_NAME
-		,PHONE
-		,EMAIL
-		,ADDRESS
-		,GENDER
-		,PHOTO_NO)
-		VALUES(SEQ_UNO.NEXTVAL
+							,USER_ID
+							,USER_PWD
+							,USER_NAME
+							,PHONE
+							,EMAIL
+							,ADDRESS
+							,GENDER
+							,PHOTO_NO)
+		VALUES(
+		SEQ_UNO.NEXTVAL
 		,?
 		,?
 		,?
@@ -50,7 +51,6 @@
 		,?
 		,?
 		,?
-		,5)
 		,1)
 
 	</entry>

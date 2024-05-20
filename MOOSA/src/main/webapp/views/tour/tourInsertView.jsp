@@ -49,7 +49,6 @@ String contextPath = request.getContextPath();
 			<br> <br>
 
 			 <div id="file-area">
-				onchange : input요소 상태가 변경되면 동작하는 이벤트
 
 				<input type="file" id="file1" name="file1"
 					onchange="loadImg(this,1);" required> <input type="file"
@@ -73,10 +72,7 @@ String contextPath = request.getContextPath();
 					$("#file2").click();
 				});
 
-				//input file 숨기기
-				$("#file-area").hide();
-
-			});
+			
 
 			//onchange에서 동작할 함수 
 			function loadImg(inputFile, num) {
